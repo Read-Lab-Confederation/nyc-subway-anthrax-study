@@ -1,3 +1,7 @@
 *~
 *.pyc
-SRA/
+sra-runs/
+sra-fastq/
+*.out
+*.err
+
