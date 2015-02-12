@@ -1,6 +1,9 @@
 *~
 *.pyc
 sra-*/
+bin/
 logs/
+references/index/
+src/
 
 
