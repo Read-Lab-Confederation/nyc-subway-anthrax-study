@@ -6,3 +6,6 @@ awk -F"\t" '{print $6"\t"$8}' data/SRP051511_info.txt > data/runs-to-samples.txt
 
 # Create Symbolic links fro the pathogens in a separate folder
 ./scripts/map-pathogens.py data/pathogens-to-samples.txt data/runs-to-samples.txt
+
+# Convert FASTQ to FASTA
+nohup ./scripts/fastq-to-fasta.sh 1> logs/fastq-to-fasta.out 2> logs/fastq-to-fasta.err &
