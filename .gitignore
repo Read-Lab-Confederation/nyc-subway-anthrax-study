@@ -3,7 +3,9 @@
 sra-*/
 bin/
 logs/
+references/*.fai
 references/index/
+results/
 src/
 
 
