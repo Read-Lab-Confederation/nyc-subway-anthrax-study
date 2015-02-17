@@ -11,7 +11,10 @@
 # Program: bedtools genomecov (aka genomeCoverageBed)
 # Version: v2.16.2
 # Summary: Compute the coverage of a feature file among a genome.
-
+#
+# Program: fastq_to_fasta - Part of FASTX Toolkit
+# Version: 0.0.13.2
+#
 set -x # Echo all commands
 
 plasmids=(pXO1 pXO2)
@@ -47,8 +50,11 @@ for p in ${plasmids[@]}; do
         genomeCoverageBed -d -ibam ${bam} > ${cov}
         scripts/mapping/plot-coverage.R ${cov} 0.5 ${p}
 
-        # Extract aligned reads using bam2fastq
-        ofq="${wd}/aligned-reads/${samples[$s]}/${s}_#.fastq"
+        # Extract aligned reads using bam2fastq and convert to fasta
+        ofq="${wd}/aligned-reads/${samples[$s]}_${s}#.fastq"
         bin/bam2fastq -o ${ofq} --no-unaligned ${bam}
+        cat ${wd}/aligned-reads/*.fastq | fastq_to_fasta -Q33 -n -o ${wd}/aligned-reads/${samples[$s]}_${s}.fasta
+        gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_1.fastq"
+        gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_2.fastq"
     done
 done
