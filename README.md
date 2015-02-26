@@ -1,7 +1,7 @@
 # New York City Subway-Metagenome: attempts to detect *B. anthracis* and *Y. pestis*. 
 
 Here is how to edit Markdown:  
-http://daringfireball.net/projects/markdown/syntax
+https://guides.github.com/features/mastering-markdown/
 
 ##Introduction
 Analysis of NYC Subway Metagenome data  
