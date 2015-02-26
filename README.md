@@ -22,7 +22,7 @@ Mix up real *B. anthracis* and *B. cereus* genomes
 ##Searching for pXO1 and pXO2 using BWA (Robert)
 Compare results from metagenome samples with positive controls
 
-![pXO1-P00134](https://www.dropbox.com/s/5hsev0fnbe3wsmc/P00134_SRR1748707.pdf?dl=0)
+[pXO1-P00134 BWA plots](https://www.dropbox.com/s/5hsev0fnbe3wsmc/P00134_SRR1748707.pdf)
 
 
 ##Using Kraken to search for the *B. anthracis* chromosome
