@@ -25,9 +25,13 @@ Compare results from metagenome samples with positive controls
 [pXO1-P00134 BWA plots](https://www.dropbox.com/s/5hsev0fnbe3wsmc/P00134_SRR1748707.pdf)
 
 
-##Using Kraken to search for the *B. anthracis* chromosome
-(Matthew - add your analysis of B. anthracis put through Kraken.)  
-We need to analysis fastq data from a B. anthracis WGS project through Kraken.  
+##Using Kraken to search for the *B. anthracis* chromosome(Matthew)
+  
+I basically downloaded two complete genomes each of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis*. For each complete genome sequence, I split up the FASTA file to a multi fasta file of 100bp sequences, and fed all 6 multi-fasta files to KRAKEN.
+
+The reuslts are in seperate folders for each whole genome sequence:
+
+[Anthrax WGS search](https://www.dropbox.com/sh/fwfi75ft4ny1qkk/AADF16diPK-cgV-CmRHzLjWTa?dl=0)   
 
 
 ##*B. anthracis* specific SNPs (Sandeep)
