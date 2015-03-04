@@ -16,7 +16,15 @@ State where and when we obtained data files
 
 Which samples were said to contain anthrax
 
-##CONTROLS (Robert)
+##CONTROLS 
+Recent B. anthracis SRA project with Illumna paired end reads.
+
+http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739
+
+Recent PE Illumina Yersinia pestis
+
+http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR1283952
+
 Mix up real *B. anthracis* and *B. cereus* genomes
 
 ##Searching for pXO1 and pXO2 using BWA (Robert)
