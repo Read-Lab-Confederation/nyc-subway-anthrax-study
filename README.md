@@ -19,13 +19,22 @@ Which samples were said to contain anthrax
 ##CONTROLS 
 Recent B. anthracis SRA project with Illumna paired end reads.
 
-http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739
+http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739  
+
+Recent B. cereus near-neighbor
+
+http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775
 
 Recent PE Illumina Yersinia pestis
 
 http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR1283952
 
-Mix up real *B. anthracis* and *B. cereus* genomes
+Recent PE Illumina run of Y. pseudotuberculosis, close but less pathogenic relative
+
+http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR245865
+
+
+Mix up real *B. anthracis* and *Y. pestis* genomes with sample that does not contain either organism.  Also make dummy mixes of same environmental sample with *B. cereus* and *Y. pseudotuberculosis*.
 
 ##Searching for pXO1 and pXO2 using BWA (Robert)
 Compare results from metagenome samples with positive controls
