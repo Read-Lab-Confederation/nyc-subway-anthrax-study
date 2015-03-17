@@ -28,6 +28,9 @@ declare -A reference
 reference["pXO1"]="references/index/CP009540_pXO1"
 reference["pXO2"]="references/index/NC_007323_pXO2"
 
+declare -A gff
+gff["pXO1"]="references/CP009540_pXO1.gbk.gff"
+
 for p in ${plasmids[@]}; do
     wd="results/${p}"
     mkdir -p ${wd}/coverage
@@ -49,6 +52,10 @@ for p in ${plasmids[@]}; do
         # the coverage for differening sliding windows with 0.5 overlap
         genomeCoverageBed -d -ibam ${bam} > ${cov}
         scripts/mapping/plot-coverage.R ${cov} 0.5 ${p}
+
+        if [ "$p" = "pXO1" ] ; then
+            scripts/mapping/plot-pxo1-anthrax-toxin-coverage.R ${cov} ${gff[$p]}
+        fi
 
         # Extract aligned reads using bam2fastq and convert to fasta
         ofq="${wd}/aligned-reads/${samples[$s]}_${s}#.fastq"
