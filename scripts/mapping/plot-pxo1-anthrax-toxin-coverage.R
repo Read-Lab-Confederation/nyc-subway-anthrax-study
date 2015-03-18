@@ -24,12 +24,13 @@ get_gene_tracks <- function(gff, name, coverage, flank) {
         genome = "*",
         chromosome = "*",
         type="hist",
-        fontsize = 16,
         ylim = c(0, max(5, max(coverage)))
     )
     
-    axis_track <- GenomeAxisTrack(fontsize = 16, range = IRanges(
-        start = c(start(gene)), end = c(end(gene)), names = c(name)
+    axis_track <- GenomeAxisTrack(
+        labelPos = "above",
+        range = IRanges(
+            start = c(start(gene)), end = c(end(gene)), names = c(name)
     ))
     
     return(list(coverage=coverage_track, axis=axis_track, name=name,
@@ -68,7 +69,6 @@ complete_coverage <- DataTrack(
     genome = "*",
     chromosome = "*",
     type = "hist",
-    fontsize = 16,
 )
 
 # Get genes tracks (axis, coverage, name)
@@ -78,36 +78,67 @@ paga <- get_gene_tracks(pxo1_gff, "pagA", coverage, 200)
 pagr <- get_gene_tracks(pxo1_gff, "pagR", coverage, 200)
 
 # Complete Genome Axis
-complete_axis <- GenomeAxisTrack(fontsize=18, range = IRanges(
-    start = c(cya$start, lef$start, paga$start, pagr$start), 
-    end = c(cya$end, lef$end, paga$end, pagr$end), 
-    names = c("cya", "lef", "pagA", "pagR")
+complete_axis <- GenomeAxisTrack(
+    labelPos = "above",
+    range = IRanges(
+        start = c(cya$start, lef$start, paga$start, pagr$start), 
+        end = c(cya$end, lef$end, paga$end, pagr$end), 
+        names = c("cya", "lef", "pagA", "pagR")
 ))
 
 # Produce plots
+# PDF
 output <- paste(file_without_ext, "-antrax-toxin.pdf", sep="")
 pdf(output, onefile=TRUE, width=14, height=16)
 grid.newpage()
 pushViewport(viewport(height=0.20, y=1, just="top"))
-plotTracks(list(complete_axis, complete_coverage), add=TRUE, 
+plotTracks(list(complete_axis, complete_coverage), add=TRUE, cex.axis = 1,
            fill.range = c("red", "blue", "darkgreen", "darkorange"))
 popViewport()
 pushViewport(viewport(height=0.80, y=0, just="bottom", layout = grid.layout(4,1)))
 pushViewport(viewport(layout.pos.col = 1, layout.pos.row = 1))
-plotTracks(list(lef$axis, lef$coverage), showId = TRUE, 
-           add=TRUE, littleTicks = TRUE, fill.range = c("red"))
+plotTracks(list(lef$axis, lef$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("red"))
 popViewport(1)
 pushViewport(viewport(layout.pos.col = 1, layout.pos.row = 2))
-plotTracks(list(pagr$axis, pagr$coverage), showId = TRUE, 
-           add=TRUE, littleTicks = TRUE, fill.range = c("blue"))
+plotTracks(list(pagr$axis, pagr$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("blue"))
 popViewport(1)
 pushViewport(viewport(layout.pos.col = 1, layout.pos.row = 3))
-plotTracks(list(paga$axis, paga$coverage), showId = TRUE, 
-           add=TRUE, littleTicks = TRUE, fill.range = c("darkgreen"))
+plotTracks(list(paga$axis, paga$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("darkgreen"))
 popViewport(1)
 pushViewport(viewport(layout.pos.col = 1, layout.pos.row = 4))
-plotTracks(list(cya$axis, cya$coverage), showId = TRUE, 
-           add=TRUE, littleTicks = TRUE, fill.range = c("darkorange"))
+plotTracks(list(cya$axis, cya$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("darkorange"))
+popViewport(1)
+popViewport()
+dev.off()
+
+# PNG
+output_png <- paste(file_without_ext, "-antrax-toxin.png", sep="")
+png(output_png, width=2400, height=1800, res=300)
+grid.newpage()
+pushViewport(viewport(height=0.40, y=1, just="top"))
+plotTracks(list(complete_axis, complete_coverage), add=TRUE, cex.axis = 1,
+           fill.range = c("red", "blue", "darkgreen", "darkorange"))
+popViewport()
+pushViewport(viewport(height=0.60, y=0, just="bottom", layout = grid.layout(2,2)))
+pushViewport(viewport(layout.pos.col = 1, layout.pos.row = 1))
+plotTracks(list(lef$axis, lef$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("red"))
+popViewport(1)
+pushViewport(viewport(layout.pos.col = 2, layout.pos.row = 1))
+plotTracks(list(pagr$axis, pagr$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("blue"))
+popViewport(1)
+pushViewport(viewport(layout.pos.col = 1, layout.pos.row = 2))
+plotTracks(list(paga$axis, paga$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("darkgreen"))
+popViewport(1)
+pushViewport(viewport(layout.pos.col = 2, layout.pos.row = 2))
+plotTracks(list(cya$axis, cya$coverage), showId = TRUE,  cex.axis = 1,
+           add=TRUE, fill.range = c("darkorange"))
 popViewport(1)
 popViewport()
 dev.off()
