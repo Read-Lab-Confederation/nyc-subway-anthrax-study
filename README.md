@@ -31,7 +31,7 @@ The question is - why did the software give false positive results and what exac
         sra-fastq
             - Each of the 1572 samples in FASTQ and FASTA format
         sra-pathogens
-            - Symbolic links to sra-fastq for each sample identified as containing B. anthracis and Yersinia
+            - Symbolic links to FASTQ of samples containing B. anthracis and Yersinia
         sra-runs
             - Each of the 1572 samples in SRA format
         src
