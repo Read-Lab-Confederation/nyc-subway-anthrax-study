@@ -11,6 +11,32 @@ http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-
 
 The question is - why did the software give false positive results and what exactly was found in the subway?  
 
+## Project Data Structure
+
+    Public
+        data
+            - Supplementary information from study and information about the study on SRA
+        references
+            - Reference genomes and plasmids used for mapping
+        results
+            - Mapping results of the B. anthracis and Yersinia samples against references
+        scripts
+            - All custom scripts used in these analyses
+    
+    In House
+        bin
+            - Symbolic links to programs built in src folder
+        logs
+            - Logged output from scripts
+        sra-fastq
+            - Each of the 1572 samples in FASTQ and FASTA format
+        sra-pathogens
+            - Symbolic links to sra-fastq for each sample identified as containing B. anthracis and Yersinia
+        sra-runs
+            - Each of the 1572 samples in SRA format
+        src
+            - Programs downloaded and built for this project
+
 ## Acquiring Data and Identifying Samples With Evidence For *B. anthracis* and *Y. pestis* 
 On February 10th 2015, we used *prefetch*, from [SRA Toolkit (v 2.4.4)](http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.4.4/), 
 to download each of the 1572 runs associated with SRA study 
