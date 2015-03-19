@@ -160,6 +160,7 @@ Mix up real *B. anthracis* and *Y. pestis* genomes with sample that does not con
 ## Searching for pXO1 and pXO2 using BWA
 Samples P00134 and P00497 were identified as having reads from *B. anthracis*. We tested if these 
 reads mapped against the PXO1 and PXO2 plasmids of *B. anthracis*. 
+
     [
     ADD SUMMARY OF PXO1 and PXO2
     PXO1 is responsible for encoding the components of the anthrax toxin. The genes required 
