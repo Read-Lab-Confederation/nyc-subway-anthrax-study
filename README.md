@@ -11,6 +11,32 @@ http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-
 
 The question is - why did the software give false positive results and what exactly was found in the subway?  
 
+## Project Data Structure
+
+    Public
+        data
+            - Supplementary information from study and information about the study on SRA
+        references
+            - Reference genomes and plasmids used for mapping
+        results
+            - Mapping results of the B. anthracis and Yersinia samples against references
+        scripts
+            - All custom scripts used in these analyses
+    
+    In House
+        bin
+            - Symbolic links to programs built in src folder
+        logs
+            - Logged output from scripts
+        sra-fastq
+            - Each of the 1572 samples in FASTQ and FASTA format
+        sra-pathogens
+            - Symbolic links to FASTQ of samples containing B. anthracis and Yersinia
+        sra-runs
+            - Each of the 1572 samples in SRA format
+        src
+            - Programs downloaded and built for this project
+
 ## Acquiring Data and Identifying Samples With Evidence For *B. anthracis* and *Y. pestis* 
 On February 10th 2015, we used *prefetch*, from [SRA Toolkit (v 2.4.4)](http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.4.4/), 
 to download each of the 1572 runs associated with SRA study 
@@ -131,7 +157,55 @@ http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR245865
 
 Mix up real *B. anthracis* and *Y. pestis* genomes with sample that does not contain either organism.  Also make dummy mixes of same environmental sample with *B. cereus* and *Y. pseudotuberculosis*.
 
-##Searching for pXO1 and pXO2 using BWA (Robert)
+## Searching for pXO1 and pXO2 using BWA
+Samples P00134 and P00497 were identified as having reads from *B. anthracis*. We tested if these 
+reads mapped against the PXO1 and PXO2 plasmids of *B. anthracis*. 
+
+    [
+    ADD SUMMARY OF PXO1 and PXO2
+    PXO1 is responsible for encoding the components of the anthrax toxin. The genes required 
+    to produce the anthrax toxin are *pagA*, *pagR*, *lef* and *cya*.
+    ]
+
+We used *BWA (v 0.7.5a-r405)* to map reads from samples P00134 and P00497 against the reference plasmid. For 
+PXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), and for PXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). 
+We also mapped each samples against PXO1-like plasmid [NC_005707](http://www.ncbi.nlm.nih.gov/nuccore/NC_005707). This process was automated using the script *[map-anthracis-plasmids.sh](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/mapping/map-anthracis-plasmids.sh).
+
+### PXO1 Results
+For each of the plots below the top plot is against the whole PXO1 plasmid. The coverage is based on 1,000bp sliding windows with an overlap of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the actual coverage in that region.
+
+#### Sample P00134 (Run: SRR1748707)
+Per base coverage of the complete plasmid.
+
+    awk '{print $3}' P00134_SRR1748707.coverage | Rscript -e 'summary (as.numeric (readLines ("stdin")))'
+       Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+     0.0000  0.0000  0.0000  0.2506  0.0000 44.0000
+
+![P00134 (Run: SRR1748707)](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/results/pXO1/coverage/P00134_SRR1748707-antrax-toxin.png "P00134 (Run: SRR1748707)")
+
+#### Sample P00134 (Run: SRR1748708)
+Per base coverage of the complete plasmid.
+
+    awk '{print $3}' P00134_SRR1748708.coverage | Rscript -e 'summary (as.numeric (readLines ("stdin")))'
+       Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+      0.000   0.000   0.000   2.077   4.000 100.000
+
+![P00134 (Run: SRR1748708)](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/results/pXO1/coverage/P00134_SRR1748708-antrax-toxin.png "P00134 (Run: SRR1748708)")
+
+#### Sample P00497 (Run: SRR1749083)
+Per base coverage of the complete plasmid.
+
+    awk '{print $3}' P00497_SRR1749083.coverage | Rscript -e 'summary (as.numeric (readLines ("stdin")))'
+       Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+     0.0000  0.0000  0.0000  0.4652  0.0000 44.0000
+
+
+![P00497 (Run: SRR1749083)](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/results/pXO1/coverage/P00497_SRR1749083-antrax-toxin.png "P00497 (Run: SRR1749083)")
+
+
+
+
+
 Compare results from metagenome samples with positive controls
 
 [pXO1-P00134 BWA plots](https://www.dropbox.com/s/5hsev0fnbe3wsmc/P00134_SRR1748707.pdf)
