@@ -1,5 +1,5 @@
 #! /usr/bin/Rscript
-# Plot the histogram of mean coverage (1000bp windows, 50% overlap) for the 
+# Plot the histogram of mean coverage (1000bp windows, 50% overlap) for the
 # complete PXO1 plasmid. Then creates subplots of the actual read coverage of
 # PXO1 lethal genes (cya, lef, pagA, pagR).
 #
@@ -9,30 +9,38 @@ library("Gviz")
 library("rtracklayer")
 options(ucscChromosomeNames = FALSE)
 
-get_gene_tracks <- function(gff, name, coverage, flank) {
-    gene  <- gff[elementMetadata(gff)[,"Name"]==name]
+get_gene_track_length <- function(gff) {
+    cya <- gff[elementMetadata(gff)[,"Name"]=="cya"]
+    pagR <- gff[elementMetadata(gff)[,"Name"]=="cya"]
+    pagA <- gff[elementMetadata(gff)[,"Name"]=="cya"]
+    lef <- gff[elementMetadata(gff)[,"Name"]=="lef"]
+
+}
+
+get_gene_tracks <- function(gene, name, coverage, track_length, max_coverage) {
+    flank <- track_length - width(gene)
     window <- seq(start(gene) - flank, end(gene) + flank)
     coverage = sapply(1:length(window), function(i) {
         as.double(coverage$coverage[window[i]])
     })
-    
+
     coverage_track <- DataTrack(
         start = window,
         width = 1,
-        name = " ", 
+        name = " ",
         data = coverage,
         genome = "*",
         chromosome = "*",
         type="hist",
-        ylim = c(0, max(5, max(coverage)))
+        ylim = c(0, max_coverage)
     )
-    
+
     axis_track <- GenomeAxisTrack(
         labelPos = "above",
         range = IRanges(
             start = c(start(gene)), end = c(end(gene)), names = c(name)
     ))
-    
+
     return(list(coverage=coverage_track, axis=axis_track, name=name,
                 start=start(gene), end=end(gene)))
 }
@@ -40,15 +48,16 @@ get_gene_tracks <- function(gff, name, coverage, flank) {
 # Get arguements
 args<-commandArgs(TRUE)
 file = args[1]
-file_without_ext <- sub("^([^.]*).*", "\\1", file)
+file_without_ext <- gsub(".coverage$", "", file)
 coverage <- read.table(file, sep="\t", header=FALSE)
 colnames(coverage) <- c("reference", "position", "coverage")
 n <- length(coverage$coverage)
 
+
 # Read GFF3
 pxo1_gff <- import.gff3(
-    args[2], 
-    genome= "PXO1", 
+    args[2],
+    genome= "PXO1",
     asRangedData = FALSE,
     feature.type = c("CDS")
 )
@@ -61,28 +70,45 @@ mean_per_window = sapply(1:length(windows), function(i) {
     mean(coverage$coverage[windows[i]:(windows[i]+(window_size-1))])
 })
 
+# Get genes
+cya <- pxo1_gff[elementMetadata(pxo1_gff)[,"Name"]=="cya"]
+lef <- pxo1_gff[elementMetadata(pxo1_gff)[,"Name"]=="lef"]
+paga <- pxo1_gff[elementMetadata(pxo1_gff)[,"Name"]=="pagA"]
+pagr <- pxo1_gff[elementMetadata(pxo1_gff)[,"Name"]=="pagR"]
+
+max_coverage <- max(
+    mean_per_window,
+    coverage$coverage[start(cya):end(cya)],
+    coverage$coverage[start(lef):end(lef)],
+    coverage$coverage[start(paga):end(paga)],
+    coverage$coverage[start(pagr):end(pagr)]
+)
+
+# Get genes tracks (axis, coverage, name)
+scale_width <- max(width(lef), width(cya),width(paga), width(pagr))
+
+cya <- get_gene_tracks(cya, "cya", coverage, scale_width + 200, max_coverage)
+lef <- get_gene_tracks(lef, "lef", coverage, scale_width + 200, max_coverage)
+paga <- get_gene_tracks(paga, "pagA", coverage, scale_width + 200, max_coverage)
+pagr <- get_gene_tracks(pagr, "pagR", coverage, scale_width + 200, max_coverage)
+
+# Complete Plasmid Axis and Coverage
 complete_coverage <- DataTrack(
     start = windows,
     width = 1,
-    name = "Coverage", 
+    name = "Coverage",
     data = mean_per_window,
     genome = "*",
     chromosome = "*",
     type = "hist",
+    ylim = c(0, max_coverage)
 )
 
-# Get genes tracks (axis, coverage, name)
-cya <- get_gene_tracks(pxo1_gff, "cya", coverage, 200)
-lef <- get_gene_tracks(pxo1_gff, "lef", coverage, 200)
-paga <- get_gene_tracks(pxo1_gff, "pagA", coverage, 200)
-pagr <- get_gene_tracks(pxo1_gff, "pagR", coverage, 200)
-
-# Complete Genome Axis
 complete_axis <- GenomeAxisTrack(
     labelPos = "above",
     range = IRanges(
-        start = c(cya$start, lef$start, paga$start, pagr$start), 
-        end = c(cya$end, lef$end, paga$end, pagr$end), 
+        start = c(cya$start, lef$start, paga$start, pagr$start),
+        end = c(cya$end, lef$end, paga$end, pagr$end),
         names = c("cya", "lef", "pagA", "pagR")
 ))
 

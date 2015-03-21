@@ -19,7 +19,6 @@ cat data/SRP051511.txt | xargs -I {} fastq-dump --split-files -O sra-fastq/{} -n
 # Convert FASTQ to FASTA
 nohup ./scripts/fastq-to-fasta.sh 1> logs/fastq-to-fasta.out 2> logs/fastq-to-fasta.err &
 
-
 # Build BWA v 0.7.12
 cd src/
 tar -xjvf bwa-0.7.12.tar.bz2
@@ -39,5 +38,20 @@ bin/bwa index -p references/index/CP009540_pXO1 references/CP009540_pXO1.fasta
 bin/bwa index -p references/index/NC_005707_pXO1-like references/NC_005707_pXO1-like.fasta
 bin/bwa index -p references/index/NC_007323_pXO2 references/NC_007323_pXO2.fasta
 
+# Covert GenBank to GFF3 (From BioPerl)
+bp_genbank2gff3 -o references/ references/CP009540_pXO1.gbk
+
 # Map to pXO1 and pXO2
 nohup scripts/mapping/map-anthracis-plasmids.sh 1> logs/map-anthracis-plasmids.out 2> logs/map-anthracis-plasmids.err &
+
+# Download Bacillus anthracis
+mkdir -p sra-controls/anthracis
+prefetch -a "/data1/home/rpetit/.aspera/connect/bin/ascp|/data1/home/rpetit/.aspera/connect/etc/asperaweb_id_dsa.openssh" DRR014739
+fastq-dump --split-files -O sra-controls/anthracis --gzip /data1/home/rpetit/ncbi/sra/DRR014739.sra
+
+# Download Bacillus cereus VD142
+mkdir -p sra-controls/cereus
+prefetch -a "/data1/home/rpetit/.aspera/connect/bin/ascp|/data1/home/rpetit/.aspera/connect/etc/asperaweb_id_dsa.openssh" SRR642775
+fastq-dump --split-files -O sra-controls/cereus --gzip /data1/home/rpetit/ncbi/sra/SRR642775.sra
+
+

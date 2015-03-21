@@ -7,7 +7,6 @@ library("ggplot2")
 # Get arguements
 args<-commandArgs(TRUE)
 file <- args[1]
-file_without_ext <- sub("^([^.]*).*", "\\1", file)
 window_overlap <- as.double(args[2])
 window_sizes <- c(100, 500, 1000, 2000, 5000, 10000)
 reference <- args[3]
@@ -18,7 +17,7 @@ colnames(coverage) <- c("reference", "position", "coverage")
 n <- length(coverage$coverage)
 
 # Produce plots
-output <- paste(file_without_ext, ".pdf", sep="")
+output <- paste(file, ".pdf", sep="")
 pdf(output, onefile=TRUE, width=14, height=4)
 for (j in 1:length(window_sizes)) {
     window_size <- window_sizes[j]
