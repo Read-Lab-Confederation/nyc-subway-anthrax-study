@@ -27,7 +27,7 @@ for (j in 1:length(window_sizes)) {
         mean(coverage$coverage[windows[i]:(windows[i]+(window_size-1))])
     })
     title <- paste("Coverage accross", reference,"for input",
-                   basename(file_without_ext), "using sliding window of size:",
+                   basename(file), "using sliding window of size:",
                    window_size, "bp (overlap", (window_size * window_overlap),
                    "bp)")
     p <- ggplot(data.frame(x=windows, y=mean_per_window), aes(x=x, y=y)) +

@@ -19,11 +19,11 @@ set -x # Echo all commands
 organisms=(anthracis cereus)
 plasmids=(pXO1 pXO2)
 samples=(
-    "SRR1749070-0x"
     "SRR1749070-0.25x"
     "SRR1749070-0.5x"
     "SRR1749070-1x"
     "SRR1749070-5x"
+    "SRR1749070-0x"
 )
 declare -A reference
 reference["pXO1"]="references/index/CP009540_pXO1"
@@ -32,14 +32,25 @@ reference["pXO2"]="references/index/NC_007323_pXO2"
 declare -A gff
 gff["pXO1"]="references/CP009540_pXO1.gbk.gff"
 
+# Genes associated with anthrax toxin and thier positions on PXO1
+declare -A genes
+genes["cya"]="50445-52847"
+genes["lef"]="23663-26092"
+genes["pagA"]="29382-31676"
+genes["pagR"]="28160-28459"
+
+# BLASTN parameters
+OUTFMT="6 stitle sseqid qseqid qstart qend sstart send evalue bitscore score length pident nident mismatch positive means gapopen ppos qcovs qcovhsp"
+NT="/data1/home/groups/readgp/nt/nt"
+
 for o in ${organisms[@]}; do
+    for s in ${samples[@]}; do
+        for p in ${plasmids[@]}; do
+            wd="results/${o}-control/${s}/${p}"
+            mkdir -p ${wd}/coverage
+            mkdir -p ${wd}/aligned-genes
+            mkdir -p ${wd}/aligned-reads
 
-    for p in ${plasmids[@]}; do
-        wd="results/${o}-control/${p}"
-        mkdir -p ${wd}/coverage
-        mkdir -p ${wd}/aligned-reads
-
-        for s in ${samples[@]}; do
             fq1="sra-controls/${o}/metagenomic/${s}_1.fastq.gz"
             fq2="sra-controls/${o}/metagenomic/${s}_2.fastq.gz"
             sam="${wd}/${s}.sam"
@@ -48,7 +59,7 @@ for o in ${organisms[@]}; do
 
             # Align using BWA, sort sam to bam and index bam, then remove sam
             bin/bwa mem -t 20 ${reference[$p]} ${fq1} ${fq2} > ${sam}
-            samtools view -bS ${sam} | samtools sort - ${wd}/${s}
+            samtools view -@ 10 -bS ${sam} | samtools sort -@ 10 - ${wd}/${s}
             samtools index -b ${bam}
             rm ${sam}
 
@@ -58,7 +69,27 @@ for o in ${organisms[@]}; do
             scripts/mapping/plot-coverage.R ${cov} 0.5 ${p}
 
             if [ "$p" = "pXO1" ] ; then
+                # Plot coverage across complete plasmid, and lethal genes
                 scripts/mapping/plot-pxo1-anthrax-toxin-coverage.R ${cov} ${gff[$p]}
+
+                # Extract reads mapped to each lethal gene and determine the top 5
+                # blast hits against the NT database
+                for g in ${!genes[@]}; do
+                    fasta=${wd}/aligned-genes/${g}.fasta
+                    blastn=${wd}/aligned-genes/${g}.blastn
+                    summary=${wd}/aligned-genes/${g}.summary
+
+                    # Extract mapped reads as FASTA
+                    samtools view ${bam} "gi|753442380|gb|CP009540.1|":${genes[$g]} | awk '{OFS="\t"; print ">"$1"\n"$10}' > ${fasta}
+
+                    # BLAST against nt
+                    blastn -query ${fasta} -outfmt "${OUTFMT}" -db ${NT} -num_threads 20  -max_target_seqs 5 > ${blastn}
+
+                    # Produce summary of hits
+                    grep -c "^>" ${fasta} | awk '{print "Total Reads:",$1,"\n"}' > ${summary}
+                    echo "Organism Hit Counts" >> ${summary}
+                    awk '{print $1,$2}' ${blastn} | sort | uniq -c | sort -rn >> ${summary}
+                done
             fi
 
             # Extract aligned reads using bam2fastq and convert to fasta
