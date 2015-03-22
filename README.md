@@ -159,7 +159,7 @@ Mix up real *B. anthracis* and *Y. pestis* genomes with sample that does not con
 
 ## Searching for pXO1 and pXO2 using BWA
 Samples P00134 and P00497 were identified as having reads from *B. anthracis*. We tested if these 
-reads mapped against the PXO1 and PXO2 plasmids of *B. anthracis*. 
+reads mapped against the pXO1 and pXO2 plasmids of *B. anthracis*. 
 
     [
     ADD SUMMARY OF PXO1 and PXO2
@@ -171,8 +171,8 @@ We used *BWA (v 0.7.5a-r405)* to map reads from samples P00134 and P00497 agains
 PXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), and for PXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). 
 We also mapped each samples against PXO1-like plasmid [NC_005707](http://www.ncbi.nlm.nih.gov/nuccore/NC_005707). This process was automated using the script *[map-anthracis-plasmids.sh](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/mapping/map-anthracis-plasmids.sh).
 
-### PXO1 Results
-For each of the plots below the top plot is against the whole PXO1 plasmid. The coverage is based on 1,000bp sliding windows with an overlap of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the actual coverage in that region.
+### pXO1 Results
+For each of the plots below the top plot is against the whole pXO1 plasmid. The coverage is based on 1,000bp sliding windows with an overlap of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the actual coverage in that region.
 
 #### Sample P00134 (Run: SRR1748707)
 Per base coverage of the complete plasmid.
