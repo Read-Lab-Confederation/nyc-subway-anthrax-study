@@ -168,8 +168,8 @@ reads mapped against the pXO1 and pXO2 plasmids of *B. anthracis*.
     ]
 
 We used *BWA (v 0.7.5a-r405)* to map reads from samples P00134 and P00497 against the reference plasmid. For 
-PXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), and for PXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). 
-We also mapped each samples against PXO1-like plasmid [NC_005707](http://www.ncbi.nlm.nih.gov/nuccore/NC_005707). This process was automated using the script *[map-anthracis-plasmids.sh](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/mapping/map-anthracis-plasmids.sh).
+pXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). 
+We also mapped each samples against pXO1-like plasmid [NC_005707](http://www.ncbi.nlm.nih.gov/nuccore/NC_005707). This process was automated using the script *[map-anthracis-plasmids.sh](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/mapping/map-anthracis-plasmids.sh).
 
 ### pXO1 Results
 For each of the plots below the top plot is against the whole pXO1 plasmid. The coverage is based on 1,000bp sliding windows with an overlap of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the actual coverage in that region.
