@@ -70,3 +70,6 @@ nohup scripts/mapping/map-anthracis-controls.sh 1> logs/map-anthracis-controls.o
 
 # Map to pMT1
 nohup scripts/mapping/map-pestis-pmt1.sh 1> logs/map-pestis-pmt1.out 2> logs/map-pestis-pmt1.err &
+
+# Map to pestis controls
+nohup scripts/mapping/map-pestis-controls.sh 1> logs/map-pestis-controls.out 2> logs/map-pestis-controls.err &
