@@ -28,11 +28,11 @@ samples["SRR1748708"]="P00134"
 samples["SRR1749083"]="P00497"
 
 declare -A reference
-reference["pXO1"]="references/index/CP009540_pXO1"
-reference["pXO2"]="references/index/NC_007323_pXO2"
+reference["pXO1"]="references/index/CP009540-pXO1"
+reference["pXO2"]="references/index/NC_007323-pXO2"
 
 declare -A gff
-gff["pXO1"]="references/CP009540_pXO1.gbk.gff"
+gff["pXO1"]="references/CP009540-pXO1.gbk.gff"
 
 # Genes associated with anthrax toxin and thier positions on PXO1
 declare -A genes
@@ -56,7 +56,7 @@ for s in ${!samples[@]}; do
         fq2="sra-pathogens/anthracis/${samples[$s]}/${s}_2.fastq.gz"
         sam="${wd}/${s}.sam"
         bam="${wd}/${s}.bam"
-        cov="${wd}/coverage/${s}.coverage"
+        cov="${wd}/coverage/${s}.coverage.gz"
 
         # Align using BWA, sort sam to bam and index bam
         bin/bwa mem -t 20 ${reference[$p]} ${fq1} ${fq2} > ${sam}
@@ -66,12 +66,15 @@ for s in ${!samples[@]}; do
 
         # Use genomeCoverageBed to get the coverage for each position and plot
         # the coverage for differening sliding windows with 0.5 overlap
-        genomeCoverageBed -d -ibam ${bam} > ${cov}
+        genomeCoverageBed -d -ibam ${bam} | gzip --best - > ${cov}
         scripts/mapping/plot-coverage.R ${cov} 0.5 ${p}
 
         if [ "$p" = "pXO1" ] ; then
             # Plot coverage across complete plasmid, and lethal genes
             scripts/mapping/plot-pxo1-anthrax-toxin-coverage.R ${cov} ${gff[$p]}
+
+            # R plot to PNG did not display correctly so convert the SVG to PNG
+            convert -density 300 -resize 2400x1800 ${wd}/coverage/${s}-anthrax-toxin.svg ${wd}/coverage/${s}-anthrax-toxin.png
 
             # Extract reads mapped to each lethal gene and determine the top 5
             # blast hits against the NT database
@@ -96,7 +99,7 @@ for s in ${!samples[@]}; do
         # Extract aligned reads using bam2fastq and convert to fasta
         ofq="${wd}/aligned-reads/${samples[$s]}_${s}#.fastq"
         bin/bam2fastq -o ${ofq} --no-unaligned ${bam}
-        cat ${wd}/aligned-reads/*.fastq | fastq_to_fasta -Q33 -n -o ${wd}/aligned-reads/${samples[$s]}_${s}.fasta
+        cat ${wd}/aligned-reads/*.fastq | fastq_to_fasta -Q33 -n | gzip --best - > ${wd}/aligned-reads/${samples[$s]}_${s}.fasta.gz
         gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_1.fastq"
         gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_2.fastq"
     done

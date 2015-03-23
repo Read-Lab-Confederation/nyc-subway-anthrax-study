@@ -1,4 +1,5 @@
 # Directories
+mkdir bin
 mkdir references
 mkdir results
 mkdir src
@@ -19,12 +20,29 @@ cat data/SRP051511.txt | xargs -I {} fastq-dump --split-files -O sra-fastq/{} -n
 # Convert FASTQ to FASTA
 nohup ./scripts/fastq-to-fasta.sh 1> logs/fastq-to-fasta.out 2> logs/fastq-to-fasta.err &
 
-# Build BWA v 0.7.12
+# Clone fastq-stats
 cd src/
+git clone git@github.com:rpetit3/fastq-stats.git
+cd fastq-stats
+git reset --hard 8460e6bbdb09152048b957a8d9dfd1619ff7dbfd
+make
+ln -s /data1/home/rpetit/readgp/nyc-subway-metagenome/src/fastq-stats/fastq-stats /data1/home/rpetit/readgp/nyc-subway-metagenome/bin/fastq-stats
+cd ../
+
+# clone seqtk
+git clone git@github.com:lh3/seqtk.git
+cd seqtk/
+git reset --hard 43ff625a3211b51f301cb356a34fb8d1e593d50a
+make
+ln -s /data1/home/rpetit/readgp/nyc-subway-metagenome/src/seqtk/seqtk /data1/home/rpetit/readgp/nyc-subway-metagenome/bin/seqtk
+cd ../
+
+# Build BWA v 0.7.12
 tar -xjvf bwa-0.7.12.tar.bz2
 cd bwa-0.7.12
 make
 ln -s /data1/home/rpetit/readgp/nyc-subway-metagenome/src/bwa-0.7.12/bwa /data1/home/rpetit/readgp/nyc-subway-metagenome/bin/bwa
+cd ../
 
 # Build bam2fastq v 1.1.0
 wget http://gsl.hudsonalpha.org/static/software/bam2fastq-1.1.0.tgz
@@ -32,26 +50,20 @@ tar xzvf bam2fastq-1.1.0.tgz
 cd bam2fastq-1.1.0/
 make
 ln -s /data1/home/rpetit/readgp/nyc-subway-metagenome/src/bam2fastq-1.1.0/bam2fastq /data1/home/rpetit/readgp/nyc-subway-metagenome/bin/bam2fastq
+cd ../../
 
 # Make bwa index
-bin/bwa index -p references/index/CP009540_pXO1 references/CP009540_pXO1.fasta
-bin/bwa index -p references/index/NC_005707_pXO1-like references/NC_005707_pXO1-like.fasta
-bin/bwa index -p references/index/NC_007323_pXO2 references/NC_007323_pXO2.fasta
+bin/bwa index -p references/index/CP009540-pXO1 references/CP009540-pXO1.fasta
+bin/bwa index -p references/index/NC_005707-pXO1-like references/NC_005707-pXO1-like.fasta
+bin/bwa index -p references/index/NC_007323-pXO2 references/NC_007323-pXO2.fasta
+bin/bwa index -p references/index/AL117211-pMT1 references/AL117211-pMT1.fasta
 
 # Covert GenBank to GFF3 (From BioPerl)
-bp_genbank2gff3 -o references/ references/CP009540_pXO1.gbk
+bp_genbank2gff3 -o references/ references/CP009540-pXO1.gbk
+bp_genbank2gff3 -o references/ references/AL117211-pMT1.gbk
 
 # Map to pXO1 and pXO2
 nohup scripts/mapping/map-anthracis-plasmids.sh 1> logs/map-anthracis-plasmids.out 2> logs/map-anthracis-plasmids.err &
 
-# Download Bacillus anthracis
-mkdir -p sra-controls/anthracis
-prefetch -a "/data1/home/rpetit/.aspera/connect/bin/ascp|/data1/home/rpetit/.aspera/connect/etc/asperaweb_id_dsa.openssh" DRR014739
-fastq-dump --split-files -O sra-controls/anthracis --gzip /data1/home/rpetit/ncbi/sra/DRR014739.sra
-
-# Download Bacillus cereus VD142
-mkdir -p sra-controls/cereus
-prefetch -a "/data1/home/rpetit/.aspera/connect/bin/ascp|/data1/home/rpetit/.aspera/connect/etc/asperaweb_id_dsa.openssh" SRR642775
-fastq-dump --split-files -O sra-controls/cereus --gzip /data1/home/rpetit/ncbi/sra/SRR642775.sra
-
-
+# Map B. anthracis to pXO1 and pXO2
+nohup scripts/mapping/map-anthracis-controls.sh 1> logs/map-anthracis-controls.out 2> logs/map-anthracis-controls.err &

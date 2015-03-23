@@ -12,7 +12,10 @@
 # Version: commit 43ff625a3211b51f301cb356a34fb8d1e593d50a
 #
 set -x # Echo all commands
-PROJECT_DIR=$1
+PROJECT_DIR=$(pwd)
+if [ -n "$1" ]; then
+    PROJECT_DIR=$1
+fi
 CONTROL_DIR=${PROJECT_DIR}/sra-controls/cereus
 
 # Download Bacillus cereus VD142 WGS project
