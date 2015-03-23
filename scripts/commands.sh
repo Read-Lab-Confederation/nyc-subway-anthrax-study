@@ -65,5 +65,8 @@ bp_genbank2gff3 -o references/ references/AL117211-pMT1.gbk
 # Map to pXO1 and pXO2
 nohup scripts/mapping/map-anthracis-plasmids.sh 1> logs/map-anthracis-plasmids.out 2> logs/map-anthracis-plasmids.err &
 
-# Map B. anthracis to pXO1 and pXO2
+# Map Bacillus controls to pXO1 and pXO2
 nohup scripts/mapping/map-anthracis-controls.sh 1> logs/map-anthracis-controls.out 2> logs/map-anthracis-controls.err &
+
+# Map to pMT1
+nohup scripts/mapping/map-pestis-pmt1.sh 1> logs/map-pestis-pmt1.out 2> logs/map-pestis-pmt1.err &
