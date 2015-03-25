@@ -24,6 +24,11 @@ and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/5
 automated using the following scripts *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-plasmids.sh)* 
 (NYC samples) and *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-controls.sh)* (control samples).
 
+    ##CONTROLS 
+    Recent B. anthracis SRA project with Illumna paired end reads. - http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739  
+    Recent B. cereus near-neighbor - http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775
+
+
 ## pXO1 Results
 For each sample we calcualted the summary statistics of coverage accross the complete pXO1 plasmid (Table 2).
 NYC sample SRR174708 had the best average coverage (2x), but each of the NYC samples had a median coverage of 
