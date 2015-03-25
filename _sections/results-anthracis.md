@@ -17,11 +17,33 @@ referred to by their SRA run accession.
 | P00134           | SRR1748707, SRR1748708 |
 | P00497           | SRR1749083             |
 
+## Creating metagenomic controls for *B. anthracis* and a close relative, *B. cereus*
+As a control for these analysis we decided to randomly choose a NYC sample that did not contain evidence 
+for *B. anthracis*. We decided on NYC sample SRR1749070 as our base metagenomic sequences. We then downloaded 
+two sequencing projects, one a *B. anthracis* project ([DRR014739](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739))
+and the other a *B. cereus* project ([SRR642775](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775)). 
+We trimmed the 300bp Illumina MiSeq reads from the *B. anthracis* project down to the first 100bp using 
+*fastq_trimmer (v0.0.13.2)* from FASTX Toolkit. This was necessary to make the reads more similar to the NYC 
+sample, SRR1749070, which is 100bp Illumina HiSeq 2000 reads. This step was not necessary for the *B. cereus* 
+control because it too is 100bp Illumina HiSeq 2000 reads. 
+
+Each control was then randomly subsampled using *seqtk (commit 43ff625a3211b51f301cb356a34fb8d1e593d50a)* to 
+0.25x, 0.5x, 1x, and 5x coverage. Coverage was estimated using the total size of the *B. anthracis* genome, the 
+pXO1 plasmid and the pXO2 plasmids was *B. anthracis*. For *B. cereus* we used only the total size of the *B. cereus* 
+genome. These subsampled coverages were then added to the sequences of the *B. anthracis* free NYC sample SRR1749070. 
+This produced5 samples for each control, one with no control sequences and 4 with the different levels of coverage. 
+These samples were then subjected to the same mapping pipeline as the *B. anthracis* positive samples menthion above.
+This process of downloading and preparing the controls for analysis was automated using the following scripts 
+[get-anthracis-control.sh](/scripts/get-anthracis-control.sh) (*B. anthracis*) and
+[get-cereus-control.sh](/scripts/get-cereus-control.sh) (*B. cereus*).
+
+
 ## Mapping against pXO1 and pXO2 using BWA
-We used *BWA (v 0.7.5a-r405)* to map reads from each NYC sample and control sample against the reference 
+We used *BWA (v 0.7.5a-r405)* to map reads from each of the NYC and control samples against the reference 
 pXO1 and pXO2 plasmids. For pXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), 
-and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). This process was 
-automated using the following scripts *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-plasmids.sh)* 
+and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). 
+
+This process was automated using the following scripts *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-plasmids.sh)* 
 (NYC samples) and *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-controls.sh)* (control samples).
 
     ##CONTROLS 
