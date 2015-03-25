@@ -7,9 +7,11 @@
 
 
 ## Identifying NYC samples with evidence of *B. anthracis*
-Below is a table of samples from the NYC Subway System dataset which were determined to have contained
-evidence for *B. anthracis*. For the remainder of these analysis, each of these samples will be 
-referred to by their SRA run accession.
+The supplementary MetaPhlAn output (*[DataTable5-metaphlan-metadata_v19.txt](/data/DataTable5-metaphlan-metadata_v19.txt)*) 
+was parsed using *[extract_pathogens.py](/scripts/extract-pathogens.py)*. From this we were able to determine which 
+NYC samples contained reads associated with *Bacillus antracis*. These samples were then associated with their 
+corresponding SRA run accession using *[map-pathogens.py](/scripts/map-pathogens.py)* (Table 1). For the remainder 
+of these analysis, each of these samples will be referred to by their SRA run accession.
 
 #### Table 1: NYC Subway System samples with evidence of *B. anthracis*.
 | NYC Study Sample | SRA Run Accession      |
