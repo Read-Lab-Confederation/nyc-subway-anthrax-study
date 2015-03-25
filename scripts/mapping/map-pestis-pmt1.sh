@@ -15,7 +15,7 @@
 # Program: fastq_to_fasta - Part of FASTX Toolkit
 # Version: 0.0.13.2
 #
-# Program: blastn - Part of FASTX Toolkit
+# Program: blastn
 # Version: 2.2.30+
 #
 set -x # Echo all commands
