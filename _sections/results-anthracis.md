@@ -18,14 +18,14 @@ referred to by their SRA run accession.
 | P00497           | SRR1749083             |
 
 ## Creating metagenomic controls for *B. anthracis* and a close relative, *B. cereus*
-As a control for these analysis we decided to randomly choose a NYC sample that did not contain evidence 
-for *B. anthracis*. We decided on NYC sample SRR1749070 as our base metagenomic sequences. We then downloaded 
-two sequencing projects, one a *B. anthracis* project ([DRR014739](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739))
-and the other a *B. cereus* project ([SRR642775](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775)). 
-We trimmed the 300bp Illumina MiSeq reads from the *B. anthracis* project down to the first 100bp using 
-*fastq_trimmer (v0.0.13.2)* from FASTX Toolkit. This was necessary to make the reads more similar to the NYC 
-sample, SRR1749070, which is 100bp Illumina HiSeq 2000 reads. This step was not necessary for the *B. cereus* 
-control because it too is 100bp Illumina HiSeq 2000 reads. 
+As a control for these analysis we randomly selected NYC sample SRR1749070 which is *B anthracis* free and added 
+different amounts of known *B. anthracis* or *B. cereus* sequences to it. Using these controls we can produce
+results we would expect to see if *B. anthracis* is present in the metagenomic sequences. We used *B. anthracis*
+([DRR014739](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739)) and *B. cereus* 
+([SRR642775](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775)) sequencing projects as our controls. The reads from the *B. anthracis* project were trimmed from 300bp (Illumina MiSeq) down to the first 100bp using *fastq_trimmer (v0.0.13.2)*
+from FASTX Toolkit. This was necessary to make the reads more similar to the NYC sample, SRR1749070, which is 100bp 
+Illumina HiSeq 2000 reads. This step was not necessary for the *B. cereus* control because it too is 100bp Illumina 
+HiSeq 2000 reads. 
 
 Each control was then randomly subsampled using *seqtk (commit 43ff625a3211b51f301cb356a34fb8d1e593d50a)* to 
 0.25x, 0.5x, 1x, and 5x coverage. Coverage was estimated using the total size of the *B. anthracis* genome, the 
