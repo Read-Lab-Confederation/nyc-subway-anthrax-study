@@ -99,6 +99,7 @@ for o in ${organisms[@]}; do
                     echo "Organism Hit Counts" >> ${summary}
                     awk '{print $1,$2}' ${blastn} | sort | uniq -c | sort -rn >> ${summary}
                 done
+                awk '{print $1,$2}' ${wd}/aligned-genes/*.blastn | sort | uniq -c | sort -rn > ${wd}/aligned-genes/all.summary
 
                 # Extract aligned reads using bam2fastq and convert to fasta
                 ofq="${wd}/aligned-reads/${s}#.fastq"
