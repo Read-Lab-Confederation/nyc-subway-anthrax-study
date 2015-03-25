@@ -86,7 +86,7 @@ NYC sample SRR174708 had the best average coverage (2x), but each of the NYC sam
 | SRR1749070-1x    | 0     | 0     | 0      | 0      |
 | SRR1749070-5x    | 0     | 0     | 0      | 0      |
 
-#### Table 4: Organisms of top blast hits of reads mapped to the anthrax toxin genes.
+#### Table 4: Organism names for each of the top NT blast hits of reads mapped to the anthrax toxin genes.
 ###### *NYC Subway System*
 | Organism                     |  Hit Count   |
 |------------------------------|--------------|
