@@ -135,28 +135,6 @@ The following runs were identified as containing reads associated with *Bacillus
       P01376          SRR1749933
       P01606          SRR1750038
 
-Which samples were said to contain anthrax
-
-##CONTROLS 
-Recent B. anthracis SRA project with Illumna paired end reads.
-
-http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739  
-
-Recent B. cereus near-neighbor
-
-http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775
-
-Recent PE Illumina Yersinia pestis
-
-http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR1283952
-
-Recent PE Illumina run of Y. pseudotuberculosis, close but less pathogenic relative
-
-http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=ERR245865
-
-
-Mix up real *B. anthracis* and *Y. pestis* genomes with sample that does not contain either organism.  Also make dummy mixes of same environmental sample with *B. cereus* and *Y. pseudotuberculosis*.
-
 ## Searching for pXO1 and pXO2
 
 [See results-anthracis.md](/_sections/results-anthracis.md)
