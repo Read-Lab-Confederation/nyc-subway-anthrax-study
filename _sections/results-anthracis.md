@@ -6,7 +6,7 @@
 
 
 
-## Identifying NYC Samples samples with evidence of *B. anthracis*
+## Identifying NYC samples with evidence of *B. anthracis*
 Below is a table of samples from the NYC Subway System dataset which were determined to have contained
 evidence for *B. anthracis*. For the remainder of these analysis, each of these samples will be 
 referred to by their SRA run accession.
