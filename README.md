@@ -37,7 +37,7 @@ The question is - why did the software give false positive results and what exac
         src
             - Programs downloaded and built for this project
 
-## Acquiring Data and Identifying Samples With Evidence For *B. anthracis* and *Y. pestis* 
+## Acquiring NYC Subway System metagenome samples and identifying samples with evidence for *B. anthracis* and *Y. pestis* 
 On February 10th 2015, we used *prefetch*, from [SRA Toolkit (v 2.4.4)](http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.4.4/), 
 to download each of the 1572 runs associated with SRA study 
 [SRP051511](http://trace.ncbi.nlm.nih.gov/Traces/study/?acc=SRP051511). 
