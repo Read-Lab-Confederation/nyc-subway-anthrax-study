@@ -43,10 +43,26 @@ This process of downloading and preparing the controls for analysis was automate
 ## Mapping against pXO1 and pXO2 using BWA
 We used *BWA (v 0.7.5a-r405)* to map reads from each of the NYC and control samples against the reference 
 pXO1 and pXO2 plasmids. For pXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), 
-and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). 
+and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). The SAM output was then
+converted to sorted BAM and indexed suing *samtools (v 1.1)*. The per base coverage was extracted using 
+*genomeCoverageBed* from *bedtools (v2.16.2)*. Coverage across the complete plasmid was then plotted for mulitple
+sliding windows using the Rscript *[plot-coverage.R](/scripts/mapping/plot-coverage.R)*. Reads that mapped to 
+the plasmids were extracted and saved in both FASTQ and FASTA format using *bam2fastq (v1.1.0)* and *fastq_to_fasta* 
+from *FASTX Toolkit v 0.0.13.2*.
 
-This process was automated using the following scripts *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-plasmids.sh)* 
-(NYC samples) and *[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-controls.sh)* (control samples).
+For pXO1, coverage of the genes (*cya*, *lef*, *pagA* and *pagR*) related to the anthrax toxin is most important. To
+visualize this, an alternate plot was created which included subplots of coverage of these genes using the RScript
+*[plot-pxo1-anthrax-toxin-coverage.R](/scripts/mapping/plot-pxo1-anthrax-toxin-coverage.R)*. The reads that mapped 
+to each gene were also extracted and blasted (*blastn v2.2.30+)* against the NT database (built on Feb 9, 2015). For 
+each gene, a count of the organism names of which the top five hits of each read belonged to was recorded. 
+
+This analysis was automated using the following scripts 
+*[map-anthracis-plasmids.sh](/scripts/mapping/map-anthracis-plasmids.sh)*
+(NYC samples) and *[map-anthracis-controls.sh](/scripts/mapping/map-anthracis-controls.sh)* (control samples). 
+Summaries of the results of mapping samples against pXO1 and pXO2 were created using the following scripts:
+*[mapping-coverage-summary.py](/scripts/mapping/mapping-coverage-summary.py)*, 
+*[mapping-gene-summary.py](/scripts/mapping/mapping-gene-summary.py)* and 
+*[mapping-top-blast-hits-summary.py](/scripts/mapping/mapping-top-blast-hits-summary.py)*
 
 ## pXO1 Results
 For each sample we calcualted the summary statistics of coverage accross the complete pXO1 plasmid (Table 2).
