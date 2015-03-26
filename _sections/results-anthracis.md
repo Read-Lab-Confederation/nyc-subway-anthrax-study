@@ -65,37 +65,73 @@ Summaries of the results of mapping samples against pXO1 and pXO2 were created u
 *[mapping-top-blast-hits-summary.py](/scripts/mapping/mapping-top-blast-hits-summary.py)*
 
 ## pXO1 Results
-For each sample we calcualted the summary statistics of coverage accross the complete pXO1 plasmid (Table 2).
+For each sample we calculated the summary statistics of coverage across the complete pXO1 plasmid (Table 2).
 NYC sample SRR174708 had the best average coverage (2x), but each of the NYC samples had a median coverage of 
-0x. 
+0x. These results are nearly the opposite of the *B. anthracis* control. Even at an estimated coverage of 0.25x, 
+the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves as the estimated coverage of 
+*B. anthracis* reads increases. The *B. cereus* control includes low levels of pXO1 overage.
 
-    For each of the plots below the top plot is against the whole pXO1 plasmid. The coverage is based on 1,000bp 
-    sliding windows with an overlap of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is 
-    the actual coverage in that region.
-
-#### Table 2: Summary statistics of per base coverage against pXO1 for NYC Subway System samples and controls.
+#### Table 2: Summary statistics of per base coverage against pXO1 for NYC samples and controls.
 ###### *NYC Subway System*
 | Study      | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
 |------------|------|---------|--------|--------|---------|-----|----------------|
-| SRR1749083 | 0    | 0.0000  | 0.0000 | 0.4652 | 0.0000  | 44  |[pXO1](/results/anthracis/SRR1749083/pXO1/coverage/SRR1749083-coverage.pdf), [Toxins](/results/anthracis/SRR1749083/pXO1/coverage/SRR1749083-anthrax-toxin.pdf)|
-| SRR1748708 | 0    | 0.0000  | 0.0000 | 2.0766 | 4.0000  | 100 |[pXO1](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-coverage.pdf), [Toxins](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-anthrax-toxin.pdf)|
-| SRR1748707 | 0    | 0.0000  | 0.0000 | 0.2506 | 0.0000  | 44  |[pXO1](/results/anthracis/SRR1748707/pXO1/coverage/SRR1748707-coverage.pdf), [Toxins](/results/anthracis/SRR1748707/pXO1/coverage/SRR1748707-anthrax-toxin.pdf)|
+| SRR1749083 | 0    | 0.0000  | 0.0000 | 0.4652 | 0.0000  | 44  |[pXO1](/results/anthracis/SRR1749083/pXO1/coverage/SRR1749083-coverage.pdf), [Toxin](/results/anthracis/SRR1749083/pXO1/coverage/SRR1749083-anthrax-toxin.pdf)|
+| SRR1748708 | 0    | 0.0000  | 0.0000 | 2.0766 | 4.0000  | 100 |[pXO1](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-coverage.pdf), [Toxin](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-anthrax-toxin.pdf)|
+| SRR1748707 | 0    | 0.0000  | 0.0000 | 0.2506 | 0.0000  | 44  |[pXO1](/results/anthracis/SRR1748707/pXO1/coverage/SRR1748707-coverage.pdf), [Toxin](/results/anthracis/SRR1748707/pXO1/coverage/SRR1748707-anthrax-toxin.pdf)|
 ###### *B. anthracis* control
 | Study            | Min. | 1st Qu. | Median  | Mean    | 3rd Qu. | Max | Coverage Plots |
 |------------------|------|---------|---------|---------|---------|-----|----------------|
-| SRR1749070-0x    | 0    | 0.0000  | 0.0000  | 0.0103  | 0.0000  | 2   |[pXO1](/results/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxins](/results/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
-| SRR1749070-0.25x | 0    | 0.0000  | 1.0000  | 1.2305  | 2.0000  | 13  |[pXO1](/results/anthracis-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-coverage.pdf), [Toxins](/results/anthracis-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-anthrax-toxin.pdf)|
-| SRR1749070-0.5x  | 0    | 1.0000  | 2.0000  | 2.4250  | 3.0000  | 20  |[pXO1](/results/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage.pdf), [Toxins](/results/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.pdf)|
-| SRR1749070-1x    | 0    | 3.0000  | 4.0000  | 4.8863  | 6.0000  | 36  |[pXO1](/results/anthracis-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxins](/results/anthracis-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
-| SRR1749070-5x    | 0    | 19.0000 | 23.0000 | 24.3656 | 28.0000 | 175 |[pXO1](/results/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage.pdf), [Toxins](/results/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.pdf)|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000  | 0.0103  | 0.0000  | 2   |[pXO1](/results/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxin](/results/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
+| SRR1749070-0.25x | 0    | 0.0000  | 1.0000  | 1.2305  | 2.0000  | 13  |[pXO1](/results/anthracis-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-coverage.pdf), [Toxin](/results/anthracis-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-anthrax-toxin.pdf)|
+| SRR1749070-0.5x  | 0    | 1.0000  | 2.0000  | 2.4250  | 3.0000  | 20  |[pXO1](/results/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage.pdf), [Toxin](/results/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.pdf)|
+| SRR1749070-1x    | 0    | 3.0000  | 4.0000  | 4.8863  | 6.0000  | 36  |[pXO1](/results/anthracis-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxin](/results/anthracis-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
+| SRR1749070-5x    | 0    | 19.0000 | 23.0000 | 24.3656 | 28.0000 | 175 |[pXO1](/results/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage.pdf), [Toxin](/results/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.pdf)|
 ###### *B. cereus* control
 | Study            | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
 |------------------|------|---------|--------|--------|---------|-----|----------------|
-| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.0103 | 0.0000  | 2   |[pXO1](/results/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxins](/results/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
-| SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.0368 | 0.0000  | 7   |[pXO1](/results/cereus-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-coverage.pdf), [Toxins](/results/cereus-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-anthrax-toxin.pdf)|
-| SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.0522 | 0.0000  | 9   |[pXO1](/results/cereus-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage.pdf), [Toxins](/results/cereus-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.pdf)|
-| SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 0.0912 | 0.0000  | 16  |[pXO1](/results/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxins](/results/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
-| SRR1749070-5x    | 0    | 0.0000  | 0.0000 | 0.4261 | 0.0000  | 53  |[pXO1](/results/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage.pdf), [Toxins](/results/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.pdf)|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.0103 | 0.0000  | 2   |[pXO1](/results/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxin](/results/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
+| SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.0368 | 0.0000  | 7   |[pXO1](/results/cereus-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-coverage.pdf), [Toxin](/results/cereus-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-anthrax-toxin.pdf)|
+| SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.0522 | 0.0000  | 9   |[pXO1](/results/cereus-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage.pdf), [Toxin](/results/cereus-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.pdf)|
+| SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 0.0912 | 0.0000  | 16  |[pXO1](/results/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxin](/results/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
+| SRR1749070-5x    | 0    | 0.0000  | 0.0000 | 0.4261 | 0.0000  | 53  |[pXO1](/results/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage.pdf), [Toxin](/results/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.pdf)|
+
+To give an idea of the difference in coverages, below is coverage across the pXO1 plasmid at 1000bp
+sliding windows with a 500bp overlap for three samples. SRR1748708 is shown because it has the greatest
+mean coverage of the NYC samples. The selection of the *B. anthracis* 0.5x coverage control was due to 
+it having a similar mean coverage (2.4x vs 2x) as SRR1748708. *B. cereus* 0.5x coverage control was 
+selected because it has the greatest mean coverage (0.4x) of the *B. cereus* controls.
+###### *NYC sample SRR1748708*
+![SRR1748708](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-coverage-1000bp.png "SRR1748708")
+###### *B. anthracis* control 0.5x coverage
+![B. anthracis control 0.5x coverage](/results/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage-1000bp.png "B. anthracis control 0.5x coverage")
+###### *B. cereus* control 5x coverage
+![B. cereus control 5x coverage](/results/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage-1000bp.png "B. cereus control 5x coverage")
+
+These three plots depict very different stories. Beginning with the *B. cereus* control, although there are few reads 
+that mapped, there are regions of pXO1 that are similar to *B. cereus*. This does not explain why SRR1748708 has 
+decent coverage accross the pOX1 plasmid. Comparing the SRR1748708 and the *B. anthracis* control, the similar mean
+coverages are very different from one another. SRR1748708 has regions of high coverage and regions of low coverage.
+The *B. anthracis* control, on the other hand, has a very similar coverage across the complete pXO1 plasmid. This 
+suggests SRR1748708 may contain a plasmid backbone that is shared among *Bacillus* species.
+
+Although the pXO1 plasmid has a mean coverage of 2x in SRR1748708, more importantly, are the genes associated with the 
+anthrax toxin covered? Below are visualizations of SRR1748708 and the *B. anthracis* 0.5x and 5x controls that 
+depict subplots of reads mapped to the *cya*, *lef*, *pagA* and *pagR* genes. For each of the plots below the 
+top plot is coverage across the whole pXO1 plasmid. The coverage is based on 1,000bp sliding windows with an overlap 
+of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the actual coverage in that region.
+
+###### *NYC sample SRR1748708*
+![SRR1748708](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-anthrax-toxin.png "SRR1748708")
+###### *B. anthracis* control 0.5x coverage
+![B. anthracis control 0.5x coverage](/results/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.png "B. anthracis control 0.5x coverage")
+###### *B. anthracis* control 5x coverage
+![B. anthracis control 5x coverage](/results/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.png "B. anthracis control 5x coverage")
+
+The *B. anthracis* controls clearly show a number of reads mapping to each of the genes. The total number of 
+reads mapped to each gene for each sample was extracted (Table 3). At 0.5x a total of 197 reads mapped to these 
+genes. At 5x the coverage the total numvber of reads mapped jumped to 1,817. clearly evident. Looking at 
+SRR1748708, the genes are essentially devoid of mapped reads but reads are mapped to these genes. Although only 72 
+reads mapped to these genes it is necessary to investigate these reads further. 
 
 #### Table 3: Number of reads mapped to genes (*cya*, *lef*, *pagA* and *pagR*) related to the anthrax toxin.
 ###### *NYC Subway System*
@@ -121,8 +157,19 @@ NYC sample SRR174708 had the best average coverage (2x), but each of the NYC sam
 | SRR1749070-1x    | 0     | 0     | 0      | 0      |
 | SRR1749070-5x    | 0     | 0     | 0      | 0      |
 
+The next step was to determine the likely origin of the mapped reads in the each of the genes. In order to do so, 
+we extracted these reads and saved them in FASTA format. We then blasted those reads against a local NT database 
+(described above). We chose to only retain the top five hits for each read. Our goal was not to determine the 
+exact organism of origin, but instead to get an idea of what these reads are mapping to (Table 4). There is a 
+clear difference between the results of the NYC sample SRR1748708 and the *B. anthracis* control. The reads from 
+the *B. anthracis* controls most often return *B. anthracis* (~85%) as the top hit followed by *B. cereus* (~14.6%). 
+The NYC samples do not have a top hit to *B. anthracis* at all. The most common is *B. thuringiensis* followed by a 
+number of organisms including humans and other *Bacillus* species. It is important to state that in this case the 
+total hit counts are not important. What is important is the stark difference in the organisms between the NYC
+samples and the control samples.
+
 #### Table 4: Organism names for each of the top NT blast hits of reads mapped to the anthrax toxin genes.
-###### *NYC Subway System*
+###### *NYC samples SRR1748707, SRR1748708, and SRR1749083*
 | Organism                     |  Hit Count   |
 |------------------------------|--------------|
 | Bacillus thuringiensis       | 189          |
@@ -145,7 +192,7 @@ NYC sample SRR174708 had the best average coverage (2x), but each of the NYC sam
 | Diphyllobothrium latum       | 1            |
 | Strongyloides papillosus     | 1            |
 | Echinostoma caproni          | 1            |
-###### *B. anthracis* control
+###### *B. anthracis* controls (0.25x, 0.5x, 1x, and 5x)
 | Organism            | Hit Count |
 |---------------------|-----------|
 | Bacillus anthracis  | 10486     |
@@ -153,8 +200,5 @@ NYC sample SRR174708 had the best average coverage (2x), but each of the NYC sam
 | Synthetic construct | 35        |
 | Cyprinus carpio     | 2         |
 
-
-    ADD PLOTS OF CONTROL AND COMPARE/CONTRAST
-![P00134 (Run: SRR1748708)](/results/anthracis/SRR1748708/pXO1/coverage/SRR1748708-anthrax-toxin.png "SRR1748708")
 
 
