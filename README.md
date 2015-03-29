@@ -143,13 +143,31 @@ The following runs were identified as containing reads associated with *Bacillus
 
 [Analysis of pXO1 and pXO2](/_sections/results-anthracis.md)
 
-##Using Kraken to search for the *B. anthracis* chromosome(Matthew)
-  
-I basically downloaded two complete genomes each of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis*. For each complete genome sequence, I split up the FASTA file to a multi fasta file of 100bp sequences, and fed all 6 multi-fasta files to KRAKEN.
+##Using Kraken to search for the *B. anthracis* chromosome (Matthew)
+
+We downloaded two complete genomes each of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis*. For each complete genome sequence, I split up the FASTA file to a multi fasta file of 100bp sequences, and fed all 6 multi-fasta files to KRAKEN.
 
 The reuslts are in seperate folders for each whole genome sequence:
 
 [Anthrax WGS search](https://www.dropbox.com/sh/fwfi75ft4ny1qkk/AADF16diPK-cgV-CmRHzLjWTa?dl=0)   
+
+ We also performed a similar approach on the actual control sequence reads for both *B. anthracis* and *B. cereus* to identify presence of *B.anthracis*.
+ 
+ Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* to test for detection of the *anthracis* reads.
+ 
+ The results from Kraken [Control Results](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control) suggests that kraken analysis could detect presence of minute amount of sequence reads from the organism.
+
+ We used python script [parse_kraken.py](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
+ 
+ ###### *B.anthracis and B.cereus reads, species distribution*
+ ![B. cereus](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/cereus.png)
+ ![B. anthracis](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/anthracis.png)
+ 
+ ###### *metagenome and anthracis mixture reads, species distribution*
+ ![5x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/5x_.png)
+ ![1x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/1x_.png)
+ ![0.5x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/0.5x_.png)
+ ![0.25x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/0.25x_.png)
 
 
 ##*B. anthracis* specific SNPs (Sandeep)
