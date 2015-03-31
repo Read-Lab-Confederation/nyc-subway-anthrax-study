@@ -3,7 +3,7 @@
 $(function() {
     var referenceLinks = {};
 
-    var referencesList = $('#references > ul');
+    var referencesList = $('#references ul');
 
     var references = referencesList.find('li');
 
@@ -61,18 +61,30 @@ $(function() {
     });
 });
 
-// sidebar embeds
+// sidebar anchors
 
 $(function() {
-    $('#sidebar iframe').each(function() {
-        var node = $(this);
-        var parent = node.parent();
-        var ratio = parent.width() / node.width();
-        node.css({
-            transform: 'scale(' + ratio + ')',
-            transformOrigin: 'top left'
+    $(window).on('hashchange', function() {
+        $(document.location.hash).closest('.tab-pane').each(function() {
+            var id = this.id;
+
+            $('[data-toggle=tab]').filter(function() {
+                return $(this).attr('href') === '#' + id;
+            }).tab('show');
         });
-        parent.height(parent.height() * ratio).css('position', 'relative');
-        node.css('position', 'absolute');
+    });
+});
+
+// sidebar anchors
+
+$(function() {
+    $(window).on('hashchange', function() {
+        $(document.location.hash).closest('.tab-pane').each(function() {
+            var id = this.id;
+
+            $('[data-toggle=tab]').filter(function() {
+                return $(this).attr('href') === '#' + id;
+            }).tab('show');
+        });
     });
 });

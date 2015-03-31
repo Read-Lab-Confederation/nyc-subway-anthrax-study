@@ -91,88 +91,99 @@
 
         <!-- side column -->
         <div class="column" id="sidebar">
-            {% if article.doi %}
-                <!-- metrics -->
-                <aside id="metrics" class="hidden-print">
-                    <!--<h2>Metrics</h2>-->
+            <ul class="nav nav-pills">
+                <li class="active"><a href="#figures" data-toggle="tab">Figures</a></li>
+                <li><a href="#info" data-toggle="tab">Info</a></li>
+                <li><a href="#references" data-toggle="tab">References</a></li>
+            </ul>
 
-                    <div class="altmetric-embed"
-                        data-badge-type="medium-donut"
-                        data-badge-details="below"
-                        data-hide-no-mentions="true"
-                        data-doi="{{ article.doi}}"></div>
+            <div class="tab-content">
+                <!-- figures -->
+                <div id="figures" class="tab-pane active">
+                    <aside>
+                        <h2>Figures</h2>
+                        {% assign figures = site.figures | sort:"order" %}
+                        {% for figure in figures %}
+                            <figure id="{{ figure.label | slugify }}">
+                                <figcaption>
+                                    {% capture heading %}<a href="{{ site.baseurl }}{{ figure.url }}" class="figure-link">**{{ figure.label }}**</a>: {{ figure.title }}{% endcapture %}
+                                    {{ heading | markdownify }}
 
-                    <script src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js" async></script>
-                </aside>
-            {% endif %}
+                                    {{ figure.description | markdownify }}
+                                </figcaption>
 
-            {% if article.doi %}
-                <!-- doi -->
-                <div id="doi">
-                    <h2>DOI</h2>
-                    <div><a href="https://dx.doi.org/{{ article.doi }}" itemprop="sameAs">{{ article.doi }}</a></div>
-                </div>
-            {% endif %}
-
-            <!-- authors -->
-            <div id="authors">
-                <h2>Authors</h2>
-                {% include authors.html authors=article.authors %}
-            </div>
-
-            <!-- figures -->
-            {% if site.figures %}
-                <div id="figures">
-                    <h2>Figures</h2>
-                    {% assign figures = site.figures | sort:"order" %}
-                    {% for figure in figures %}
-                        <figure id="{{ figure.label | slugify }}">
-                            <figcaption>
-                                {% capture heading %}<a href="{{ site.baseurl }}{{ figure.url }}" class="figure-link">**{{ figure.label }}**</a>: {{ figure.title }}{% endcapture %}
-                                {{ heading | markdownify }}
-
-                                {{ figure.description | markdownify }}
-                            </figcaption>
-
-                            <div class="figure-wrap">
-                                {% if figure.image %}
-                                    <a href="{{ site.baseurl }}{{ figure.url }}" class="figure-link"><img src="{{ figure.image }}"></a>
-                                {% else %}
-                                    {{ figure.content | markdownify }}
-                                {% endif %}
-                            </div>
-                        </figure>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-            <!-- contributions -->
-            {% if article.contributions %}
-                <div id="contributions">
-                    <h2>Contributions</h2>
-                    {% include contributions.html contributions=article.contributions %}
-                </div>
-            {% endif %}
-
-            <!-- keywords -->
-            {% if article.keywords %}
-                <div id="keywords" itemprop="keywords">
-                    <h2>Keywords</h2>
-
-                    <div class="inline-list">
-                        {% for keyword in article.keywords %}
-                            <span>{{ keyword }}</span>
+                                <div class="figure-wrap">
+                                    {% if figure.image %}
+                                        <a href="{{ site.baseurl }}{{ figure.url }}" class="figure-link"><img src="{{ figure.image }}"></a>
+                                    {% else %}
+                                        {{ figure.content | markdownify }}
+                                    {% endif %}
+                                </div>
+                            </figure>
                         {% endfor %}
-                    </div>
+                    </aside>
                 </div>
-            {% endif %}
 
-            <!-- references -->
-            <section id="references">
-                <h2>References</h2>
-                {% capture references %}{% include_relative references.md %}{% endcapture %}
-                {{ references | markdownify }}
-            </section>
+                <!-- info -->
+                <div id="info" class="tab-pane">
+                    {% if article.doi %}
+                        <!-- metrics -->
+                        <aside id="metrics" class="hidden-print sidebar-section">
+                            <!--<h2>Metrics</h2>-->
+
+                            <div class="altmetric-embed"
+                                data-badge-type="medium-donut"
+                                data-badge-details="below"
+                                data-hide-no-mentions="true"
+                                data-doi="{{ article.doi}}"></div>
+
+                            <script src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js" async></script>
+                        </aside>
+
+                        <!-- doi -->
+                        <aside id="doi" class="sidebar-section">
+                            <h2>DOI</h2>
+                            <div><a href="https://dx.doi.org/{{ article.doi }}" itemprop="sameAs">{{ article.doi }}</a></div>
+                        </aside>
+                    {% endif %}
+
+                    <!-- authors -->
+                    <aside id="authors">
+                        <h2>Authors</h2>
+                        {% include authors.html authors=article.authors %}
+                    </aside>
+
+                    <!-- contributions -->
+                    {% if article.contributions %}
+                        <aside id="contributions">
+                            <h2>Contributions</h2>
+                            {% include contributions.html contributions=article.contributions %}
+                        </aside>
+                    {% endif %}
+
+                    <!-- keywords -->
+                    {% if article.keywords %}
+                        <aside id="keywords" itemprop="keywords">
+                            <h2>Keywords</h2>
+
+                            <div class="inline-list">
+                                {% for keyword in article.keywords %}
+                                    <span>{{ keyword }}</span>
+                                {% endfor %}
+                            </div>
+                        </aside>
+                    {% endif %}
+                </div>
+
+                <!-- references -->
+                <div id="references" class="tab-pane">
+                    <aside>
+                        <h2>References</h2>
+                        {% capture references %}{% include_relative references.md %}{% endcapture %}
+                        {{ references | markdownify }}
+                    </aside>
+                </aside>
+            </div>
         </div>
     </article>
 </body>
