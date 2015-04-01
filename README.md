@@ -175,4 +175,4 @@ The reuslts are in seperate folders for each whole genome sequence:
 First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
 
 Next, pulled down 7171 B. cereus sequences from NCBI Refseq to downselect against.  Used the following query on the NCBI site:
->txid86661[Organism:exp] NOT anthracis[All Fields] AND (biomol_genomic[PROP] AND refseq[filter])
+>txid86661[Organism:exp] NOT txid1392[Organism:exp] AND (biomol_genomic[PROP] AND refseq[filter]) 
