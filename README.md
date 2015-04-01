@@ -163,7 +163,7 @@ The reuslts are in seperate folders for each whole genome sequence:
  ![B. cereus](/results/Anthrax_control/cereus.png "B.cereus")
  ![B. anthracis](/results/Anthrax_control/anthracis.png "B. anthracis")
  
-###### *metagenome and anthracis mixture reads, species distribution*
+###### *metagenome and anthracis mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respecively*
  ![5x coverage](/results/Anthrax_control/5x_.png " anthracis 5x coverage")
  ![1x coverage](/results/Anthrax_control/1x_.png "anthracis 1x coverage")
  ![0.5x coverage](/results/Anthrax_control/0.5x_.png "anthracis 0.5x coverage")
