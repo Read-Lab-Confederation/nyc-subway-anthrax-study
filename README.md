@@ -1,13 +1,11 @@
-# Searching for anthrax (and plague) in New York City Subway Metagenome*.
+# Searching for anthrax (and plague) in the New York City Subway Metagenome*.
 
-By Robert Petit III, Matthew Ezewudo, Sandeep Jospeh and Timothy D. Read,
+By Robert Petit III, Matthew Ezewudo, Sandeep Joseph and *Timothy D. Read,
 Emory University School of Medicine, Atlanta, Georgia
 
 ##Introduction
-In January 2015 Chris Mason and his team [published](http://www.sciencedirect.com/science/article/pii/S2405471215000022) an in-depth analysis of metagenomic data (environmental shotgun DNA sequence) from samples isolated from public surfaces in the New York City (NTC) Subway. Along with a lot of really interesting findings, the authors, rather unwisely in our opinion, claimed to have detected DNA from the bacterial biothreat pathogens Bacillus anthracis (which causes anthrax) and Yersinia pestis (causes plague) in some of the samples.  This predictably led to a press firestorm in the press and skepticism from scientistis on social media.
+In January 2015 Chris Mason and his team [published](http://www.sciencedirect.com/science/article/pii/S2405471215000022) an in-depth analysis of metagenomic data (environmental shotgun DNA sequence) from samples isolated from public surfaces in the New York City (NTC) Subway. Along with a lot of really interesting findings, the authors, rather unwisely, claimed to have detected DNA from the bacterial biothreat pathogens *Bacillus anthracis* (which causes anthrax) and *Yersinia pestis* (causes plague) in some of the samples.  This predictably led to a press firestorm and skepticism from scientistis on social media.  Chris and his team followed up with an [extensive re-analysis](http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/) of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims and there was little to no evidence for the presence of thos organisms
 
-See follow-up apologia and discussions:  
-http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/
 
 The question is - why did the software give false positive results and what exactly was found in the subway?  
 
