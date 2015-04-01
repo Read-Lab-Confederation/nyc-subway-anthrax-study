@@ -160,14 +160,14 @@ The reuslts are in seperate folders for each whole genome sequence:
  We used python script [parse_kraken.py](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
 ###### *B.anthracis and B.cereus reads, species distribution*
- ![B. cereus](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/cereus.png "B.cereus")
- ![B. anthracis](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/anthracis.png "B. anthracis")
+ ![B. cereus](/results/Anthrax_control/cereus.png "B.cereus")
+ ![B. anthracis](/results/Anthrax_control/anthracis.png "B. anthracis")
  
 ###### *metagenome and anthracis mixture reads, species distribution*
- ![5x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/5x_.png " anthracis 5x coverage")
- ![1x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/1x_.png "anthracis 1x coverage")
- ![0.5x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/0.5x_.png "anthracis 0.5x coverage")
- ![0.25x coverage](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control/0.25x_.png "anthracis 0.25x coverage")
+ ![5x coverage](/results/Anthrax_control/5x_.png " anthracis 5x coverage")
+ ![1x coverage](/results/Anthrax_control/1x_.png "anthracis 1x coverage")
+ ![0.5x coverage](/results/Anthrax_control/0.5x_.png "anthracis 0.5x coverage")
+ ![0.25x coverage](/results/Anthrax_control/0.25x_.png "anthracis 0.25x coverage")
 
 
 ##*B. anthracis* specific SNPs (Sandeep)
