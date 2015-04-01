@@ -1,11 +1,11 @@
-# New York City Subway-Metagenome: attempts to detect *B. anthracis* and *Y. pestis*. 
+# Searching for anthrax (and plague) in New York City Subway Metagenome*.
 
-Here is how to edit Markdown:  
-https://guides.github.com/features/mastering-markdown/
+By Robert Petit III, Matthew Ezewudo, Sandeep Jospeh and Timothy D. Read,
+Emory University School of Medicine, Atlanta, Georgia
 
 ##Introduction
-Analysis of NYC Subway Metagenome data  
-http://www.sciencedirect.com/science/article/pii/S2405471215000022
+In January 2015 Chris Mason and his team [published](http://www.sciencedirect.com/science/article/pii/S2405471215000022) an in-depth analysis of metagenomic data (environmental shotgun DNA sequence) from samples isolated from public surfaces in the New York City (NTC) Subway. Along with a lot of really interesting findings, the authors, rather unwisely in our opinion, claimed to have detected DNA from the bacterial biothreat pathogens Bacillus anthracis (which causes anthrax) and Yersinia pestis (causes plague) in some of the samples.  This predictably led to a press firestorm in the press and skepticism from scientistis on social media.
+
 See follow-up apologia and discussions:  
 http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/
 
