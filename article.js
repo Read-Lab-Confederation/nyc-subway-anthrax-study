@@ -44,19 +44,32 @@ $(function() {
 // figure links
 
 $(function() {
-    var modal = $('<div id="figure-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content"></div></div></div>');
-
-    var content = modal.find('.modal-content').text('Loading…');
+    var modal = $('<div id="figure-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"><div class="modal-dialog modal-lg"><div class="modal-content">Loading…</div></div></div>');
 
     modal.appendTo(document.body).modal({ show: false });
 
+    var content = modal.find('.modal-content');
+
     modal.on('hidden.bs.modal', function() {
-        content.html('Loading…');
+        content.text('Loading…');
     });
 
     $('a.figure-link').on('click', function() {
         modal.modal('show');
-        content.load(this.href + ' figure');
+
+        var iframe = $('<iframe/>', {
+            src: this.href,
+            allowfullscreen: true
+        });
+
+        content.html(iframe);
+
+        iframe.on('load', function() {
+            window.setTimeout(function() {
+                iframe.height(iframe.contents().outerHeight());
+            }, 100);
+        });
+
         return false;
     });
 });

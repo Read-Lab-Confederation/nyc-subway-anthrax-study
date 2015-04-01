@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+document.body.style.backgroundColor = '#333';
 
-body {
-  background: #333;
-}
-
-</style>
-<body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-<script>
-
-var width = 960,
+var width = 900,
     height = 500,
     radius = Math.sqrt(width / 2 * width / 2 + height / 2 * height / 2) + 5;
 
@@ -55,5 +44,3 @@ d3.timer(function() {
 
   speed += .1;
 });
-
-</script>
