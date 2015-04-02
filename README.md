@@ -20,20 +20,23 @@ We were interested in looking deeping into why the software gave false positive 
 The results are organized in 4 sections:  
 
 1.  **Accessing metagenome data and controls:**  Where we obtained the data and how we constructed artificial controls by mixing recent whole genome shotgun data from pathogens and near-neighbors with NYC subway metagenome data.  
-2.  **Mapping plasmids to metagenome data:**    Looking at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pstis*) in metagenome samples and controls.  
-3.  **Kraken metagenome detection:** Kraken is a popular kmer based software for read identification.  We rhowed that Kraken was sensitive for B. anthracis detection but also produced a small n umber of flase positive reads.  
+2.  [**Mapping plasmids to metagenome data:**](/_sections/results-anthracis.md)    Looked at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pstis*) in metagenome samples and controls.  
+3.  **Kraken metagenome detection:** Kraken is a popular kmer based software for read identification.  We rhowed that Kraken was sensitive for *B. anthracis* detection but also produced a small n umber of false positive reads in the B. cereus genome project.  
 4.  **Custom SNP assays for B. anthracis:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
 
 ##Summary of conclusions
 
+<finish this section when the work is completed>
 
-##Prerspective
+##Perspective
 
-We believe that there is no one-size-fits-all approach to species indetification in metagenome samples.  There are severla reasons for this: there is no single specific definition for bacteria 
+We believe that there is no one-size-fits-all approach to bacterial species indetification in metagenome samples for several reasons.  Perhaps most importantly, there is no consistent definition for a bacterial species that can be used a cutoff for sequence dentity.  Some species (like *B. cereus* and *B. anthracis* can be 99% similar to each other).  Secondly, some species distinctions rely on the presence or absence of mobile elements (again *B. cereus* and *B. anthracis* are a great example), which are hard to model using a uniform approach like Kraken or Metaphlan. These plasmids or phage or often modular in structure with very similar 'backbones' but with key genes replaced.  Finally, the generalist species indentification programs rely on databases of sequenced genomes, whcih are not uniform in their coverage of different species, or different lineages within species.
 
-Need - organism-sepcific detection.
+If you were to have an organism-sepcific detection algorthim for *B. cereus* you would need to accout for the presence of the plasmids about xx times the coverage as the chromsome.  You would also expext even coverage across all the 
 
-Remember - "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
+Even if you have developed a sophisticated algorithm you will still need to use judgement in interpreting results.  There is still much that we dont know about bacteria in the envirnemnt, especialy the conditions under which they exxchange DNA.  
+
+Finally, the negative result is subject to a lot of nuances.  The limit of detectection will be affected by the amount of sequence generated and the "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
 
 ## Project Data Structure
 
