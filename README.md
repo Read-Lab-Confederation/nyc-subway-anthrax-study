@@ -179,5 +179,10 @@ The reuslts are in seperate folders for each whole genome sequence:
 
 First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
 
-Next, pulled down 7171 B. cereus sequences from NCBI Refseq to downselect against.  Used the following query on the NCBI site:
->txid86661[Organism:exp] NOT txid1392[Organism:exp] AND (biomol_genomic[PROP] AND refseq[filter]) 
+Next, using the query:
+
+>[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D)) 
+
+We downloaded 6,948 *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
+(excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) 
+sequences in FASTA format from NCBI Refseq to downselect against.
