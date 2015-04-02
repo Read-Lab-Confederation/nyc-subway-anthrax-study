@@ -1,4 +1,4 @@
-# Searching for anthrax (and plague) in the New York City Subway Metagenome*.
+# Searching for anthrax (and plague) in the New York City Subway Metagenome.
 
 By Robert Petit III, Matthew Ezewudo, Sandeep Joseph and *Timothy D. Read,
 Emory University School of Medicine, Atlanta, Georgia
@@ -6,21 +6,21 @@ Emory University School of Medicine, Atlanta, Georgia
 ##Introduction
 In January 2015 Chris Mason and his team [published](http://www.sciencedirect.com/science/article/pii/S2405471215000022) 
 an in-depth analysis of metagenomic data (environmental shotgun DNA sequence) from samples isolated from public surfaces 
-in the New York City (NYC) Subway. Along with a lot of really interesting findings, the authors, rather unwisely, claimed 
+in the New York City (NYC) Subway. Along with a ton of really interesting findings, the authors claimed 
 to have detected DNA from the bacterial biothreat pathogens *Bacillus anthracis* (which causes anthrax) and 
 *Yersinia pestis* (causes plague) in some of the samples. This predictably led to a press firestorm and skepticism from
 scientistis on social media.  Chris and his team followed up with an 
-[extensive re-analysis](http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/) 
+[re-analysis](http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/) 
 of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims and there was 
-little to no evidence for the presence of those organisms
+actually little to no evidence for the presence of those organisms.
 
-The question is - why did the software give false positive results and what exactly was found in the subway?  
-##Methods
+We were interested in looking deeping into why the software gave false positive results and what exactly was found in the subway samples.  We stared messing around with some programs and decided to wrap up the results on this site.  The study rasied very timely questions about that hot topic of using metagenomics for detection. 
 
 ##Results
 
 ##Prerspective
 
+The problems with the one size fits all approach to species detection
 Need - organism-sepcific detection.
 
 Remember - "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
