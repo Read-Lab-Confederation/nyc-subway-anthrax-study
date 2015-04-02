@@ -174,14 +174,14 @@ The reuslts are in seperate folders for each whole genome sequence:
  We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
 ###### *B.anthracis and B.cereus reads, species distribution*
- ![B. cereus](/results/Anthrax_control/cereus.png "B.cereus")
- ![B. anthracis](/results/Anthrax_control/anthracis.png "B. anthracis")
+ ![B. cereus](/results/kracken/anthracis-control/cereus.png "B.cereus")
+ ![B. anthracis](/results/kracken/anthracis-control/anthracis.png "B. anthracis")
  
 ###### *metagenome and anthracis mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
- ![5x coverage](/results/Anthrax_control/5x_.png " anthracis 5x coverage")
- ![1x coverage](/results/Anthrax_control/1x_.png "anthracis 1x coverage")
- ![0.5x coverage](/results/Anthrax_control/0.5x_.png "anthracis 0.5x coverage")
- ![0.25x coverage](/results/Anthrax_control/0.25x_.png "anthracis 0.25x coverage")
+ ![5x coverage](/results/kracken/anthracis-control/5x_.png " anthracis 5x coverage")
+ ![1x coverage](/results/kracken/anthracis-control/1x_.png "anthracis 1x coverage")
+ ![0.5x coverage](/results/kracken/anthracis-control/0.5x_.png "anthracis 0.5x coverage")
+ ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
 
 
 ##*B. anthracis* specific SNPs (Sandeep)
