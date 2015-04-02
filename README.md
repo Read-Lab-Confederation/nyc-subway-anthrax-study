@@ -25,9 +25,12 @@ The results are organized in 4 sections:
 4.  **Custom SNP assays for B. anthracis:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
 
 ##Summary of conclusions
+
+
 ##Prerspective
 
-The problems with the one size fits all approach to species detection
+We believe that there is no one-size-fits-all approach to species indetification in metagenome samples.  There are severla reasons for this: there is no single specific definition for bacteria 
+
 Need - organism-sepcific detection.
 
 Remember - "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
