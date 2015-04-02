@@ -14,10 +14,17 @@ scientistis on social media.  Chris and his team followed up with an
 of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims and there was 
 actually little to no evidence for the presence of those organisms.
 
-We were interested in looking deeping into why the software gave false positive results and what exactly was found in the subway samples.  We stared messing around with some programs and decided to wrap up the results on this site.  The study rasied very timely questions about that hot topic of using metagenomics for detection. 
+We were interested in looking deeping into why the software gave false positive results and what exactly was found in the subway samples.  We stared messing around with some programs and decided to wrap up the results on this site.  The study rasied very timely questions about that hot topic of using metagenomics for detection. Mostly, we looked at *B. anthracis* but we present some results looking at *Y.pstis* and can update this later.
 
-##Results
+##Overview
+The results are organized in 4 sections:  
 
+1.  **Accessing metagenome data and controls:**  Where we obtained the data and how we constructed artificial controls by mixing recent whole genome shotgun data from pathogens and near-neighbors with NYC subway metagenome data.  
+2.  **Mapping plasmids to metagenome data:**    Looking at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pstis*) in metagenome samples and controls.  
+3.  **Kraken metagenome detection:** Kraken is a popular kmer based software for read identification.  We rhowed that Kraken was sensitive for B. anthracis detection but also produced a small n umber of flase positive reads.  
+4.  **Custom SNP assays for B. anthracis:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
+
+##Summary of conclusions
 ##Prerspective
 
 The problems with the one size fits all approach to species detection
