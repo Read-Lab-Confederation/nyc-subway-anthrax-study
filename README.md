@@ -14,13 +14,23 @@ scientistis on social media.  Chris and his team followed up with an
 of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims and there was 
 actually little to no evidence for the presence of those organisms.
 
-We were interested in looking deeping into why the software gave false positive results and what exactly was found in the subway samples.  We stared messing around with some programs and decided to wrap up the results on this site.  The study rasied very timely questions about that hot topic of using metagenomics for detection. 
+We were interested in looking deeping into why the software gave false positive results and what exactly was found in the subway samples.  We stared messing around with some programs and decided to wrap up the results on this site.  The study rasied very timely questions about that hot topic of using metagenomics for detection. Mostly, we looked at *B. anthracis* but we present some results looking at *Y.pstis* and can update this later.
 
-##Results
+##Overview
+The results are organized in 4 sections:  
+
+1.  **Accessing metagenome data and controls:**  Where we obtained the data and how we constructed artificial controls by mixing recent whole genome shotgun data from pathogens and near-neighbors with NYC subway metagenome data.  
+2.  **Mapping plasmids to metagenome data:**    Looking at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pstis*) in metagenome samples and controls.  
+3.  **Kraken metagenome detection:** Kraken is a popular kmer based software for read identification.  We rhowed that Kraken was sensitive for B. anthracis detection but also produced a small n umber of flase positive reads.  
+4.  **Custom SNP assays for B. anthracis:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
+
+##Summary of conclusions
+
 
 ##Prerspective
 
-The problems with the one size fits all approach to species detection
+We believe that there is no one-size-fits-all approach to species indetification in metagenome samples.  There are severla reasons for this: there is no single specific definition for bacteria 
+
 Need - organism-sepcific detection.
 
 Remember - "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
@@ -174,14 +184,14 @@ The reuslts are in seperate folders for each whole genome sequence:
  We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
 ###### *B.anthracis and B.cereus reads, species distribution*
- ![B. cereus](/results/Anthrax_control/cereus.png "B.cereus")
- ![B. anthracis](/results/Anthrax_control/anthracis.png "B. anthracis")
+ ![B. cereus](/results/kracken/anthracis-control/cereus.png "B.cereus")
+ ![B. anthracis](/results/kracken/anthracis-control/anthracis.png "B. anthracis")
  
 ###### *metagenome and anthracis mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
- ![5x coverage](/results/Anthrax_control/5x_.png " anthracis 5x coverage")
- ![1x coverage](/results/Anthrax_control/1x_.png "anthracis 1x coverage")
- ![0.5x coverage](/results/Anthrax_control/0.5x_.png "anthracis 0.5x coverage")
- ![0.25x coverage](/results/Anthrax_control/0.25x_.png "anthracis 0.25x coverage")
+ ![5x coverage](/results/kracken/anthracis-control/5x_.png " anthracis 5x coverage")
+ ![1x coverage](/results/kracken/anthracis-control/1x_.png "anthracis 1x coverage")
+ ![0.5x coverage](/results/kracken/anthracis-control/0.5x_.png "anthracis 0.5x coverage")
+ ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
 
 
 ##*B. anthracis* specific SNPs (Sandeep)
