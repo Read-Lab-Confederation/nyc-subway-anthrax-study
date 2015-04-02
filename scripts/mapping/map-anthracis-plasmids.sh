@@ -47,7 +47,7 @@ NT="/data1/home/groups/readgp/nt/nt"
 
 for s in ${!samples[@]}; do
     for p in ${plasmids[@]}; do
-        wd="results/anthracis/${s}/${p}"
+        wd="mapping/results/anthracis/${s}/${p}"
         mkdir -p ${wd}/coverage
         mkdir -p ${wd}/aligned-genes
         mkdir -p ${wd}/aligned-reads

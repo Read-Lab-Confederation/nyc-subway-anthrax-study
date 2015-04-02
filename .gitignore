@@ -10,4 +10,5 @@ references/index/
 *.bai
 src/
 
+.DS_Store
 

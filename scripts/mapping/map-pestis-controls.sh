@@ -58,7 +58,7 @@ for o in ${organisms[@]}; do
             # pestis has 20x, 30x coerages that pseudotuberculosis does not
             if [ -f $fq1 ] ; then
                 fq2="sra-controls/${o}/metagenomic/${s}_2.fastq.gz"
-                wd="results/${o}-control/${s}/${p}"
+                wd="mapping/results/${o}-control/${s}/${p}"
                 mkdir -p ${wd}/coverage
                 mkdir -p ${wd}/aligned-genes
                 mkdir -p ${wd}/aligned-reads

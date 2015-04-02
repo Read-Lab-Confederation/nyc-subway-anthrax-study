@@ -33,6 +33,19 @@ zcat DRR014739_2.fastq.gz | fastx_trimmer -Q 30 -f 1 -l 100 | gzip - > DRR014739
 
 # Reduce coverage by randomly subsampling the reads
 # Bacillus anthracis + PXO1 + PXO2 = 5,503,799 ~ 5,503,800
+
+# 0.01x
+${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_1.100bp.fastq.gz 276 | gzip - > DRR014739_1.100bp.0.01x.fastq.gz
+${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_2.100bp.fastq.gz 276 | gzip - > DRR014739_2.100bp.0.01x.fastq.gz
+
+# 0.05x
+${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_1.100bp.fastq.gz 1376 | gzip - > DRR014739_1.100bp.0.05x.fastq.gz
+${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_2.100bp.fastq.gz 1376 | gzip - > DRR014739_2.100bp.0.05x.fastq.gz
+
+# 0.10x
+${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_1.100bp.fastq.gz 2752 | gzip - > DRR014739_1.100bp.0.10x.fastq.gz
+${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_2.100bp.fastq.gz 2752 | gzip - > DRR014739_2.100bp.0.10x.fastq.gz
+
 # 0.25x
 ${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_1.100bp.fastq.gz 6880 | gzip - > DRR014739_1.100bp.0.25x.fastq.gz
 ${PROJECT_DIR}/bin/seqtk sample -s100 DRR014739_2.100bp.fastq.gz 6880 | gzip - > DRR014739_2.100bp.0.25x.fastq.gz
@@ -55,6 +68,15 @@ mkdir ${CONTROL_DIR}/metagenomic
 cd ${CONTROL_DIR}/metagenomic
 ln -s ${PROJECT_DIR}/sra-fastq/SRR1749070/SRR1749070_1.fastq.gz ${CONTROL_DIR}/metagenomic/SRR1749070-0x_1.fastq.gz
 ln -s ${PROJECT_DIR}/sra-fastq/SRR1749070/SRR1749070_2.fastq.gz ${CONTROL_DIR}/metagenomic/SRR1749070-0x_2.fastq.gz
+
+cat SRR1749070-0x_1.fastq.gz ../DRR014739_1.100bp.0.01x.fastq.gz > SRR1749070-0.01x_1.fastq.gz
+cat SRR1749070-0x_2.fastq.gz ../DRR014739_2.100bp.0.01x.fastq.gz > SRR1749070-0.01x_2.fastq.gz
+
+cat SRR1749070-0x_1.fastq.gz ../DRR014739_1.100bp.0.05x.fastq.gz > SRR1749070-0.05x_1.fastq.gz
+cat SRR1749070-0x_2.fastq.gz ../DRR014739_2.100bp.0.05x.fastq.gz > SRR1749070-0.05x_2.fastq.gz
+
+cat SRR1749070-0x_1.fastq.gz ../DRR014739_1.100bp.0.10x.fastq.gz > SRR1749070-0.10x_1.fastq.gz
+cat SRR1749070-0x_2.fastq.gz ../DRR014739_2.100bp.0.10x.fastq.gz > SRR1749070-0.10x_2.fastq.gz
 
 cat SRR1749070-0x_1.fastq.gz ../DRR014739_1.100bp.0.25x.fastq.gz > SRR1749070-0.25x_1.fastq.gz
 cat SRR1749070-0x_2.fastq.gz ../DRR014739_2.100bp.0.25x.fastq.gz > SRR1749070-0.25x_2.fastq.gz

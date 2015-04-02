@@ -52,7 +52,7 @@ NT="/data1/home/groups/readgp/nt/nt"
 for o in ${organisms[@]}; do
     for s in ${samples[@]}; do
         for p in ${plasmids[@]}; do
-            wd="results/${o}-control/${s}/${p}"
+            wd="mapping/results/${o}-control/${s}/${p}"
             mkdir -p ${wd}/coverage
             mkdir -p ${wd}/aligned-genes
             mkdir -p ${wd}/aligned-reads

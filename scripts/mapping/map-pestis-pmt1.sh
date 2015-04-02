@@ -112,10 +112,10 @@ NT="/data1/home/groups/readgp/nt/nt"
 
 for s in ${!samples[@]}; do
     for p in ${plasmids[@]}; do
-        wd="results/yersinia/${s}/${p}"
-        # mkdir -p ${wd}/coverage
-        # mkdir -p ${wd}/aligned-genes
-        # mkdir -p ${wd}/aligned-reads
+        wd="mapping/results/yersinia/${s}/${p}"
+        mkdir -p ${wd}/coverage
+        mkdir -p ${wd}/aligned-genes
+        mkdir -p ${wd}/aligned-reads
 
         fq1="sra-pathogens/yersinia/${samples[$s]}/${s}_1.fastq.gz"
         fq2="sra-pathogens/yersinia/${samples[$s]}/${s}_2.fastq.gz"
@@ -124,48 +124,48 @@ for s in ${!samples[@]}; do
         cov="${wd}/coverage/${s}.coverage.gz"
 
         # Align using BWA, sort sam to bam and index bam
-        # bin/bwa mem -t 20 ${reference[$p]} ${fq1} ${fq2} > ${sam}
-        # samtools view -@ 10 -bS ${sam} | samtools sort -@ 10 - ${wd}/${s}
-        # samtools index -b ${bam}
-        # rm ${sam}
+        bin/bwa mem -t 20 ${reference[$p]} ${fq1} ${fq2} > ${sam}
+        samtools view -@ 10 -bS ${sam} | samtools sort -@ 10 - ${wd}/${s}
+        samtools index -b ${bam}
+        rm ${sam}
 
         # Use genomeCoverageBed to get the coverage for each position and plot
         # the coverage for differening sliding windows with 0.5 overlap
-        # genomeCoverageBed -d -ibam ${bam} | gzip --best - > ${cov}
-        # scripts/mapping/plot-coverage.R ${cov} 0.5 ${p}
+        genomeCoverageBed -d -ibam ${bam} | gzip --best - > ${cov}
+        scripts/mapping/plot-coverage.R ${cov} 0.5 ${p}
 
         # Plot coverage across complete plasmid, and murine toxin gene
-        # scripts/mapping/plot-pmt1-murine-toxin-coverage.R ${cov} ${gff[$p]}
+        scripts/mapping/plot-pmt1-murine-toxin-coverage.R ${cov} ${gff[$p]}
 
         # R plot to PNG did not display correctly so convert the SVG to PNG
-        # convert -density 300 -resize 2400x1200 ${wd}/coverage/${s}-murine-toxin.svg ${wd}/coverage/${s}-murine-toxin.png
+        convert -density 300 -resize 2400x1200 ${wd}/coverage/${s}-murine-toxin.svg ${wd}/coverage/${s}-murine-toxin.png
 
         # Extract reads mapped to murine toxin gene and determine the top 5
-        # blast hits against the NT database
-        # for g in ${!genes[@]}; do
-        #     fasta=${wd}/aligned-genes/${g}.fasta
-        #     blastn=${wd}/aligned-genes/${g}.blastn
-        #     summary=${wd}/aligned-genes/${g}.summary
+        blast hits against the NT database
+        for g in ${!genes[@]}; do
+            fasta=${wd}/aligned-genes/${g}.fasta
+            blastn=${wd}/aligned-genes/${g}.blastn
+            summary=${wd}/aligned-genes/${g}.summary
 
             # Extract mapped reads as FASTA
-        #     samtools view ${bam} "gi|5834685|emb|AL117211.1|":${genes[$g]} | awk '{OFS="\t"; print ">"$1"\n"$10}' > ${fasta}
+            samtools view ${bam} "gi|5834685|emb|AL117211.1|":${genes[$g]} | awk '{OFS="\t"; print ">"$1"\n"$10}' > ${fasta}
 
             # BLAST against nt
-        #     blastn -query ${fasta} -outfmt "${OUTFMT}" -db ${NT} -num_threads 20  -max_target_seqs 5 > ${blastn}
+            blastn -query ${fasta} -outfmt "${OUTFMT}" -db ${NT} -num_threads 20  -max_target_seqs 5 > ${blastn}
 
             # Produce summary of hits
-        #     grep -c "^>" ${fasta} | awk '{print "Total Reads:",$1,"\n"}' > ${summary}
-        #     echo "Organism Hit Counts" >> ${summary}
-        #     awk '{print $1,$2}' ${blastn} | sort | uniq -c | sort -rn >> ${summary}
-        # done
+            grep -c "^>" ${fasta} | awk '{print "Total Reads:",$1,"\n"}' > ${summary}
+            echo "Organism Hit Counts" >> ${summary}
+            awk '{print $1,$2}' ${blastn} | sort | uniq -c | sort -rn >> ${summary}
+        done
         awk '{print $1,$2}' ${wd}/aligned-genes/*.blastn | sort | uniq -c | sort -rn > ${wd}/aligned-genes/all.summary
 
         # Extract aligned reads using bam2fastq and convert to fasta
-        # ofq="${wd}/aligned-reads/${samples[$s]}_${s}#.fastq"
-        # bin/bam2fastq -o ${ofq} --no-unaligned ${bam}
-        # cat ${wd}/aligned-reads/*.fastq | fastq_to_fasta -Q33 -n | gzip --best - > ${wd}/aligned-reads/${samples[$s]}_${s}.fasta.gz
-        # gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_1.fastq"
-        # gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_2.fastq"
+        ofq="${wd}/aligned-reads/${samples[$s]}_${s}#.fastq"
+        bin/bam2fastq -o ${ofq} --no-unaligned ${bam}
+        cat ${wd}/aligned-reads/*.fastq | fastq_to_fasta -Q33 -n | gzip --best - > ${wd}/aligned-reads/${samples[$s]}_${s}.fasta.gz
+        gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_1.fastq"
+        gzip --best "${wd}/aligned-reads/${samples[$s]}_${s}_2.fastq"
 
     done
 done
