@@ -42,15 +42,15 @@ to download each of the 1572 runs associated with SRA study
 We then converted each run from SRA format to FASTQ format using *fastq-dump*, again from SRA Toolkit (v 2.4.4). 
 Each FASTQ file was also converted to FASTA format using *fastq_to_fasta* from 
 [FASTX Toolkit (v 0.0.13.2)](http://hannonlab.cshl.edu/fastx_toolkit/download.html). For each SRA run we used the 
-information contained in [SRP051511_info.txt](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/data/SRP051511_info.txt), acquired from SRP051511's RunInfo Table, to associate sample names used in the study with
+information contained in [SRP051511_info.txt](/data/SRP051511_info.txt), acquired from SRP051511's RunInfo Table, to associate sample names used in the study with
 their corresponding SRA run accessions.
 
 We created the python script, 
-[extract_pathogens.py](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/extract-pathogens.py), 
-to parse [DataTable5-metaphlan-metadata_v19.txt](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/data/DataTable5-metaphlan-metadata_v19.txt). 
+[extract_pathogens.py](/scripts/extract-pathogens.py), 
+to parse [DataTable5-metaphlan-metadata_v19.txt](/data/DataTable5-metaphlan-metadata_v19.txt). 
 From this we were able to determine which NYC samples contained reads associated with *Bacillus antracis* and 
 the *Yersinia* genus. We then used another python script, 
-[map-pathogens.py](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/map-pathogens.py) 
+[map-pathogens.py](/scripts/map-pathogens.py) 
 in order to associate the NYC sample names with their corresponding SRA run accession.
 
 The following runs were identified as containing reads associated with *Bacillus antracis* and the *Yersinia* genus:
@@ -153,9 +153,9 @@ The reuslts are in seperate folders for each whole genome sequence:
  
  Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* to test for detection of the *anthracis* reads.
  
- The results from Kraken [Control Results](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/tree/master/results/Anthrax_control) suggests that kraken analysis could detect presence of minute amount of sequence reads from the organism.
+ The results from Kraken [Control Results](/results/Anthrax_control) suggests that kraken analysis could detect presence of minute amount of sequence reads from the organism.
 
- We used python script [parse_kraken.py](https://github.com/Read-Lab-Confederation/nyc-subway-metagenome/blob/master/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
+ We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
 ###### *B.anthracis and B.cereus reads, species distribution*
  ![B. cereus](/results/Anthrax_control/cereus.png "B.cereus")
