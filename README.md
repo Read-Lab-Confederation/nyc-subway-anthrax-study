@@ -15,6 +15,15 @@ of the data on microbe.net, where they admitted that they overreached on the ant
 little to no evidence for the presence of those organisms
 
 The question is - why did the software give false positive results and what exactly was found in the subway?  
+##Methods
+
+##Results
+
+##Prerspective
+
+Need - organism-sepcific detection.
+
+Remember - "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
 
 ## Project Data Structure
 
