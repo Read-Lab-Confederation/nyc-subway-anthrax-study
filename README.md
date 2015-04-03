@@ -234,7 +234,7 @@ We then generated all the 31-mers present in all the 6,948  *[B. cereus group](h
 
 ##Generating all 31-mers for all the B. anthracis control groups, B. cereus control groups and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
 
-Here we used the same control samples previously described for B. anthracis and B, cereus.
+Here we used the same control samples previously described for B. anthracis and B, cereus. 
 
 #### Table 2: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for each of the B. anthracis control samples
 
@@ -277,3 +277,10 @@ Here we used the same control samples previously described for B. anthracis and 
 |  SRR1749070-1.0x_2 |                 0                |
 |  SRR1749070-5.0x_1 |                 0                |
 |  SRR1749070-5.0x_2 |                 0                |
+
+#### Table 4: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for 3 of the NYC Subway system B. anthracis positive samples.
+|    Study   | Number of non-zero 31-mer counts |
+|:----------:|:--------------------------------:|
+| SRR1749083 |                 0                |
+| SRR1748708 |                 2                |
+| SRR1748707 |                 0                |
