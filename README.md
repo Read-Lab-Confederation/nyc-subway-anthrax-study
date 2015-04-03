@@ -279,15 +279,15 @@ For those control samples that didn't had any Anthrax reads (0X coverage), none 
 |  SRR1749070-5.0x_1 |                 0                |
 |  SRR1749070-5.0x_2 |                 0                |
 
-As expected none of the 31-mers from the samples in the B. cereus control group matched to the Anthrax-specific 31-mers. This indicates the how reliable is the 1793 Anthrax-specific 31-mers generated in this analysis to differentiate the highly similar B. anthracis and B. cereus genomes at the nucleotide level.
+As expected, none of the 31-mers from the samples in the B. cereus control group matched to the Anthrax-specific 31-mers. This indicates how reliable/sensitive are the 1793 Anthrax-specific 31-mers generated in this analysis inorder to differentiate the highly similar B. anthracis and B. cereus genomes at the nucleotide level.
 
-#### Table 4: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for 3 of the NYC Subway system B. anthracis positive samples.
-|    Study   | Number of non-zero 31-mer counts |
+#### Table 4: Summary of the number of matched 31-mers from each of the 3 NY Subway sytem Anthrax positve samples with the 1793 Anthrax-specific 31-mers.
+|    Study   |Number of matched 31-mers with Anthrax-specific 31-mers |
 |:----------:|:--------------------------------:|
 | SRR1749083 |                 0                |
 | SRR1748708 |                 2                |
 | SRR1748707 |                 0                |
 
-Only sample SRR1748708 has 2 Anthrax-specific 31-mers with a frequency count of 2 each, and rest of the samples have 0 counts.
+Only sample SRR1748708 has two 31-mers that matched Anthrax-specific 31-mers with a frequency count of 2 for each of the 31-mers. This might indicate, if some how B. anthracis is present in the sample, it would be only at amount equvalent to 0.01X coverage. 31-mers from the rest of the "Anthrax positive" samples didn't match to any of the Anthrax-specific 31-mers, indicating the absence of B. anthracis.
 
 
