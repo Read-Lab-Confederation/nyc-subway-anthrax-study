@@ -294,5 +294,5 @@ Only sample SRR1748708 has two 31-mers that matched Anthrax-specific 31-mers wit
 
 | SNP position on the B. anthracis genome of the Anthrax-specific 31-mers matched | The Anthrax-specific 31-mers detected in SRR1748708 | Number of matched 31-mers with Anthrax-specific 31-mers | Gene annotations of r the 31-mers |
 |:-------------------------------------------------------------------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|:---------------------------------:|
-|                                     4083672                                     |           TGTGCCCCATCCTGAGCATACAACTTTATAA           |                            2                            |       nucleotidyltransferase      |
+|                                     4083672                                     |           TGTGCCCCATCCTGAGCATACAACTTTATAA           |                            2                            |       nucleotidyltransferase[GBAA4491](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4082774&to=4085128&RID=HYA30CNN013)      |
 |                                     4136672                                     |           ACATAGAACAAGTGACATTCTATCAAACGGT           |                            2                            |          intergenic region        |
