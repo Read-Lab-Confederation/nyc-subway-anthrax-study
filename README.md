@@ -231,3 +231,28 @@ First, we extracted all the 31-mers in and around all the the 9538 Anthrax-speci
 
 We then generated all the 31-mers present in all the 6,948  *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
 (excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script QueryBcereusGroup.sh(/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the Bcereus database were outputed. A total of 1793/9538 31-mers that had zero- counts were obtained and these 31-mers with the Anthrax-specific SNP at the 16th position was considered as the Anthrax-specific 31-mers and was used in all the further down stream analysis.
+
+##Generating all 31-mers for all the B. anthracis control groups, B. cereus control groups and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
+
+Here we used the same control samples previously described for B. anthracis and B, cereus.
+
+#### Table 2: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were quieried against all the 31-mers generated for each of the B. anthracis control samples
+
+|        Study       | Number of non-zero 31-mer counts |
+|:------------------:|:--------------------------------:|
+|   SRR1749070-0x_1  |                 0                |
+|   SRR1749070-0x_2  |                 0                |
+| SRR1749070-0.01x_1 |                 3                |
+| SRR1749070-0.01x_2 |                 1                |
+| SRR1749070-0.05x_1 |                20                |
+| SRR1749070-0.05x_2 |                22                |
+|  SRR1749070-0.1x_1 |                33                |
+|  SRR1749070-0.1x_2 |                39                |
+| SRR1749070-0.25x_1 |                106               |
+| SRR1749070-0.25x_2 |                96                |
+|  SRR1749070-0.5x_1 |                198               |
+|  SRR1749070-0.5x_2 |                195               |
+|  SRR1749070-1.0x_1 |                352               |
+|  SRR1749070-1.0x_2 |                377               |
+|  SRR1749070-5.0x_1 |               1153               |
+|  SRR1749070-5.0x_2 |               1158               |
