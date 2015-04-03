@@ -1,6 +1,6 @@
 # Searching for anthrax (and plague) in the New York City Subway Metagenome.
 
-By Robert Petit III, Matthew Ezewudo, Sandeep Joseph and *Timothy D. Read,
+By Robert Petit III, Matthew Ezewudo, Sandeep J.Joseph and *Timothy D. Read,
 Emory University School of Medicine, Atlanta, Georgia
 
 ##Introduction
@@ -203,7 +203,7 @@ First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31
 
 ##Identifying B.anthracis specific SNPs from the whole genome alignment*
 
-    ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus species genomes (Table 1) that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity of all the Bacillus species. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The B. cereus strain ATCC 10987 was used as the reference genome for SNP calling (see below).
+    ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus species genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity of all the Bacillus species. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The B. cereus strain ATCC 10987 was used as the reference genome for SNP calling (see below).
     
 #### Table 1: Genome sequences of Bacillus species used for ProgressiveMAUVE. 
 | Strain name   | Species                | File name    | RefSeq/SRA  | Clade |
@@ -218,8 +218,6 @@ First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31
 | ATCC 1479     | Bacillus cereus        | BC.fasta     | NC_004721-2 | 2     |
 | E33L          | Bacillus cereus        | BCZK.fasta   | NC_006274   | 1     |
 | BGSC 4BD1     | Bacillus thuringiensis | bth11_.fasta | SRX098635   | 2     |
-
-    The MAUVE alignment was loaded into MAUVE Version 2.4.0 inorder to visualize the alignment and to export the SNPs using the "export SNP" option. The nucleotide positions of the reference genome (BCE.fasta, ATCC 10987) as well as the corresponding SNP position on the B. anthracis genome, along with the 10 nucleotide pattern at the position were extracted. In this nucleotide pattern, the first nuleotide will be from the reference genome and the 3rd nucleotide will be from the B. anthracis genome. Anthrax-specific SNPs (i.e SNP nucloetide positions found in only the Anthrax genome) were identified using the script [SNPPattern.awk](/scripts/SNPPattern.awk), where a number (corresponding to the position of the nucleotide variant) were assigned. Finally, those nucleotide positions that have only the number 3 assigned (position of the B. anthracis genome on the alignment) was extracted along with the corresponding nucleotide positions at the reference genome as well as at the B.anthracis genome (*[Anthrax_specific-SNPPattern.txt](/data/Anthrax_specific-SNPPattern.txt)*).
 
 Next, using the query:
 
