@@ -236,7 +236,7 @@ We then generated all the 31-mers present in all the 6,948  *[B. cereus group](h
 
 Here we used the same control samples previously described for B. anthracis and B, cereus.
 
-#### Table 2: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were quieried against all the 31-mers generated for each of the B. anthracis control samples
+#### Table 2: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for each of the B. anthracis control samples
 
 |        Study       | Number of non-zero 31-mer counts |
 |:------------------:|:--------------------------------:|
@@ -256,3 +256,24 @@ Here we used the same control samples previously described for B. anthracis and 
 |  SRR1749070-1.0x_2 |                377               |
 |  SRR1749070-5.0x_1 |               1153               |
 |  SRR1749070-5.0x_2 |               1158               |
+
+#### Table 3: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for each of the B. cereus control samples
+
+|        Study       | Number of non-zero 31-mer counts |
+|:------------------:|:--------------------------------:|
+|   SRR1749070-0x_1  |                 0                |
+|   SRR1749070-0x_2  |                 0                |
+| SRR1749070-0.01x_1 |                 0                |
+| SRR1749070-0.01x_2 |                 0                |
+| SRR1749070-0.05x_1 |                 0                |
+| SRR1749070-0.05x_2 |                 0                |
+|  SRR1749070-0.1x_1 |                 0                |
+|  SRR1749070-0.1x_2 |                 0                |
+| SRR1749070-0.25x_1 |                 0                |
+| SRR1749070-0.25x_2 |                 0                |
+|  SRR1749070-0.5x_1 |                 0                |
+|  SRR1749070-0.5x_2 |                 0                |
+|  SRR1749070-1.0x_1 |                 0                |
+|  SRR1749070-1.0x_2 |                 0                |
+|  SRR1749070-5.0x_1 |                 0                |
+|  SRR1749070-5.0x_2 |                 0                |
