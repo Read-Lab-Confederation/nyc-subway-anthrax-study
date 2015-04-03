@@ -1,6 +1,6 @@
 # Searching for anthrax (and plague) in the New York City Subway Metagenome.
 
-By Robert Petit III, Matthew Ezewudo, Sandeep J.Joseph and *Timothy D. Read,
+By Robert Petit III, Matthew Ezewudo, Sandeep J. Joseph and *Timothy D. Read,
 Emory University School of Medicine, Atlanta, Georgia
 
 ##Introduction
