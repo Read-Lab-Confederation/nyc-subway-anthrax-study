@@ -197,11 +197,11 @@ The reuslts are in seperate folders for each whole genome sequence:
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
 
 
-##*B. anthracis* specific SNPs (Sandeep)
+## *B. anthracis* specific SNPs (Sandeep)
 
 First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
 
-##Identifying B. anthracis specific SNPs from the whole genome alignment*
+## Identifying B. anthracis specific SNPs from the whole genome alignment*
 
 ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus species genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity of all the Bacillus species. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The B. cereus strain ATCC 10987 was used as the reference genome for SNP calling (see below).
     
@@ -221,7 +221,7 @@ ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus speci
 
 The MAUVE alignment was loaded into MAUVE Version 2.4.0 inorder to visualize the alignment and to export the SNPs using the "export SNP" option. The nucleotide positions of the reference genome (BCE.fasta, ATCC 10987) as well as the corresponding SNP position on the B. anthracis genome, along with the 10 nucleotide pattern at the position were extracted. In this nucleotide pattern, the first nuleotide will be from the reference genome and the 3rd nucleotide will be from the B. anthracis genome. Anthrax-specific SNPs (i.e SNP nucloetide positions found in only the Anthrax genome) were identified using the script [SNPPattern.awk](/scripts/SNPPattern.awk), where a number (corresponding to the position of the nucleotide variant) were assigned. Finally, those nucleotide positions that have only the number 3 assigned (position of the B. anthracis genome on the alignment) was extracted along with the corresponding nucleotide positions at the reference genome as well as at the B. anthracis genome (*[Anthrax_specific-SNPPattern.txt](/data/Anthrax_specific-SNPPattern.txt)*). Total 9538 Anthrax-specific SNPs were identified.
 
-##Generating all the B. cereus 31-mers to downselect against the 9538 Anthrax-specific SNPs*
+## Generating all the B. cereus 31-mers to downselect against the 9538 Anthrax-specific SNPs*
 
 Next, using the query:>[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D)), we downloaded 6,948 *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
 (excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) 
@@ -232,7 +232,7 @@ First, we extracted all the 31-mers in and around all the the 9538 Anthrax-speci
 We then generated all the 31-mers present in all the 6,948  *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
 (excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script QueryBcereusGroup.sh(/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the Bcereus database were outputed. A total of 1793/9538 31-mers that had zero- counts were obtained and these 31-mers with the Anthrax-specific SNP at the 16th position was considered as the Anthrax-specific 31-mers and was used in all the further down stream analysis.
 
-##Generating all 31-mers for all the B. anthracis control groups, B. cereus control groups and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
+## Generating all 31-mers for all the B. anthracis control groups, B. cereus control groups and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
 
 Here we used the same control samples previously described for B. anthracis and B, cereus. 
 
