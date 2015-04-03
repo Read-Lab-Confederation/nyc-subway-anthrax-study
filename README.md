@@ -236,7 +236,7 @@ We then generated all the 31-mers present in all the 6,948  *[B. cereus group](h
 
 Here we used the same control samples previously described for B. anthracis and B. cereus in this analysis. All the 31-mers were generated using the script [Getting_KmerCounts.sh](/scripts/Getting_KmerCounts.sh).The B. anthracis-specific 1793 31-mers were queried against the 31-mer database of all the control and real samples using [QueryAnthraxSNPs.sh](/scripts/QueryAnthraxSNPs.sh) and the 31-mers that matched the B. anthracis-specific 1793 31-mers were extracted along with their counts in each sample.
 
-#### Table 2: Summary of the number of matched 31-mers from each of B. anthracis control samples with the  1793 Anthrax-specific 31-mers. 
+#### Table 2: Summary of the number of matched 31-mers from each of B. anthracis control samples with the 1793 Anthrax-specific 31-mers. 
 |        Study       | Number of matched 31-mers with Anthrax-specific 31-mers |
 |:------------------:|:--------------------------------:|
 |   SRR1749070-0x_1  |                 0                |
@@ -256,11 +256,11 @@ Here we used the same control samples previously described for B. anthracis and 
 |  SRR1749070-5.0x_1 |               1153               |
 |  SRR1749070-5.0x_2 |               1158               |
 
-For those control samples that didn't had any Anthrax reads (0X coverage), none of the Anthrax-specific 31-mers were matched, a result that is expected. Similarily, the number of 31-mers matched to the Anthrax 31-mers were directly proportional to the coverage or the amount of B. anthracis reads present in those samples. From Table 2 we may infer that to detect the presence of Anthrax, there should be atleast 0.01X coverage of B. anthracis reads in the sample, which can be considered as the minimum threshold for Anthrax detection using 31-mers.
+For those control samples that didn't had any Anthrax reads (0X coverage), none of the Anthrax-specific 31-mers were matched, a result that is expected. Similarily, the number of 31-mers matched to the Anthrax 31-mers were directly proportional to the coverage or the amount of B. anthracis reads present in those samples. From Table 2 we may infer that to detect the presence of Anthrax, there should be atleast 0.01X coverage of B. anthracis reads in the sample, which can be considered as the minimum threshold for Anthrax detection using 31-mers. Even at 5X coverage only 65% of the Anthrax-specific 31-mers were matched.
 
-#### Table 3: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for each of the B. cereus control samples
+#### Table 3: Summary of the number of matched 31-mers from each of B. cereus control samples with the 1793 Anthrax-specific 31-mers.
 
-|        Study       | Number of non-zero 31-mer counts |
+|        Study       | Number of matched 31-mers with Anthrax-specific 31-mers  |
 |:------------------:|:--------------------------------:|
 |   SRR1749070-0x_1  |                 0                |
 |   SRR1749070-0x_2  |                 0                |
@@ -278,6 +278,8 @@ For those control samples that didn't had any Anthrax reads (0X coverage), none 
 |  SRR1749070-1.0x_2 |                 0                |
 |  SRR1749070-5.0x_1 |                 0                |
 |  SRR1749070-5.0x_2 |                 0                |
+
+As expected none of the 31-mers from the samples in the B. cereus control group matched to the Anthrax-specific 31-mers. This indicates the how reliable is the 1793 Anthrax-specific 31-mers generated in this analysis to differentiate the highly similar B. anthracis and B. cereus genomes at the nucleotide level.
 
 #### Table 4: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for 3 of the NYC Subway system B. anthracis positive samples.
 |    Study   | Number of non-zero 31-mer counts |
