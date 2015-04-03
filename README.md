@@ -219,6 +219,8 @@ First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31
 | E33L          | Bacillus cereus        | BCZK.fasta   | NC_006274   | 1     |
 | BGSC 4BD1     | Bacillus thuringiensis | bth11_.fasta | SRX098635   | 2     |
 
+The MAUVE alignment was loaded into MAUVE Version 2.4.0 inorder to visualize the alignment and to export the SNPs using the "export SNP" option. The nucleotide positions of the reference genome (BCE.fasta, ATCC 10987) as well as the corresponding SNP position on the B. anthracis genome, along with the 10 nucleotide pattern at the position were extracted. In this nucleotide pattern, the first nuleotide will be from the reference genome and the 3rd nucleotide will be from the B. anthracis genome. Anthrax-specific SNPs (i.e SNP nucloetide positions found in only the Anthrax genome) were identified using the script [SNPPattern.awk](/scripts/SNPPattern.awk), where a number (corresponding to the position of the nucleotide variant) were assigned. Finally, those nucleotide positions that have only the number 3 assigned (position of the B. anthracis genome on the alignment) was extracted along with the corresponding nucleotide positions at the reference genome as well as at the B.anthracis genome (*[Anthrax_specific-SNPPattern.txt](/data/Anthrax_specific-SNPPattern.txt)*).
+
 Next, using the query:
 
 >[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D)) 
