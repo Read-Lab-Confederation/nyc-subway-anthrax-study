@@ -9,20 +9,20 @@ an in-depth analysis of metagenomic data (environmental shotgun DNA sequence) fr
 in the New York City (NYC) Subway. Along with a ton of really interesting findings, the authors claimed 
 to have detected DNA from the bacterial biothreat pathogens *Bacillus anthracis* (which causes anthrax) and 
 *Yersinia pestis* (causes plague) in some of the samples. This predictably led to a press firestorm and skepticism from
-scientistis on social media.  Chris and his team followed up with an 
+scientistis on social media.  The authors followed up with an 
 [re-analysis](http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/) 
 of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims and there was 
 actually little to no evidence for the presence of those organisms.
 
-We were interested in looking deeping into why the software gave false positive results and what exactly was found in the subway samples.  We stared messing around with some programs and decided to wrap up the results on this site.  The study rasied very timely questions about that hot topic of using metagenomics for detection. Mostly, we looked at *B. anthracis* but we present some results looking at *Y.pstis* and can update this later.
+The NYC subway metagenome study rasied very timely questions about the hot topic of using unbiased DNA sequencing for detection.  We were interested in this dataset as son as the publication appeared and started looking deepier into why the anlysis software gave false positive results and indeed what exactly was found in the subway samples.  We decided to wrap up the results of our preliminary analysis and put it on this site.   Mostly, we looked at *B. anthracis* but we present some results looking at *Y.pstis* and can update this later.
 
 ##Overview
 The results are organized in 4 sections:  
 
 1.  **Accessing metagenome data and controls:**  Where we obtained the data and how we constructed artificial controls by mixing recent whole genome shotgun data from pathogens and near-neighbors with NYC subway metagenome data.  
-2.  [**Mapping plasmids to metagenome data:**](/_sections/results-anthracis.md)    Looked at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pstis*) in metagenome samples and controls.  
-3.  **Kraken metagenome detection:** Kraken is a popular kmer based software for read identification.  We rhowed that Kraken was sensitive for *B. anthracis* detection but also produced a small n umber of false positive reads in the B. cereus genome project.  
-4.  **Custom SNP assays for B. anthracis:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
+2.  [**Mapping plasmids to metagenome data:**](/_sections/results-anthracis.md)    Looked at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pestis*) in metagenome samples and controls.  
+3.  **Kraken metagenome detection:** [Kraken](http://genomebiology.com/2014/15/3/R46) is a popular kmer based software for read identification.  We showed that Kraken was a sensitive way to find *B. anthracis* when it was present in low abundance but the methodalso produced a small number of false positive reads on near-neighbor B. cereus sequence control data.  
+4.  **Custom SNP assays for *B. anthracis*:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
 
 ##Summary of conclusions
 
@@ -30,13 +30,13 @@ The results are organized in 4 sections:
 
 ##Perspective
 
-We believe that there is no one-size-fits-all approach to bacterial species indetification in metagenome samples for several reasons.  Perhaps most importantly, there is no consistent definition for a bacterial species that can be used a cutoff for sequence dentity.  Some species (like *B. cereus* and *B. anthracis* can be 99% similar to each other).  Secondly, some species distinctions rely on the presence or absence of mobile elements (again *B. cereus* and *B. anthracis* are a great example), which are hard to model using a uniform approach like Kraken or Metaphlan. These plasmids or phage or often modular in structure with very similar 'backbones' but with key genes replaced.  Finally, the generalist species indentification programs rely on databases of sequenced genomes, whcih are not uniform in their coverage of different species, or different lineages within species.
+We believe that one of the biggest messages to take from this affair is that there is no one-size-fits-all approach to bacterial species indetification in metagenome samples.  There are several reasons.  Perhaps most importantly, there is no consistent definition across all exisitng bacterial species that can be used a cutoff based on DNA sequence dentity.  Some species (like *B. cereus* and *B. anthracis*) can be 99% similar to each other.  Secondly, some species distinctions rely on the presence or absence of mobile elements like plasmids and phages(again *B. cereus* and *B. anthracis* are a great example), which are hard to model using a uniform approach like Kraken or Metaphlan. These genetic elements or often modular in structure with very similar 'backbones' but with key genes replaced.  Finally, the generalist species indentification programs rely on databases of sequenced genomes, which are not uniform in their coverage of different species, or different lineages within species.
 
-If you were to have an organism-sepcific detection algorthim for *B. cereus* you would need to accout for the presence of the plasmids about xx times the coverage as the chromsome.  You would also expext even coverage across all the 
+Individual species will have their own unique features that can be used to extract information from metagenomic sequence. In this case, if you were to have an organism-specific detection algorthim for *B. cereus* you would need to accout for the presence of the plasmids about xx times the coverage as the chromsome.  You would also expext even coverage across all the 
 
-Even if you have developed a sophisticated algorithm you will still need to use judgement in interpreting results.  There is still much that we dont know about bacteria in the envirnemnt, especialy the conditions under which they exxchange DNA.  
+Even if you have developed a sophisticated algorithm you will still need to use judgement in interpreting results.  There is still much that we dont know about bacteria in the environment, especialy the conditions under which they exxchange DNA.  Can we say that its not natural to find evidence of a small number of "anthracis spoecific" SNPs on a B. cereus chromsome?  This could be becasue its a close-relative thats not been sequenced, or because of recombination, or convergent evolution. Judgement is especially important where the amount of data supporting a putative pathogen is small.  Obviously orthologous validation (culture, PCR etc) is really useful.
 
-Finally, the negative result is subject to a lot of nuances.  The limit of detectection will be affected by the amount of sequence generated and the "negative for anthrax" is in the context of the depth of the metagenome sequecning, which sets the sensitivity of  detection. 
+Finally, the negative result is subject to a lot of nuances.  The limit of detectection will be affected by the amount of sequence generated and the "negative for anthrax" result is in the context of the depth of the metagenome sequecning.. 
 
 ## Project Data Structure
 
@@ -230,9 +230,9 @@ sequences in FASTA format from NCBI Refseq to downselect against the 9538 Anthra
 First, we extracted all the 31-mers in and around all the [9538 Anthrax-specific SNP positions](/data/Anthrax_Specific_SNP_31-mers_9538.txt) from the B. anthracis Ames ancestor genome so that the 16th nucleotide in the 31-mer will be the SNP at that specific position. This was done using the script [extractKmers.sh](/scripts/extractKmers.sh).
 
 We then generated all the 31-mers present in all the 6,948  *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
-(excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script QueryBcereusGroup.sh(/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the Bcereus database were outputed. A total of [1793/9538 31-mers](/data/Anthrax_Specific_SNP_31-mers_1793.txt) that had zero- counts were obtained and these 31-mers with the Anthrax-specific SNP at the 16th position was considered as the Anthrax-specific 31-mers and was used in all the further down stream analysis.
+(excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script QueryBcereusGroup.sh(/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the Bcereus database were outputed. A total of 1793/9538 31-mers that had zero- counts were obtained and these 31-mers with the Anthrax-specific SNP at the 16th position was considered as the Anthrax-specific 31-mers and was used in all the further down stream analysis.
 
-#### Generating all 31-mers for the B. anthracis and B. cereus control groups, and NYC Subway system B. anthracis positive samples, and querying all the [Anthrax-specific 1793 31-mers](/data/Anthrax_Specific_SNP_31-mers_1793.txt) against them.
+#### Generating all 31-mers for the B. anthracis and B. cereus control groups, and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
 
 Here we used the same control samples previously described for B. anthracis and B. cereus in this analysis. All the 31-mers were generated using the script [Getting_KmerCounts.sh](/scripts/Getting_KmerCounts.sh).The B. anthracis-specific 1793 31-mers were queried against the 31-mer database of all the control and real samples using [QueryAnthraxSNPs.sh](/scripts/QueryAnthraxSNPs.sh) and the 31-mers that matched the B. anthracis-specific 1793 31-mers were extracted along with their counts in each sample.
 
