@@ -232,9 +232,9 @@ First, we extracted all the 31-mers in and around all the the 9538 Anthrax-speci
 We then generated all the 31-mers present in all the 6,948  *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
 (excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script QueryBcereusGroup.sh(/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the Bcereus database were outputed. A total of 1793/9538 31-mers that had zero- counts were obtained and these 31-mers with the Anthrax-specific SNP at the 16th position was considered as the Anthrax-specific 31-mers and was used in all the further down stream analysis.
 
-#### Generating all 31-mers for all the B. anthracis control groups, B. cereus control groups and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
+#### Generating all 31-mers for the B. anthracis and B. cereus control groups, and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
 
-Here we used the same control samples previously described for B. anthracis and B, cereus. 
+Here we used the same control samples previously described for B. anthracis and B. cereus in this analysis. All the 31-mers were generated using the script [Getting_KmerCounts.sh](/scripts/Getting_KmerCounts.sh).The B. anthracis-specific 1793 31-mers were queried against the 31-mer database of all the control and real samples using [QueryAnthraxSNPs.sh](/scripts/QueryAnthraxSNPs.sh).
 
 #### Table 2: Summary of the non-zero counts of the 1793 Anthrax-specific 31-mers that were queried against all the 31-mers generated for each of the B. anthracis control samples
 
