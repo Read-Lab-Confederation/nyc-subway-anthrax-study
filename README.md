@@ -290,4 +290,9 @@ As expected, none of the 31-mers from the samples in the B. cereus control group
 
 Only sample SRR1748708 has two 31-mers that matched Anthrax-specific 31-mers with a frequency count of 2 for each of the 31-mers. This might indicate, if some how B. anthracis is present in the sample, it would be only at amount equvalent to 0.01X coverage. 31-mers from the rest of the "Anthrax positive" samples didn't match to any of the Anthrax-specific 31-mers, indicating the absence of B. anthracis.
 
+#### Table 5: Anthrax-specific K-mers identified from the NYC subway system SRR1748708 sample
 
+| SNP position on the B. anthracis genome of the Anthrax-specific 31-mers matched | The Anthrax-specific 31-mers detected in SRR1748708 | Number of matched 31-mers with Anthrax-specific 31-mers | Gene annotations of r the 31-mers |
+|:-------------------------------------------------------------------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|:---------------------------------:|
+|                                     4083672                                     |           TGTGCCCCATCCTGAGCATACAACTTTATAA           |                            2                            |       nucleotidyltransferase      |
+|                                     4136672                                     |           ACATAGAACAAGTGACATTCTATCAAACGGT           |                            2                            |          intergenic region        |
