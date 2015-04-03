@@ -201,7 +201,7 @@ The reuslts are in seperate folders for each whole genome sequence:
 
 First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
 
-##Identifying B.anthracis specific SNPs from the whole genome alignment
+##Identifying B.anthracis specific SNPs from the whole genome alignment*
 
     ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus species genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity of all the Bacillus species. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The B. cereus strain ATCC 10987 was used as the reference genome for SNP calling (see below).
     
