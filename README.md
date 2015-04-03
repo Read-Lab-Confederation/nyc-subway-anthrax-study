@@ -285,6 +285,6 @@ Here we used the same control samples previously described for B. anthracis and 
 | SRR1748708 |                 2                |
 | SRR1748707 |                 0                |
 
-Only sample SRR1748708 has 2 Anthrax-specific 31-mers with a frequency count 2 and rest of the samples have 0 counts.
+Only sample SRR1748708 has 2 Anthrax-specific 31-mers with a frequency count of 2 each, and rest of the samples have 0 counts.
 
 
