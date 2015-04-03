@@ -201,6 +201,23 @@ The reuslts are in seperate folders for each whole genome sequence:
 
 First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
 
+##Identifying B.anthracis specific SNPs from the whole genome alignment
+    ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus species genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity of all the Bacillus species. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The B. cereus strain ATCC 10987 was used as the reference genome for SNP calling (see below).
+    
+#### Table 1: Genome sequences of Bacillus species used for ProgressiveMAUVE. 
+| Strain name   | Species                | File name    | RefSeq/SRA  | Clade |
+|---------------|------------------------|--------------|-------------|-------|
+| ATCC10987     | Bacillus cereus        | BCE.fasta    | NC_003909   | 1     |
+| m1293         | Bacillus cereus        | bce1_.fasta  | SRX096996   | 1     |
+| Ames ancestor | Bacillus anthracis     | GBAA_.fasta  | NC_007530   | 1     |
+| Rock3-44      | Bacillus cereus        | bce22_.fasta | SRX098720   | 3     |
+| AH603         | Bacillus cereus        | bce26_.fasta | SRX098634   | 3     |
+| ATCC 10876    | Bacillus cereus        | bce2_.fasta  | SRX096081   | 2     |
+| MM3           | Bacillus cereus        | bce6_.fasta  | SRX098606   | 1     |
+| ATCC 1479     | Bacillus cereus        | BC.fasta     | NC_004721-2 | 2     |
+| E33L          | Bacillus cereus        | BCZK.fasta   | NC_006274   | 1     |
+| BGSC 4BD1     | Bacillus thuringiensis | bth11_.fasta | SRX098635   | 2     |
+
 Next, using the query:
 
 >[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D)) 
