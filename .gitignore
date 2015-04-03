@@ -5,7 +5,10 @@ bin/
 logs/
 references/*.fai
 references/index/
-results/
+*.bam
+*.sam
+*.bai
 src/
 
+.DS_Store
 
