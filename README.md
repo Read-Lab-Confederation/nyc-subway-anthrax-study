@@ -225,7 +225,7 @@ The MAUVE alignment was loaded into MAUVE Version 2.4.0 inorder to visualize the
 
 Next, using the query:>[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D)), we downloaded 6,948 *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
 (excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) 
-sequences in (*[FASTA format](/data/BCereus_Database.fasta)*) from NCBI Refseq to downselect against the 9538 Anthrax-specific SNPs. 
+sequences in FASTA format from NCBI Refseq to downselect against the 9538 Anthrax-specific SNPs. 
 
 First, we extracted all the 31-mers in and around all the the 9538 Anthrax-specific SNP positions from the B. anthracis Ames ancestor genome so that the 16th nucleotide in the 31-mer will be the SNP at that specific position. This was done using the script [extractKmers.sh](/scripts/extractKmers.sh).
 
