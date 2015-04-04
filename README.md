@@ -199,12 +199,12 @@ The reuslts are in seperate folders for each whole genome sequence:
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
  
 ###### *metagenome and cereus mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
- ![5x coverage](/results/kracken/anthracis-control/B.cereus5x_.png " cereus 5x coverage")
- ![1x coverage](/results/kracken/anthracis-control/B.cereus1x_.png "cereus 1x coverage")
- ![0.5x coverage](/results/kracken/anthracis-control/B.cereus0.5x_.png "cereus 0.5x coverage")
- ![0.25x coverage](/results/kracken/anthracis-control/B.cereus0.25x_.png "cereus 0.25x coverage") 
+ ![5x coverage](/results/kracken/anthracis-control/B.cereus5x.png " cereus 5x coverage")
+ ![1x coverage](/results/kracken/anthracis-control/B.cereus1x.png "cereus 1x coverage")
+ ![0.5x coverage](/results/kracken/anthracis-control/B.cereus0.5x.png "cereus 0.5x coverage")
+ ![0.25x coverage](/results/kracken/anthracis-control/B.cereus0.25x.png "cereus 0.25x coverage") 
 
-###### *Anthrcs positive metagenome samples, species distribution*
+###### *Anthraics positive metagenome samples, species distribution*
  ![P00134_1](/results/kracken/anthracis-control/P00134_1.png )
  ![P00134_2](/results/kracken/anthracis-control/P00134_2.png )
  ![P00497](/results/kracken/anthracis-control/P00497.png )
