@@ -180,7 +180,9 @@ The reuslts are in seperate folders for each whole genome sequence:
 
  We also performed a similar approach on the actual control sequence reads for both *B. anthracis* and *B. cereus* to identify presence of *B.anthracis*.
  
- Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* to test for detection of the *anthracis* reads.
+ Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* and *B. cereus* to test for detection of the *anthracis* reads.
+ 
+ Finally we ran the samples that were prior identified to be *B. anthracis* from the nyc subway project, and Kraken detected anthracis reads within each sample.
  
  The results from Kraken [Control Results](/results/Anthrax_control) suggests that kraken analysis could detect presence of minute amount of sequence reads from the organism.
 
@@ -195,8 +197,35 @@ The reuslts are in seperate folders for each whole genome sequence:
  ![1x coverage](/results/kracken/anthracis-control/1x_.png "anthracis 1x coverage")
  ![0.5x coverage](/results/kracken/anthracis-control/0.5x_.png "anthracis 0.5x coverage")
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
+ 
+###### *metagenome and cereus mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
+ ![5x coverage](/results/kracken/anthracis-control/B.cereus5x_.png " cereus 5x coverage")
+ ![1x coverage](/results/kracken/anthracis-control/B.cereus1x_.png "cereus 1x coverage")
+ ![0.5x coverage](/results/kracken/anthracis-control/B.cereus0.5x_.png "cereus 0.5x coverage")
+ ![0.25x coverage](/results/kracken/anthracis-control/B.cereus0.25x_.png "cereus 0.25x coverage") 
 
-
+###### *Anthrcs positive metagenome samples, species distribution*
+ ![P00134_1](/results/kracken/anthracis-control/P00134_1.png )
+ ![P00134_2](/results/kracken/anthracis-control/P00134_2.png )
+ ![P00497](/results/kracken/anthracis-control/P00497.png )
+ 
+###### Anthracis Kraken control runs summary
+|Run name | Description | B. anthracis reads | other bacillus reads | other species reads|
+|---------|-------------|--------------------|----------------------|--------------------|
+| 0.5x_   |0.5X enriched anthracis | 3446    | 29091                | 11517005           |
+| 0.25x_  |0.25X enriched anthracis | 1732   | 16219                | 11490012           |
+| 1x_     |1x_ enriched anthracis | 6969     | 54694                | 11571054           |
+| 5x_     |5x_ enriched anthracis | 35233    | 259841               | 12002947           |
+| B.cereus0.25x_|0.25X enriched cereus | 6   | 28495                | 11489686           |
+| B.cereus0.5x_|0.5X enriched cereus| 12     | 54058                | 11516632           |
+| B.cereus1x_   |1x_ enriched cereus | 23    | 105023               | 11570399           |
+| B.cereus5x_   |5x_ enriched cereus | 126   | 511557               | 11998576           |
+| P00134_1  |positive anthracis      | 110   | 29013                | 365541             |
+| P00134_2   |positive anthracis     | 1528  | 390672               | 3333666            |
+| P00497     |positive anthracis     | 251   | 597131               | 5033455            |
+| cereus     |B.cereus control       | 4405  | 8260273              | 98861              |
+| anthracis  |B.antracis control     | 917036| 597131               | 5033455            |
+ 
 ### *B. anthracis* specific SNPs (Sandeep)
 
 First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
