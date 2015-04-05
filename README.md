@@ -424,13 +424,13 @@ The reuslts are in seperate folders for each whole genome sequence:
 ###### SRR1749070-5.0x *B. cereus* control
  ![5.0x coverage](/results/kracken/anthracis-control/B.cereus0.25x.png "cereus 5.0x coverage") 
 
-###### SRR1749083 species distribution*
+###### SRR1748707 species distribution*
  ![SRR1749083](/results/kracken/anthracis-control/P00134_1.png )
  
-###### SRR1748707 species distribution* 
+###### SRR1748708 species distribution* 
  ![SRR1748707](/results/kracken/anthracis-control/P00134_2.png )
  
-###### SRR1748708 species distribution*  
+###### SRR1749083 species distribution*  
  ![SRR1748708](/results/kracken/anthracis-control/P00497.png )
  
 ###### Kraken runs summary
