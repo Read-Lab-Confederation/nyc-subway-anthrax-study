@@ -11,12 +11,17 @@ to have detected DNA from the bacterial biothreat pathogens *Bacillus anthracis*
 *Yersinia pestis* (causes plague) in some of the samples. This predictably led to a press firestorm and skepticism from
 scientistis on social media.  The authors followed up with an 
 [re-analysis](http://microbe.net/2015/02/17/the-long-road-from-data-to-wisdom-and-from-dna-to-pathogen/) 
-of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims and there was 
-actually little to no evidence for the presence of those organisms.
+of the data on microbe.net, where they admitted that they overreached on the anthrax and plague claims based on the tools that they were using for detection.
 
-The NYC subway metagenome study rasied very timely questions about the hot topic of using unbiased DNA sequencing for detection.  We were interested in this dataset as son as the publication appeared and started looking deepier into why the anlysis software gave false positive results and indeed what exactly was found in the subway samples.  We decided to wrap up the results of our preliminary analysis and put it on this site.   Mostly, we looked at *B. anthracis* but we present some results looking at *Y.pstis* and can update this later.
+*B. anthracis* is a Gram-positive bacterium that forms tough spores as part of its lifecycle.  The 5.2 Mega basepairs (Mb) main chromosome is very similar to those of other species called the '[*Bacillus cereus* group](http://genome.cshlp.org/content/22/8/1512)' (including *B. cereus*, *B. thuringiensis* and *B. mycoides*).  *Bacillus cereus* group in general are commonly found in soil but *B. anthracis* itself is very rare and generally associated with livestock grazing sites with a past history of anthrax.
+What sets *B. anthracis* apart from close relatives is the presence of two plasmids: pXO1 (181kb), which carries the lethal toxin genes and pXO2 (94kb), which includes genes for a protective capsule.  Without one of these plasmids, *B. anthracis* is generally thought of as attenuated.  Other *B. cereus* group baceria can have very similar plasmids to pXO1 and pXO2 but missing the important virulence genes.  Rarely, other *B. cereus* group carry pXO1 and appear to cause anthrax-like disease.  Its a confusing situation, not helped by the current overly-b=narrow species definitions.  This [recent review](http://www.annualreviews.org/doi/abs/10.1146/annurev.micro.091208.073255) give more details.
 
-##Overview
+The NYC subway metagenome study rasied very timely questions about the hot topic of using unbiased DNA sequencing for detection.  
+We were interested in this dataset as son as the publication appeared and started looking deepier into why the anlysis software gave false positive results and indeed what exactly was found in the subway samples.  We decided to wrap up the results of our preliminary analysis and put it on this site.   This report focuses on the results for *B. anthracis* but we also did some preliminary work on  *Y.pestis* and can follow up on this later.  
+
+
+
+##Methods Overview
 The results are organized in 4 sections:  
 
 1.  **Accessing metagenome data and controls:**  Where we obtained the data and how we constructed artificial controls by mixing recent whole genome shotgun data from pathogens and near-neighbors with NYC subway metagenome data.  
@@ -24,13 +29,24 @@ The results are organized in 4 sections:
 3.  **Species identification with Kraken :** [Kraken](http://genomebiology.com/2014/15/3/R46) is a popular kmer based software for read identification.  We showed that Kraken was a sensitive way to find *B. anthracis* when it was present in low abundance but the methodalso produced a small number of false positive reads on near-neighbor B. cereus sequence control data.  
 4.  **Custom SNP assays for *B. anthracis* core genome:** We identified 31-mer words that corresponded to SNPs in the core genome of *B. anthracis* that were not found in clase relative. This gave a rapid specific test for B. anthracis.  However, w still detected two potential positive SNPs in one of the NYC subway samples.
 
-##Summary of conclusions
+##Summary of results
 
-<finish this section when the work is completed>
+Our control experiments showed that direct mapping of sequences reads from the metagenome was a sensitive way to detect plasmids,  Plasmid reads were present when as little as 0.01x *B. anthracis* genome equivalents were added.  However, both *B. anthracis* and *B. cereus* reads mapped to pXO1 and pXO2 because the strain we used contained closely related mobile elements.  What differentiated *B. anthracis* from the control was that coverage was evenly distributed across the plasmids.  We found that the NYC samples had evidence of quite deep coverage of *B. cereus* like chromsome and plasmids, which was not an unexpected result.  The pattern of coverage of the plasmids qualitatively resembled *B. cereus* rather than *B. anthracis*.  
+
+We showed that Kraken was a sensitive tool for detection of *B. anthracis* down to at least 0.01X genome coverage.  However, the *B. cereus* control also gave us false positive *B. anthracis* reads, albeit at a lower incidence than the true positive.  On the NYC subway samples we obtained a reasonably large number of *B. anthracis* specific calls but this could be explained by the fact that the sample contained up to 50x chromosomal coverage of *B. cereus* group organisms.  
+
+Our custom assay of 1973 31-mers specific to the  *B. anthracis* core genome was sensitive at 0.01X *B. anthracis* genome coverage and did not give false positives on the *B. cereus* control at up to 5x coverage.  Surprisingly, we obtained 2 positive hits on on of the NYC subway samples. There are a number of possible reasons for this:
+
+1.	*B. anthracis* is truly present in this sample at about 0.01x genome coverage along with a much greater abundance of *B. cereus* group organisms.  At this leve of coverage we may be stochastically missing the signature hits to the lethal toxin gene in pXO1.  <ROBERT PLEASE CONFIRM> Altertatively we have *B. anthracis* variant that has lost its plasmids.  
+2.	The SNPs are present in a *B. cereus* strain, very closely related to *B. anthracis* that ha not been sequenced (if its sequence were available in a public database, it would have resulted in the SNPs being filtered out of consideration.  
+3.	The SNPs were present in a *B. cereus* strain whose ancestor had at some point undergone homologous recombination in this area of the chromosome with an ancestor of *B. anthracis*.  
+4.	The sequences were introduced through laboratory cross-contamination.
+
+Resolving these alternatives requires deeper sequence coverage of this sample preferably combined with culture and PCR-based analysis.
 
 ##Perspective
 
-We believe that one of the biggest messages to take from this affair is that there is no one-size-fits-all approach to bacterial species indetification in metagenome samples.  There are several reasons.  Perhaps most importantly, there is no consistent definition across all exisitng bacterial species that can be used a cutoff based on DNA sequence dentity.  Some species (like *B. cereus* and *B. anthracis*) can be 99% similar to each other.  Secondly, some species distinctions rely on the presence or absence of mobile elements like plasmids and phages(again *B. cereus* and *B. anthracis* are a great example), which are hard to model using a uniform approach like Kraken or Metaphlan. These genetic elements or often modular in structure with very similar 'backbones' but with key genes replaced.  Finally, the generalist species indentification programs rely on databases of sequenced genomes, which are not uniform in their coverage of different species, or different lineages within species.
+We believe that one of the biggest messages to take from this investigation is that there is no one-size-fits-all approach to bacterial species indetification in metagenome samples.  There are several reasons.  Perhaps most importantly, there is no consistent definition across all exisitng bacterial species that can be used a cutoff based on DNA sequence dentity.  Some the main chromsomes of some bacteria from different species (like *B. cereus* and *B. anthracis*) can be >99% similar to each other in terms of DNA sequence identity.  Secondly, some species distinctions rely on the presence or absence of mobile elements like plasmids and phages(again *B. cereus* and *B. anthracis* are a great example), which are hard to model using a uniform approach like Kraken or Metaphlan. These genetic elements or often modular in structure with very similar 'backbones' but with key genes replaced.  Finally, the generalist species indentification programs rely on databases of sequenced genomes, which are not uniform in their coverage of different species, or different lineages within species.
 
 Individual species will have their own unique features that can be used to extract information from metagenomic sequence. In this case, if you were to have an organism-specific detection algorthim for *B. cereus* you would need to accout for the presence of the plasmids about xx times the coverage as the chromsome.  You would also expext even coverage across all the 
 
