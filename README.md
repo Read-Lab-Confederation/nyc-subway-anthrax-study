@@ -1,4 +1,4 @@
-# Searching for anthrax in the New York City Subway Metagenome.
+# Searching for anthrax in the New York City subway metagenome.
 
 By Robert Petit III, Matthew Ezewudo, Sandeep J. Joseph and *Timothy D. Read,
 Emory University School of Medicine, Atlanta, Georgia
@@ -51,7 +51,7 @@ Individual species will have their own unique features that can be used to extra
 
 Even if you have developed a sophisticated algorithm you will still need to use judgement in interpreting results.  There is still much that we dont know about bacteria in the environment, especialy the conditions under which they exxchange DNA.  Can we say that its not natural to find evidence of a small number of "anthracis spoecific" SNPs on a B. cereus chromsome?  This could be becasue its a close-relative thats not been sequenced, or because of recombination, or convergent evolution. Judgement is especially important where the amount of data supporting a putative pathogen is small.  Obviously orthologous validation (culture, PCR etc) is really useful.
 
-Finally, the negative result is subject to a lot of nuances.  The limit of detectection will be affected by the amount of sequence generated and the "negative for anthrax" result is in the context of the depth of the metagenome sequecning.. 
+Finally, the negative result is subject to a lot of nuances.  The limit of detection will be affected by the amount of sequence generated and the complexity of the microbial community.
 
 ****
 
@@ -421,7 +421,7 @@ The reuslts are in seperate folders for each whole genome sequence:
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
  
 ###### SRR1749070-5.0x *B. cereus* control
- ![5.0x coverage](/results/kracken/anthracis-control/B.cereus0.25x.png "cereus 5.0x coverage") 
+ ![5.0x coverage](/results/kracken/anthracis-control/B.cereus5.0x.png "cereus 5.0x coverage") 
 
 ###### SRR1748707 species distribution*
  ![SRR1749083](/results/kracken/anthracis-control/P00134_1.png )
