@@ -31,13 +31,13 @@ The results are organized in 4 sections:
 
 ##Summary of results
 
-Our control experiments showed that direct mapping of sequences reads from the metagenome was a sensitive way to detect plasmids,  Plasmid reads were present when as little as 0.01x *B. anthracis* genome equivalents were added.  However, both *B. anthracis* and *B. cereus* reads mapped to pXO1 and pXO2 because the strain we used contained closely related mobile elements.  What differentiated *B. anthracis* from the control was that coverage was evenly distributed across the plasmids.  We found that the NYC samples had evidence of quite deep coverage of *B. cereus* like chromsome and plasmids, which was not an unexpected result.  The pattern of coverage of the plasmids qualitatively resembled *B. cereus* rather than *B. anthracis*.  
+Our control experiments showed that direct mapping of sequences reads from the metagenome was a sensitive way to detect plasmids,  Plasmid reads were present when as little as 0.01x *B. anthracis* genome equivalents were added.  However, some *B. cereus* reads mapped to pXO2 a because the strain we used probably contained a closely related mobile element.  What differentiated *B. anthracis* from the control was that coverage was evenly distributed across the plasmids.  We found that the NYC samples had evidence of quite deep coverage of *B. cereus* like chromsome and plasmids, which was not an unexpected result.  The pattern of coverage of the plasmids qualitatively resembled *B. cereus* rather than *B. anthracis* although there were some reads in sample SRR1748708 that mapped across the part of the plasmid containing the lethal toxin gene cluster.  
 
 We showed that Kraken was a sensitive tool for detection of *B. anthracis* down to at least 0.01X genome coverage.  However, the *B. cereus* control also gave us false positive *B. anthracis* reads, albeit at a lower incidence than the true positive.  On the NYC subway samples we obtained a reasonably large number of *B. anthracis* specific calls but this could be explained by the fact that the sample contained up to 50x chromosomal coverage of *B. cereus* group organisms.  
 
 Our custom assay of 1973 31-mers specific to the  *B. anthracis* core genome was sensitive at 0.01X *B. anthracis* genome coverage and did not give false positives on the *B. cereus* control at up to 5x coverage.  Surprisingly, we obtained 2 positive hits on on of the NYC subway samples. There are a number of possible reasons for this:
 
-1.	*B. anthracis* is truly present in this sample at about 0.01x genome coverage along with a much greater abundance of *B. cereus* group organisms.  At this leve of coverage we may be stochastically missing the signature hits to the lethal toxin gene in pXO1.  <ROBERT PLEASE CONFIRM> Altertatively we have *B. anthracis* variant that has lost its plasmids.  
+1.	*B. anthracis* is truly present in this sample at about 0.01x genome coverage along with a much greater abundance of *B. cereus* group organisms.  At this leve of coverage we would expect to see some hits to the lethal toxin gene in pXO1, which we did. However, the reads that mapped inside the lethal toxin gene were found by BLASTN to be false positives.  It is possible that the 0.01x genome coverage the B. anthracis pXO1 reads stochastically missed the toxin gene and we were seeing flase positive hits from the other *B. cereus* group strains present.  <ROBERT -IMPORTANT -  PLEASE CONFIRM> Alterntatively we have *B. anthracis* variant that has lost its plasmids.  
 2.	The SNPs are present in a *B. cereus* strain, very closely related to *B. anthracis* that ha not been sequenced (if its sequence were available in a public database, it would have resulted in the SNPs being filtered out of consideration.  
 3.	The SNPs were present in a *B. cereus* strain whose ancestor had at some point undergone homologous recombination in this area of the chromosome with an ancestor of *B. anthracis*.  
 4.	The sequences were introduced through laboratory cross-contamination.
@@ -54,6 +54,7 @@ Even if you have developed a sophisticated algorithm you will still need to use 
 
 Finally, the negative result is subject to a lot of nuances.  The limit of detectection will be affected by the amount of sequence generated and the "negative for anthrax" result is in the context of the depth of the metagenome sequecning.. 
 
+****
 
 ## 1. Accessing metagenome data and controls   
 On February 10th 2015, we used *prefetch*, from [SRA Toolkit (v 2.4.4)](http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/2.4.4/), 
@@ -159,17 +160,17 @@ The following runs were identified as containing reads associated with *Bacillus
 
 ### Creating metagenomic controls for *B. anthracis* and a close relative, *B. cereus*
 As a control for these analysis we randomly selected NYC sample SRR1749070 which is *B anthracis* free and added 
-different amounts of known *B. anthracis* or *B. cereus* sequences to it. Using these controls we can produce
-results we would expect to see if *B. anthracis* is present in the metagenomic sequences. We used *B. anthracis*
-([DRR014739](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739)) and *B. cereus* 
-([SRR642775](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775)) sequencing projects as our controls. The reads from the *B. anthracis* project were trimmed from 300bp (Illumina MiSeq) down to the first 100bp using *fastq_trimmer (v0.0.13.2)*
-from FASTX Toolkit. This was necessary to make the reads more similar to the NYC sample, SRR1749070, which is 100bp 
-Illumina HiSeq 2000 reads. This step was not necessary for the *B. cereus* control because it too is 100bp Illumina 
+different amounts of known *B. anthracis* or *B. cereus* sequences to it. Using these controls we produced
+results we would expect to see if *B. anthracis* was present in the metagenomic sequences. We used *B. anthracis*
+([DRR014739](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=DRR014739))(strain H29: isolated in Zambia, unpublished data from Division of Infection and Immunity, Research Center for Zoonosis Control, Hokkaido Univerisity) and *B. cereus* 
+([SRR642775](http://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR642775))(strain VD143, unpublished data from the Broad Institute) sequencing projects as our controls. The reads from the *B. anthracis* project were trimmed from 300bp (Illumina MiSeq) down to the first 100bp using *fastq_trimmer (v0.0.13.2)*
+from FASTX Toolkit. This was necessary to make the reads more similar to the NYC sample, SRR1749070, which was 100bp 
+Illumina HiSeq 2000 reads. This step was not necessary for the *B. cereus* control because it too was 100bp Illumina 
 HiSeq 2000 reads. 
 
 Each control was then randomly subsampled using *seqtk (commit 43ff625a3211b51f301cb356a34fb8d1e593d50a)* to 
-0.25x, 0.5x, 1x, and 5x coverage. Coverage was estimated using the total size of the *B. anthracis* genome, the 
-pXO1 plasmid and the pXO2 plasmids was *B. anthracis*. For *B. cereus* we used only the total size of the *B. cereus* 
+0.01x, 0.05x, 0.1x, 0.25x, 0.5x, 1x, and 5x coverage. Coverage was estimated using the total size of the *B. anthracis* genome, the 
+pXO1 plasmid and the pXO2 plasmids. For *B. cereus* we used only the total size of the *B. cereus* 
 genome. These subsampled coverages were then added to the sequences of the *B. anthracis* free NYC sample SRR1749070. 
 This produced5 samples for each control, one with no control sequences and 4 with the different levels of coverage. 
 These samples were then subjected to the same mapping pipeline as the *B. anthracis* positive samples menthion above.
@@ -177,19 +178,21 @@ This process of downloading and preparing the controls for analysis was automate
 [get-anthracis-control.sh](/scripts/get-anthracis-control.sh) (*B. anthracis*) and
 [get-cereus-control.sh](/scripts/get-cereus-control.sh) (*B. cereus*).
 
+****
+
 ## 2. Mapping metagenome data to plasmids (and chromosomes)
 
 ### Mapping against pXO1 and pXO2 using BWA
 We used *BWA (v 0.7.5a-r405)* to map reads from each of the NYC and control samples against the reference 
 pXO1 and pXO2 plasmids. For pXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), 
 and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). The SAM output was then
-converted to sorted BAM and indexed suing *samtools (v 1.1)*. The per base coverage was extracted using 
+converted to sorted BAM and indexed using *samtools (v 1.1)*. The per base coverage was extracted using 
 *genomeCoverageBed* from *bedtools (v2.16.2)*. Coverage across the complete plasmid was then plotted for mulitple
-sliding windows using the Rscript *[plot-coverage.R](/scripts/mapping/plot-coverage.R)*. Reads that mapped to 
+sliding windows by the Rscript *[plot-coverage.R](/scripts/mapping/plot-coverage.R)*. Reads that mapped to 
 the plasmids were extracted and saved in both FASTQ and FASTA format using *bam2fastq (v1.1.0)* and *fastq_to_fasta* 
 from *FASTX Toolkit v 0.0.13.2*.
 
-For pXO1, coverage of the genes (*cya*, *lef*, *pagA* and *pagR*) related to the anthrax toxin is most important. To
+For pXO1, we focused on coverage of the virulence genes (*cya*, *lef*, *pagA* and *pagR*). To
 visualize this, an alternate plot was created which included subplots of coverage of these genes using the RScript
 *[plot-pxo1-anthrax-toxin-coverage.R](/scripts/mapping/plot-pxo1-anthrax-toxin-coverage.R)*. The reads that mapped 
 to each gene were also extracted and blasted (*blastn v2.2.30+)* against the NT database (built on Feb 9, 2015). For 
@@ -210,7 +213,7 @@ NYC sample SRR174708 has the best average coverage (2x), but each of the NYC sam
 the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves as the estimated coverage of 
 *B. anthracis* reads increases. The *B. cereus* control includes low levels of pXO1 overage.
 
-#### Table 2: Summary statistics of per base coverage against pXO1 for NYC samples and controls.
+####  Summary statistics of per base coverage against pXO1 for NYC samples and controls.
 ###### *NYC Subway System*
 | Study      | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
 |------------|------|---------|--------|--------|---------|-----|----------------|
@@ -234,11 +237,11 @@ the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves 
 | SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 0.0912 | 0.0000  | 16  |[pXO1](/results/mapping/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxin](/results/mapping/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
 | SRR1749070-5x    | 0    | 0.0000  | 0.0000 | 0.4261 | 0.0000  | 53  |[pXO1](/results/mapping/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage.pdf), [Toxin](/results/mapping/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.pdf)|
 
-To give an idea of the difference in coverages, below is coverage across the pXO1 plasmid at 1000bp
+To give an idea of the difference in coverages, below was coverage across the pXO1 plasmid at 1000bp
 sliding windows with a 500bp overlap for three samples. SRR1748708 was selected because it has the greatest
-mean coverage of the NYC samples. The selection of the *B. anthracis* 0.5x coverage control was due to 
-it having a similar mean coverage (2.4x vs 2x) as SRR1748708. *B. cereus* 5x coverage control was 
-selected because it has the greatest mean coverage (0.4x) of the *B. cereus* controls.
+mean coverage of the NYC samples. 
+ <ROBERT CAN YOU RERUN THESE ANALYSES ON THE LOWER cobtrol samples -- especially 0.01x -- and the chromosmal data and present the results>
+ 
 ###### *NYC sample SRR1748708*
 ![SRR1748708](/results/mapping/anthracis/SRR1748708/pXO1/coverage/SRR1748708-coverage-1000bp.png "SRR1748708")
 ###### *B. anthracis* control 0.5x coverage
@@ -246,18 +249,18 @@ selected because it has the greatest mean coverage (0.4x) of the *B. cereus* con
 ###### *B. cereus* control 5x coverage
 ![B. cereus control 5x coverage](/results/mapping/cereus-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-coverage-1000bp.png "B. cereus control 5x coverage")
 
-These three plots depict very different stories. Beginning with the *B. cereus* control, although there are few reads 
-that mapped, there are regions of pXO1 that are similar to *B. cereus*. This does not explain why SRR1748708 has 
-decent coverage accross the pOX1 plasmid. Comparing the SRR1748708 and the *B. anthracis* control, the similar mean
+These three plots depict very different stories. In the *B. cereus* control, although there were few reads 
+that mapped, there are regions of pXO1 that are similar to *B. anthracis*. However, SRR1748708 **did** have 
+significant coverage accross the pXO1 plasmid. Comparing the SRR1748708 and the *B. anthracis* control, the similar mean
 coverages are very different from one another. SRR1748708 has regions of high coverage and regions of low coverage.
 The *B. anthracis* control, on the other hand, has a very similar coverage across the complete pXO1 plasmid. This 
 suggests SRR1748708 may contain a plasmid backbone that is shared among *Bacillus* species.
 
-Although the pXO1 plasmid has a mean coverage of 2x in SRR1748708, more importantly, are the genes associated with the 
+The pXO1 plasmid has a mean coverage of 2x in SRR1748708; were the genes associated with the 
 anthrax toxin covered? Below are visualizations of SRR1748708 and the *B. anthracis* 0.5x and 5x controls that 
 depict subplots of reads mapped to the *cya*, *lef*, *pagA* and *pagR* genes. For each of the plots below the 
 top plot is coverage across the whole pXO1 plasmid. The coverage is based on 1,000bp sliding windows with an overlap 
-of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the actual coverage in that region.
+of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* was the actual coverage in that region.
 
 ###### *NYC sample SRR1748708*
 ![SRR1748708](/results/mapping/anthracis/SRR1748708/pXO1/coverage/SRR1748708-anthrax-toxin.png "SRR1748708")
@@ -266,13 +269,13 @@ of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* is the 
 ###### *B. anthracis* control 5x coverage
 ![B. anthracis control 5x coverage](/results/mapping/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.png "B. anthracis control 5x coverage")
 
-The *B. anthracis* controls clearly show a number of reads mapping to each of the genes. The total number of 
+The *B. anthracis* controls clearly showed a number of reads mapping to each of the genes. The total number of 
 reads mapped to each gene for each sample was extracted (Table 3). At 0.5x a total of 197 reads mapped to these 
 genes. At 5x the coverage the total numvber of reads mapped jumped to 1,817. clearly evident. Looking at 
 SRR1748708, the genes are essentially devoid of mapped reads but reads are mapped to these genes. Although only 72 
 reads mapped to these genes it is necessary to investigate these reads further. 
 
-#### Table 3: Number of reads mapped to genes (*cya*, *lef*, *pagA* and *pagR*) related to the anthrax toxin.
+####  Number of reads mapped to genes (*cya*, *lef*, *pagA* and *pagR*) related to the anthrax toxin.
 ###### *NYC Subway System*
 | Sample     | *cya* | *lef* | *pagA* | *pagR* |
 |------------|-------|-------|--------|--------|
@@ -297,17 +300,16 @@ reads mapped to these genes it is necessary to investigate these reads further.
 | SRR1749070-5x    | 0     | 0     | 0      | 0      |
 
 The next step was to determine the likely origin of the mapped reads in the each of the genes. In order to do so, 
-we extracted these reads and saved them in FASTA format. We then blasted those reads against a local NT database 
+we extracted these reads and saved them in FASTA format. We then BLASTed those reads against a local NT database 
 (described above). We chose to only retain the top five hits for each read. Our goal was not to determine the 
-exact organism of origin, but instead to get an idea of what these reads are mapping to (Table 4). There is a 
+exact organism of origin, but instead to get an idea of what these reads are mapping to (below. There was a 
 clear difference between the results of the NYC sample SRR1748708 and the *B. anthracis* control. The reads from 
 the *B. anthracis* controls most often return *B. anthracis* (~85%) as the top hit followed by *B. cereus* (~14.6%). 
-The NYC samples do not have a top hit to *B. anthracis* at all. The most common is *B. thuringiensis* followed by a 
-number of organisms including humans and other *Bacillus* species. It is important to state that in this case the 
-total hit counts are not important. What is important is the stark difference in the organisms between the NYC
-samples and the control samples.
+The NYC samples did not have a top hit to *B. anthracis*. The most common was *B. thuringiensis* followed by various organisms including humans and other *Bacillus* species. It is important to state that in this case the 
+total hit counts are not important. What is important is the difference  between the NYC
+samples and the control *B. anthracis*.
 
-#### Table 4: Organism names for each of the top NT blast hits of reads mapped to the anthrax toxin genes.
+#### Organism names for each of the top NT blast hits of reads mapped to the anthrax toxin genes.
 ###### *NYC samples SRR1748707, SRR1748708, and SRR1749083*
 | Organism                     |  Hit Count   |
 |------------------------------|--------------|
@@ -331,7 +333,7 @@ samples and the control samples.
 | Diphyllobothrium latum       | 1            |
 | Strongyloides papillosus     | 1            |
 | Echinostoma caproni          | 1            |
-###### *B. anthracis* controls (0.25x, 0.5x, 1x, and 5x)
+###### *B. anthracis* controls (0.25x, 0.5x, 1x, and 5x)  <WHAT ABOUT 0.01x??>
 | Organism            | Hit Count |
 |---------------------|-----------|
 | Bacillus anthracis  | 10486     |
@@ -341,13 +343,13 @@ samples and the control samples.
 
 ### pXO2 Results
 Similar to pXO1, we calculated the summary statistics of coverage across the complete pXO2 plasmid for
-each sample (Table 2). We observe very similar patterns of coverage compared to pXO1. Again NYC sample SRR174708 
+each sample . We observed similar patterns of coverage. Again NYC sample SRR174708 
 has the best mean coverage (4.5x), but each of the NYC samples again have a median coverage of 0x. 
 The *B. anthracis* 0.5x control has a mean coverage of 1.34x (median 1x). Again the mean coverage improves 
 as the estimated coverage of *B. anthracis* reads increases. Finally, as before, the *B. cereus* control 
-includes low levels of pXO2 coverage.
+contained low levels of pXO2 coverage.
 
-#### Table 5: Summary statistics of per base coverage against pXO2 for NYC samples and controls.
+#### Summary statistics of per base coverage against pXO2 for NYC samples and controls.
 ###### *NYC Subway System*
 | Study      | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max  | Coverage Plots |
 |------------|------|---------|--------|--------|---------|------|----------------|
@@ -373,9 +375,8 @@ includes low levels of pXO2 coverage.
 
 The coverage across the pXO2 plasmid at 1000bp sliding windows with a 500bp overlap for three 
 samples is depicted below. SRR1748708 was selected because it has the greatest
-mean coverage of the NYC samples. The selection of the *B. anthracis* 1x coverage control was due to 
-it having a similar mean coverage (2.4x vs 4x) as SRR1748708. *B. cereus* 5x coverage control was 
-selected because it has the greatest mean coverage (1.37x) of the *B. cereus* controls.
+mean coverage of the NYC samples. 
+
 
 ###### *NYC sample SRR1748708*
 ![SRR1748708](/results/mapping/anthracis/SRR1748708/pXO2/coverage/SRR1748708-coverage-1000bp.png "SRR1748708")
@@ -384,14 +385,18 @@ selected because it has the greatest mean coverage (1.37x) of the *B. cereus* co
 ###### *B. cereus* control 5x coverage
 ![B. cereus control 5x coverage](/results/mapping/cereus-control/SRR1749070-5x/pXO2/coverage/SRR1749070-5x-coverage-1000bp.png "B. cereus control 5x coverage")
 
-There is clearly a peak in each of the plots above. This region is likely a repeat region shared about the 
-*Bacillus* species. SRR1748708 mostly only maps to this region. As with pXO1, the *B. anthracis* control 
+There was clearly a peak in each of the plots above, which is likely a repeat region  
+*Bacillus* species. SRR1748708 mostly maps to this region. As with pXO1, the *B. anthracis* control 
 maintains similar coverage accross the complete pXO2 plasmid. Unlike pXO1, there seems to be a number of 
 regions in pXO2 that are very similar to *B. cereus* as depicted by the plot of the *B. cereus* control.
 
+****
+
 ## 3. Species identification with Kraken  
 
-We downloaded two complete genomes each of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis*. For each complete genome sequence, I split up the FASTA file to a multi fasta file of 100bp sequences, and fed all 6 multi-fasta files to KRAKEN.
+
+<MATTHEW - CAN YOU RUN ON THE FASTQ FILES?>
+The first control was the FASTQ files of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis* downloaded from NCBI (see section above). For each complete genome sequence, we split up the FASTA file to a multi fasta file of 100bp sequences, and fed all 6 multi-fasta files to KRAKEN.
 
 The reuslts are in seperate folders for each whole genome sequence:
 
@@ -399,28 +404,24 @@ The reuslts are in seperate folders for each whole genome sequence:
 
  We also performed a similar approach on the actual control sequence reads for both *B. anthracis* and *B. cereus* to identify presence of *B.anthracis*.
  
- Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* and *B. cereus* to test for detection of the *anthracis* reads.
+ Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* and *B. cereus* to test for  *B. anthracis* reads.
  
- Finally we ran the samples that were prior identified to be *B. anthracis* from the nyc subway project, and Kraken detected anthracis reads within each sample.
+ Finally we ran the samples that were identified above to be *B. anthracis* positive from the nyc subway project, and Kraken detected anthracis reads within each sample.
  
  The results from Kraken [Control Results](/results/Anthrax_control) suggests that kraken analysis could detect presence of minute amount of sequence reads from the organism.
 
  We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
+ 
+ <MATTHEW - can you run on the cotrols with 0, 0.01x, 0.05x and 0.1x)>
  
 ###### *B.anthracis and B.cereus reads, species distribution*
  ![B. cereus](/results/kracken/anthracis-control/cereus.png "B.cereus")
  ![B. anthracis](/results/kracken/anthracis-control/anthracis.png "B. anthracis")
  
 ###### *metagenome and anthracis mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
- ![5x coverage](/results/kracken/anthracis-control/5x_.png " anthracis 5x coverage")
- ![1x coverage](/results/kracken/anthracis-control/1x_.png "anthracis 1x coverage")
- ![0.5x coverage](/results/kracken/anthracis-control/0.5x_.png "anthracis 0.5x coverage")
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
  
 ###### *metagenome and cereus mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
- ![5x coverage](/results/kracken/anthracis-control/B.cereus5x.png " cereus 5x coverage")
- ![1x coverage](/results/kracken/anthracis-control/B.cereus1x.png "cereus 1x coverage")
- ![0.5x coverage](/results/kracken/anthracis-control/B.cereus0.5x.png "cereus 0.5x coverage")
  ![0.25x coverage](/results/kracken/anthracis-control/B.cereus0.25x.png "cereus 0.25x coverage") 
 
 ###### *Anthracis positive metagenome samples, species distribution*
@@ -429,7 +430,7 @@ The reuslts are in seperate folders for each whole genome sequence:
  ![P00497](/results/kracken/anthracis-control/P00497.png )
  
 ###### Anthracis Kraken control runs summary
-|Run name | Description | B. anthracis reads | other bacillus reads | other species reads|
+|Run name | Description | *B. anthracis* reads | other *Bacillus* reads | other species reads|
 |---------|-------------|--------------------|----------------------|--------------------|
 | 0.5x_   |0.5X enriched anthracis | 3446    | 29091                | 11517005           |
 | 0.25x_  |0.25X enriched anthracis | 1732   | 16219                | 11490012           |
@@ -444,16 +445,18 @@ The reuslts are in seperate folders for each whole genome sequence:
 | P00497     |positive anthracis     | 251   | 597131               | 5033455            |
 | cereus     |B.cereus control       | 4405  | 8260273              | 98861              |
 | anthracis  |B.antracis control     | 917036| 597131               | 5033455            |
+
+****
  
-## Custom SNP assays for *B. anthracis* core genome  
+## 4. Custom SNP assays for *B. anthracis* core genome  
 
-First, made a list of SNPs in B. anthracis versus B. cereus and extracted the 31-mers  <Sandeep describe how you did this>
+As a first round, we made a list of SNPs in the  *B. anthracis* core genome not found in other *B. cereus* and extracted the 31-mers, with the SNP based in the 16th position.  
 
-#### Identifying B. anthracis specific SNPs from the whole genome alignment*
+#### Identifying *B. anthracis* specific SNPs from the whole genome alignment*
 
-ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus species genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity of all the Bacillus species. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The B. cereus strain ATCC 10987 was used as the reference genome for SNP calling (see below) The 10 Bacillus species genomes and the progressiveMAUVE output can be accessed [here](/MAUVE).
+ProgressiveMAUVE was used to perform whole genome alignment of 10 *B. cereus* group genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The *B. cereus* strain ATCC 10987 was used as the reference genome for SNP calling (see below). The 10 genomes and the progressiveMAUVE output can be accessed [here](/MAUVE).
     
-#### Table 1: Genome sequences of Bacillus species used for ProgressiveMAUVE. 
+#### Genome sequences of *B. cereus* group species used for ProgressiveMAUVE. 
 | Strain name   | Species                | File name    | RefSeq/SRA  | Clade |
 |---------------|------------------------|--------------|-------------|-------|
 | ATCC 10987     | Bacillus cereus        | BCE.fasta    | NC_003909   | 1     |
@@ -467,83 +470,73 @@ ProgressiveMAUVE was used to perform whole genome alignment of 10 Bacillus speci
 | E33L          | Bacillus cereus        | BCZK.fasta   | NC_006274   | 1     |
 | BGSC 4BD1     | Bacillus thuringiensis | bth11_.fasta | SRX098635   | 2     |
 
-The MAUVE alignment was loaded into MAUVE Version 2.4.0 inorder to visualize the alignment and to export the SNPs using the "export SNP" option. The nucleotide positions of the reference genome (BCE.fasta, ATCC 10987) as well as the corresponding SNP position on the B. anthracis genome, along with the 10 nucleotide pattern at the position were extracted. In this nucleotide pattern, the first nuleotide will be from the reference genome and the 3rd nucleotide will be from the B. anthracis genome. Anthrax-specific SNPs (i.e SNP nucloetide positions found in only the Anthrax genome) were identified using the script [GenerateSNPpattern.sh](/scripts/GenerateSNPpattern.sh), where a number (corresponding to the position of the nucleotide variant) were assigned. Finally, those nucleotide positions that have only the number 3 assigned (position of the B. anthracis genome on the alignment) was extracted along with the corresponding nucleotide positions at the reference genome as well as at the B. anthracis genome [Anthrax_specific-SNPPattern.txt](/data/Anthrax_Specific_SNP_31-mers_9538.txt). Total 9538 Anthrax-specific SNPs were identified.
+The MAUVE alignment was loaded into MAUVE Version 2.4.0 inorder to visualize the alignment and to export the SNPs using the "export SNP" option. The nucleotide positions of the reference genome (BCE.fasta, ATCC 10987) as well as the corresponding SNP position on the *B. anthracis* genome, along with the 10 nucleotide pattern at the position were extracted. In this nucleotide pattern, the first nuleotide will be from the reference genome and the 3rd nucleotide will be from the B. anthracis genome. Anthrax-specific SNPs (i.e SNP nucloetide positions found in only the Anthrax genome) were identified using the script [GenerateSNPpattern.sh](/scripts/GenerateSNPpattern.sh), where a number (corresponding to the position of the nucleotide variant) were assigned. Finally, those nucleotide positions that have only the number 3 assigned (position of the *B. anthracis genome* on the alignment) was extracted along with the corresponding nucleotide positions at the reference genome as well as at the *B. anthracis* genome [Anthrax_specific-SNPPattern.txt](/data/Anthrax_Specific_SNP_31-mers_9538.txt). Total 9538 Anthrax-specific SNPs were identified.
 
 #### Generating all the B. cereus 31-mers to downselect against the 9538 Anthrax-specific SNPs*
 
-Next, using the query:>[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D)), we downloaded 6,948 *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
+Next, using the query:  
+
+>[txid86661\[Organism:exp\] NOT txid1392\[Organism:exp\] AND (biomol_genomic\[PROP\] AND refseq\[filter\])](http://www.ncbi.nlm.nih.gov/nuccore/?term=txid86661%5BOrganism%3Aexp%5D+NOT+txid1392%5BOrganism%3Aexp%5D+AND+(biomol_genomic%5BPROP%5D+AND+refseq%5Bfilter%5D))
+
+we downloaded 6,948 *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
 (excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) 
-sequences in FASTA format from NCBI Refseq to downselect against the 9538 Anthrax-specific SNPs. 
+sequences in FASTA format from NCBI Refseq to downselect against the 9538 Anthrax-specific SNPs identified in the first round. 
 
 First, we extracted all the 31-mers in and around all the [9538 Anthrax-specific SNP positions](/data/Anthrax_Specific_SNP_31-mers_9538.txt) from the B. anthracis Ames ancestor genome so that the 16th nucleotide in the 31-mer will be the SNP at that specific position. This was done using the script [extractKmers.sh](/scripts/extractKmers.sh).
 
 We then generated all the 31-mers present in all the 6,948  *[B. cereus group](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?id=86661)* 
-(excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script QueryBcereusGroup.sh(/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the Bcereus database were outputed. A total of 1793/9538 31-mers that had zero- counts were obtained and these 31-mers with the Anthrax-specific SNP at the 16th position was considered as the Anthrax-specific 31-mers and was used in all the further down stream analysis.
+(excluding *[Bacillus anthracis](http://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=1392)*) using *[JELLYFISH](http://www.cbcb.umd.edu/software/jellyfish/)* by the script [generate-31-mers-BCereusGroup.sh](/scripts/generate-31-mers-BCereusGroup.sh). The resultant JELLYFISH database of all the B. cereus 31-mers were queried by the 9538 Anthrax-specific 31-mers using the script [QueryBcereusGroup.sh](/scripts/QueryBcereusGroup.sh) and all those 31-mers with zero-counts against the *B. cereus* database were outputed. A total of 1793 31-mers that had zero- counts were retained and used in all the further downstream analysis.
 
-#### Generating all 31-mers for the B. anthracis and B. cereus control groups, and NYC Subway system B. anthracis positive samples, and querying all the Anthrax-specific 1793 31-mers against them.
+#### Querying for *B. anthracis* specific 31-mers in the *B. anthracis* and *B. cereus* control groups, and NYC Subway  B. anthracis positive samples.
 
 Here we used the same control samples previously described for B. anthracis and B. cereus in this analysis. All the 31-mers were generated using the script [Getting_KmerCounts.sh](/scripts/Getting_KmerCounts.sh).The B. anthracis-specific 1793 31-mers were queried against the 31-mer database of all the control and real samples using [QueryAnthraxSNPs.sh](/scripts/QueryAnthraxSNPs.sh) and the 31-mers that matched the B. anthracis-specific 1793 31-mers were extracted along with their counts in each sample.
 
-#### Table 2: Summary of the number of matched 31-mers from each of B. anthracis control samples with the 1793 Anthrax-specific 31-mers. 
+#### Summary of the number of matched 31-mers from each of *B. anthracis* control samples with the 1793 Anthrax-specific 31-mers. 
 |        Study       | Number of matched 31-mers with Anthrax-specific 31-mers |
 |:------------------:|:--------------------------------:|
-|   SRR1749070-0x_1  |                 0                |
-|   SRR1749070-0x_2  |                 0                |
-| SRR1749070-0.01x_1 |                 3                |
-| SRR1749070-0.01x_2 |                 1                |
-| SRR1749070-0.05x_1 |                20                |
-| SRR1749070-0.05x_2 |                22                |
-|  SRR1749070-0.1x_1 |                33                |
-|  SRR1749070-0.1x_2 |                39                |
-| SRR1749070-0.25x_1 |                106               |
-| SRR1749070-0.25x_2 |                96                |
-|  SRR1749070-0.5x_1 |                198               |
-|  SRR1749070-0.5x_2 |                195               |
-|  SRR1749070-1.0x_1 |                352               |
-|  SRR1749070-1.0x_2 |                377               |
-|  SRR1749070-5.0x_1 |               1153               |
-|  SRR1749070-5.0x_2 |               1158               |
+|   SRR1749070-0x  |                 0                |
+| SRR1749070-0.01x |                 4                |
+| SRR1749070-0.05x |                42              |
+|  SRR1749070-0.1x |                72                |
+| SRR1749070-0.25x |                202             |
+|  SRR1749070-0.5x |                403              |
+|  SRR1749070-1.0x |                729               |
+|  SRR1749070-5.0x|               2311             |
 
-For those control samples that didn't had any Anthrax reads (0X coverage), none of the Anthrax-specific 31-mers were matched, a result that is expected. Similarily, the number of 31-mers matched to the Anthrax 31-mers were directly proportional to the coverage or the amount of B. anthracis reads present in those samples. From Table 2 we may infer that to detect the presence of Anthrax, there should be atleast 0.01X coverage of B. anthracis reads in the sample, which can be considered as the minimum threshold for Anthrax detection using 31-mers. Even at 5X coverage only 65% of the Anthrax-specific 31-mers were matched.
+For those control samples that didn't have any *B. anthracis* reads (0X coverage), none of the Anthrax-specific 31-mers were matched, as expected.  From these data, there should be atleast 0.01X coverage of B. anthracis reads in the sample, which can be considered as the minimum threshold for  detection using 31-mers. Even at 5X coverage only 65% of the Anthrax-specific 31-mers were matched.
 
-#### Table 3: Summary of the number of matched 31-mers from each of B. cereus control samples with the 1793 Anthrax-specific 31-mers.
+#### Summary of the number of matched 31-mers from each of B. cereus control samples with the 1793 Anthrax-specific 31-mers.
 
 |        Study       | Number of matched 31-mers with Anthrax-specific 31-mers  |
 |:------------------:|:--------------------------------:|
-|   SRR1749070-0x_1  |                 0                |
-|   SRR1749070-0x_2  |                 0                |
-| SRR1749070-0.01x_1 |                 0                |
-| SRR1749070-0.01x_2 |                 0                |
-| SRR1749070-0.05x_1 |                 0                |
-| SRR1749070-0.05x_2 |                 0                |
-|  SRR1749070-0.1x_1 |                 0                |
-|  SRR1749070-0.1x_2 |                 0                |
-| SRR1749070-0.25x_1 |                 0                |
-| SRR1749070-0.25x_2 |                 0                |
-|  SRR1749070-0.5x_1 |                 0                |
-|  SRR1749070-0.5x_2 |                 0                |
-|  SRR1749070-1.0x_1 |                 0                |
-|  SRR1749070-1.0x_2 |                 0                |
-|  SRR1749070-5.0x_1 |                 0                |
-|  SRR1749070-5.0x_2 |                 0                |
+|   SRR1749070-0x  |                 0                |
+| SRR1749070-0.01x|                 0                |
+| SRR1749070-0.05x |                 0                |
+|  SRR1749070-0.1x |                 0                |
+| SRR1749070-0.25x |                 0                |
+|  SRR1749070-0.5x |                 0                |
+|  SRR1749070-1.0x |                 0                |
+|  SRR1749070-5.0x |                 0                |
 
-As expected, none of the 31-mers from the samples in the B. cereus control group matched to the Anthrax-specific 31-mers. This indicates how reliable/sensitive are the 1793 Anthrax-specific 31-mers generated in this analysis inorder to differentiate the highly similar B. anthracis and B. cereus genomes at the nucleotide level.
 
-#### Table 4: Summary of the number of matched 31-mers from each of the 3 NY Subway sytem Anthrax positve samples with the 1793 Anthrax-specific 31-mers.
+As expected, none of the 31-mers from the samples in the *B. cereus* controls  matched to the 31-mer set. This showed that the 1793 31-mers were specific for *B. anthracis*.
+
+#### Summary of the number of matched 31-mers from each of the 3 NY Subway sytem Anthrax positve samples with the 1793 Anthrax-specific 31-mers.
 |    Study   |Number of matched 31-mers with Anthrax-specific 31-mers |
 |:----------:|:--------------------------------:|
 | SRR1749083 |                 0                |
 | SRR1748708 |                 2                |
 | SRR1748707 |                 0                |
 
-Only sample SRR1748708 has two 31-mers that matched Anthrax-specific 31-mers with a frequency count of 2 for each of the 31-mers. This might indicate, if some how B. anthracis is present in the sample, it would be only at amount equvalent to 0.01X coverage. 31-mers from the rest of the "Anthrax positive" samples didn't match to any of the Anthrax-specific 31-mers, indicating the absence of B. anthracis.
+Only sample SRR1748708 has two 31-mers that matched *B. anthracis* -specific 31-mers with a frequency count of 2 for each of the 31-mers. This indicated, a potential positive result with *B. anthracis* present at ~ 0.01X coverage. 
 
-#### Table 5: Anthrax-specific K-mers identified from the NYC subway system SRR1748708 sample
+#### Anthrax-specific K-mers identified from the NYC subway system SRR1748708 sample
 
 | SNP position on the B. anthracis genome of the Anthrax-specific 31-mers matched | The Anthrax-specific 31-mers detected in SRR1748708 | Number of matched 31-mers with Anthrax-specific 31-mers | Gene annotations of r the 31-mers |
 |:-------------------------------------------------------------------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|:---------------------------------:|
-|                                     4083672                                     |           TGTGCCCCATCCTGAGCATACAACTTTATAA           |                            2                            |       nucleotidyltransferase[GBAA_4491](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4082774&to=4085128&RID=HYA30CNN013)      |
+|                                     4083672                                     |           TGTGCCCCATCCTGAGCATACAACTTTATAA           |                            2                            |       nucleotidyltransferase [GBAA_4491](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4082774&to=4085128&RID=HYA30CNN013)      |
 |                                     4136672                                     |           ACATAGAACAAGTGACATTCTATCAAACGGT           |                            2                            |          intergenic region  between spore protease  [GBAA_4546](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4135441&to=4136547&RID=HYBY805Z01R) and S20 ribosomas protein [GBAA_4547](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4136720&to=4136986&RID=HYBY805Z01R)      |
+****
 
 ## Appendix: Project Data Structure
 
