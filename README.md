@@ -394,15 +394,13 @@ regions in pXO2 that are very similar to *B. cereus* as depicted by the plot of 
 
 ## 3. Species identification with Kraken  
 
-
-<MATTHEW - CAN YOU RUN ON THE FASTQ FILES?>
-The first control was the FASTQ files of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis* downloaded from NCBI (see section above). For each complete genome sequence, we split up the FASTA file to a multi fasta file of 100bp sequences, and fed all 6 multi-fasta files to KRAKEN.
+The first control was the FASTQ files of *Bacillus anthracis*, *Bacillus cereus* and *Bacillus thurigiensis* downloaded from NCBI (see section above). 
 
 The reuslts are in seperate folders for each whole genome sequence:
 
 [Anthrax WGS search](https://www.dropbox.com/sh/fwfi75ft4ny1qkk/AADF16diPK-cgV-CmRHzLjWTa?dl=0)   
 
- We also performed a similar approach on the actual control sequence reads for both *B. anthracis* and *B. cereus* to identify presence of *B.anthracis*.
+ We also performed a similar approach on the control sequence reads for both *B. anthracis* and *B. cereus* to identify presence of *B.anthracis*.
  
  Next we ran kraken on a metagenome sample, adding varying proportions of *B.anthracis* and *B. cereus* to test for  *B. anthracis* reads.
  
@@ -412,43 +410,49 @@ The reuslts are in seperate folders for each whole genome sequence:
 
  We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
- <MATTHEW - can you run on the cotrols with 0, 0.01x, 0.05x and 0.1x)>
+ MATTHEW - can you run on the cotrols with 0, 0.01x, 0.05x and 0.1x)
  
-###### *B.anthracis and B.cereus reads, species distribution*
+###### *B.cereus* FASTQ species distribution*
  ![B. cereus](/results/kracken/anthracis-control/cereus.png "B.cereus")
+
+###### *B.anthracis* FASTQ  reads, species distribution*
  ![B. anthracis](/results/kracken/anthracis-control/anthracis.png "B. anthracis")
  
-###### *metagenome and anthracis mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
+######  SRR1749070-0.25x *B. anthracis* control
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
  
-###### *metagenome and cereus mixture reads, species distribution 5x,1x,0.5x and 0.25x coverage respectively*
- ![0.25x coverage](/results/kracken/anthracis-control/B.cereus0.25x.png "cereus 0.25x coverage") 
+###### SRR1749070-5.0x *B. cereus* control
+ ![5.0x coverage](/results/kracken/anthracis-control/B.cereus0.25x.png "cereus 5.0x coverage") 
 
-###### *Anthracis positive metagenome samples, species distribution*
- ![P00134_1](/results/kracken/anthracis-control/P00134_1.png )
- ![P00134_2](/results/kracken/anthracis-control/P00134_2.png )
- ![P00497](/results/kracken/anthracis-control/P00497.png )
+###### SRR1749083 species distribution*
+ ![SRR1749083](/results/kracken/anthracis-control/P00134_1.png )
  
-###### Anthracis Kraken control runs summary
+###### SRR1748707 species distribution* 
+ ![SRR1748707](/results/kracken/anthracis-control/P00134_2.png )
+ 
+###### SRR1748708 species distribution*  
+ ![SRR1748708](/results/kracken/anthracis-control/P00497.png )
+ 
+###### Kraken runs summary
 |Run name | Description | *B. anthracis* reads | other *Bacillus* reads | other species reads|
 |---------|-------------|--------------------|----------------------|--------------------|
-| 0.5x_   |0.5X enriched anthracis | 3446    | 29091                | 11517005           |
-| 0.25x_  |0.25X enriched anthracis | 1732   | 16219                | 11490012           |
-| 1x_     |1x_ enriched anthracis | 6969     | 54694                | 11571054           |
-| 5x_     |5x_ enriched anthracis | 35233    | 259841               | 12002947           |
-| B.cereus0.25x_|0.25X enriched cereus | 6   | 28495                | 11489686           |
-| B.cereus0.5x_|0.5X enriched cereus| 12     | 54058                | 11516632           |
-| B.cereus1x_   |1x_ enriched cereus | 23    | 105023               | 11570399           |
-| B.cereus5x_   |5x_ enriched cereus | 126   | 511557               | 11998576           |
-| P00134_1  |positive anthracis      | 110   | 29013                | 365541             |
-| P00134_2   |positive anthracis     | 1528  | 390672               | 3333666            |
-| P00497     |positive anthracis     | 251   | 597131               | 5033455            |
-| cereus     |B.cereus control       | 4405  | 8260273              | 98861              |
-| anthracis  |B.antracis control     | 917036| 597131               | 5033455            |
+| 0.5x_   |0.5X *B anthracis* control | 3446    | 29091                | 11517005           |
+| 0.25x_  |0.25X *B anthracis* control | 1732   | 16219                | 11490012           |
+| 1x_     |1x_ *B anthracis* control | 6969     | 54694                | 11571054           |
+| 5x_     |5x_ *B anthracis* control | 35233    | 259841               | 12002947           |
+| B.cereus0.25x_|0.25X *B cereus* control | 6   | 28495                | 11489686           |
+| B.cereus0.5x_|0.25X *B cereus* control| 12     | 54058                | 11516632           |
+| B.cereus1x_   |0.25X *B cereus* control | 23    | 105023               | 11570399           |
+| B.cereus5x_   |0.25X *B cereus* control | 126   | 511557               | 11998576           |
+| SRR1748707  |NYC subway      | 110   | 29013                | 365541             |
+| SRR1748708  |NYC subway     | 1528  | 390672               | 3333666            |
+| SRR1749083     |NYC subway    | 251   | 597131               | 5033455            |
+| cereus     |*B. cereus* FASTQ file        | 4405  | 8260273              | 98861              |
+| anthracis  |*B. antracis* FASTQ file     | 917036| 597131               | 5033455            |
 
 ****
  
-## 4. Custom SNP assays for *B. anthracis* core genome  
+## 4. Custom SNP assay for the *B. anthracis* core genome  
 
 As a first round, we made a list of SNPs in the  *B. anthracis* core genome not found in other *B. cereus* and extracted the 31-mers, with the SNP based in the 16th position.  
 
@@ -532,7 +536,7 @@ Only sample SRR1748708 has two 31-mers that matched *B. anthracis* -specific 31-
 
 #### Anthrax-specific K-mers identified from the NYC subway system SRR1748708 sample
 
-| SNP position on the B. anthracis genome of the Anthrax-specific 31-mers matched | The Anthrax-specific 31-mers detected in SRR1748708 | Number of matched 31-mers with Anthrax-specific 31-mers | Gene annotations of r the 31-mers |
+| SNP position on the *B. anthracis* Ames ancestor genome | 31-mer sequence | Number of matches | Annotation |
 |:-------------------------------------------------------------------------------:|:---------------------------------------------------:|:-------------------------------------------------------:|:---------------------------------:|
 |                                     4083672                                     |           TGTGCCCCATCCTGAGCATACAACTTTATAA           |                            2                            |       nucleotidyltransferase [GBAA_4491](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4082774&to=4085128&RID=HYA30CNN013)      |
 |                                     4136672                                     |           ACATAGAACAAGTGACATTCTATCAAACGGT           |                            2                            |          intergenic region  between spore protease  [GBAA_4546](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4135441&to=4136547&RID=HYBY805Z01R) and S20 ribosomas protein [GBAA_4547](http://www.ncbi.nlm.nih.gov/nucleotide/50082967?report=gbwithparts&from=4136720&to=4136986&RID=HYBY805Z01R)      |
