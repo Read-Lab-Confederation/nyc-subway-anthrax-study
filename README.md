@@ -420,6 +420,8 @@ The reuslts are in seperate folders for each whole genome sequence:
 ###### *B.anthracis* FASTQ  reads, species distribution*
  ![B. anthracis](/results/kracken/anthracis-control/anthracis.png "B. anthracis")
  
+ These results somewhat mirror another [example](http://nickloman.github.io/2015/02/11/metagenomics-best-hit-analysis-caveat-emptor/) that shows that you dont always get back the species ID from the orgainism you started with.  In this case, contamination and sequence error may play a part in Kraken not returning the original species identification.  Another reason, is that with short reads, the sequence may map to a conserved part of the genome that can't be unambiguously placed at the species level but must be assigned to a lower taxonomic rank.
+ 
 ######  SRR1749070-0.25x *B. anthracis* control
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
  
@@ -463,7 +465,7 @@ As a first round, we made a list of SNPs in the  *B. anthracis* core genome not 
 ProgressiveMAUVE was used to perform whole genome alignment of 10 *B. cereus* group genomes that were selected based on previously published whole genome phylogeny in order to capture the maximum diversity. ProgressiveMAUVE was performed using script [progressiveMAUVE.sh](/scripts/progressiveMAUVE.sh). The *B. cereus* strain ATCC 10987 was used as the reference genome for SNP calling (see below). The 10 genomes and the progressiveMAUVE output can be accessed [here](/MAUVE).
     
 #### Genome sequences of *B. cereus* group species used for ProgressiveMAUVE. 
-| Strain name   | Species                | File name    | RefSeq/SRA  | Clade |
+| Strain name   | Species                | File name    | RefSeq/SRA  | [Clade](http://genome.cshlp.org/content/22/8/1512) |
 |---------------|------------------------|--------------|-------------|-------|
 | ATCC 10987     | Bacillus cereus        | BCE.fasta    | NC_003909   | 1     |
 | m1293         | Bacillus cereus        | bce1_.fasta  | SRX096996   | 1     |
