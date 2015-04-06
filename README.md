@@ -411,6 +411,7 @@ The reuslts are in seperate folders for each whole genome sequence:
 
  We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
+ The version of Kraken used for the analysis is version 0.10.4-beta and the Kraken database ran against is the Bacteria db.
  MATTHEW - can you run on the cotrols with 0, 0.01x, 0.05x and 0.1x)
  
 ###### *B.cereus* FASTQ species distribution*
