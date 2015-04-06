@@ -39,7 +39,9 @@ Our novel assay of 1973 31-mers specific to the  *B. anthracis* core genome was 
 1.	*B. anthracis* is truly present in this sample at about 0.01x genome coverage along with a much greater number of *B. cereus* group organisms.  At this level of coverage we would expect to see some hits to the lethal toxin gene in pXO1, which we did. However, the reads that mapped inside the lethal toxin gene were found by BLASTN to be false positives.  It is possible that the 0.01x genome coverage the *B. anthracis* pXO1 reads stochastically missed the toxin gene and we were seeing false positive hits from the other *B. cereus* group strains present.  **ROBERT -IMPORTANT -  PLEASE CONFIRM** Alternatively, we detected a *B. anthracis* variant that had lost its plasmids.  
 2.	The SNPs are present in a *B. cereus* strain, very closely related to *B. anthracis* that ha not been sequenced (if its sequence were available in a public database, it would have resulted in the SNPs being filtered out of consideration.  
 3.	The SNPs were present in a *B. cereus* strain whose ancestor had at some point undergone homologous recombination in this area of the chromosome with an ancestor of *B. anthracis*.  
-4.	The sequences were introduced through laboratory cross-contamination.
+4.	The sequences were introduced through laboratory cross-contamination.  
+5.	The SNPs were formed by random sequence error.
+
 
 Resolving these alternatives requires deeper sequence coverage of this sample preferably combined with culture and PCR-based analysis.
 
@@ -239,7 +241,7 @@ the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves 
 To give an idea of the difference in coverages, below was coverage across the pXO1 plasmid at 1000bp
 sliding windows with a 500bp overlap for three samples. SRR1748708 was selected because it has the greatest
 mean coverage of the NYC samples. 
- <ROBERT CAN YOU RERUN THESE ANALYSES ON THE LOWER cobtrol samples -- especially 0.01x -- and the chromosmal data and present the results>
+ **ROBERT CAN YOU RERUN THESE ANALYSES ON THE LOWER cobtrol samples -- especially 0.01x -- and the chromosmal data and present the results**
  
 ###### *NYC sample SRR1748708*
 ![SRR1748708](/results/mapping/anthracis/SRR1748708/pXO1/coverage/SRR1748708-coverage-1000bp.png "SRR1748708")
