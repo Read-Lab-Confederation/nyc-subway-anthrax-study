@@ -1,4 +1,0 @@
-Yersinia pestis	7646
-Yersinia pseudotuberculosis	11
-Yersinia similis	3
-

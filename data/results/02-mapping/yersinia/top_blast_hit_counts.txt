@@ -1,0 +1,6 @@
+Enterococcus faecalis	6
+Cyprinus carpio	2
+Enterococcus sp.	2
+Klebsiella pneumoniae	1
+Dicrocoelium dendriticum	1
+
