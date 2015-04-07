@@ -22,20 +22,18 @@
 # Version: 2.2.30+
 #
 set -x # Echo all commands
-organisms=(anthracis)
-# cereus)
+organisms=(anthracis cereus)
 plasmids=(pXO1 pXO2)
 samples=(
     "SRR1749070-0.01x"
     "SRR1749070-0.05x"
     "SRR1749070-0.10x"
+    "SRR1749070-0.25x"
+    "SRR1749070-0.5x"
+    "SRR1749070-1x"
+    "SRR1749070-5x"
+    "SRR1749070-0x"
 )
-#    "SRR1749070-0.25x"
-#    "SRR1749070-0.5x"
-#    "SRR1749070-1x"
-#    "SRR1749070-5x"
-#    "SRR1749070-0x"
-#)
 declare -A reference
 reference["pXO1"]="references/index/CP009540-pXO1"
 reference["pXO2"]="references/index/NC_007323-pXO2"

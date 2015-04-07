@@ -57,6 +57,8 @@ bin/bwa index -p references/index/CP009540-pXO1 references/CP009540-pXO1.fasta
 bin/bwa index -p references/index/NC_005707-pXO1-like references/NC_005707-pXO1-like.fasta
 bin/bwa index -p references/index/NC_007323-pXO2 references/NC_007323-pXO2.fasta
 bin/bwa index -p references/index/AL117211-pMT1 references/AL117211-pMT1.fasta
+bin/bwa index -p references/index/NC_003909-cereus references/NC_003909-cereus.fasta
+bin/bwa index -p references/index/CP009541-anthracis references/CP009541-anthracis.fasta
 
 # Covert GenBank to GFF3 (From BioPerl)
 bp_genbank2gff3 -o references/ references/CP009540-pXO1.gbk
@@ -67,6 +69,12 @@ nohup scripts/mapping/map-anthracis-plasmids.sh 1> logs/map-anthracis-plasmids.o
 
 # Map Bacillus controls to pXO1 and pXO2
 nohup scripts/mapping/map-anthracis-controls.sh 1> logs/map-anthracis-controls.out 2> logs/map-anthracis-controls.err &
+
+# Map NYC to Bacillus anthracis and cereus
+nohup scripts/mapping/map-bacilli-nyc.sh 1> logs/map-bacilli-nyc.out 2> logs/map-bacilli-nyc.err &
+
+# Map Controls to Bacillus anthracis and cereus
+nohup scripts/mapping/map-bacilli-controls.sh 1> logs/map-bacilli-controls.out 2> logs/map-bacilli-controls.err &
 
 # Map to pMT1
 nohup scripts/mapping/map-pestis-pmt1.sh 1> logs/map-pestis-pmt1.out 2> logs/map-pestis-pmt1.err &

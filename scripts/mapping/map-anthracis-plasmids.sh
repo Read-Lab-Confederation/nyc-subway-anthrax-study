@@ -15,6 +15,9 @@
 # Program: fastq_to_fasta - Part of FASTX Toolkit
 # Version: 0.0.13.2
 #
+# Program: convert - convert SVG to PNG (ImageMagick)
+# Version: 6.6.9-7 2014-03-06 Q16
+#
 # Program: blastn
 # Version: 2.2.30+
 #
