@@ -412,7 +412,7 @@ The reuslts are in seperate folders for each whole genome sequence:
  We used python script [parse_kraken.py](/scripts/parse_kraken.py) to extract the propotion of reads covered by *B.anthracis*, *B. cereus* group and other bacteria species respectively in the different samples.
  
  The version of Kraken used for the analysis is version 0.10.4-beta and the Kraken database ran against is the Bacteria db.
- MATTHEW - can you run on the cotrols with 0, 0.01x, 0.05x and 0.1x)
+ 
  
 ###### *B.cereus* FASTQ species distribution*
  ![B. cereus](/results/kracken/anthracis-control/cereus.png "B.cereus")
@@ -420,7 +420,17 @@ The reuslts are in seperate folders for each whole genome sequence:
 ###### *B.anthracis* FASTQ  reads, species distribution*
  ![B. anthracis](/results/kracken/anthracis-control/anthracis.png "B. anthracis")
  
- These results somewhat mirror another [example](http://nickloman.github.io/2015/02/11/metagenomics-best-hit-analysis-caveat-emptor/) that shows that you dont always get back the species ID from the orgainism you started with.  In this case, contamination and sequence error may play a part in Kraken not returning the original species identification.  Another reason, is that with short reads, the sequence may map to a conserved part of the genome that can't be unambiguously placed at the species level but must be assigned to a lower taxonomic rank.
+######  SRR1749070-0.01x *B. anthracis* control
+ ![0x coverage](/results/kracken/anthracis-control/0x_.png "anthracis 0.01x coverage")
+
+######  SRR1749070-0.01x *B. anthracis* control
+ ![0.01x coverage](/results/kracken/anthracis-control/0.01x_.png "anthracis 0.01x coverage")
+ 
+######  SRR1749070-0.05x *B. anthracis* control
+ ![0.05x coverage](/results/kracken/anthracis-control/0.05x_.png "anthracis 0.05x coverage")
+ 
+ ######  SRR1749070-0.10x *B. anthracis* control
+ ![0.10x coverage](/results/kracken/anthracis-control/0.10x_.png "anthracis 0.10x coverage")
  
 ######  SRR1749070-0.25x *B. anthracis* control
  ![0.25x coverage](/results/kracken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
@@ -440,6 +450,10 @@ The reuslts are in seperate folders for each whole genome sequence:
 ###### Kraken runs summary
 |Run name | Description | *B. anthracis* reads | other *Bacillus* reads | other species reads|
 |---------|-------------|--------------------|----------------------|--------------------|
+| 0x_     |0X *B anthracis* control| 1          | 3348                 | 11463073           |
+| 0.01x_  |0.01X *B anthracis* control| 62      | 3860                 | 11464150           |
+| 0.05x_  |0.05X *B anthracis* control| 318     | 5891                 | 11468444           |
+| 0.10x_  |0.05X *B anthracis* control| 652     | 8469                 | 11473841           |
 | 0.5x_   |0.5X *B anthracis* control | 3446    | 29091                | 11517005           |
 | 0.25x_  |0.25X *B anthracis* control | 1732   | 16219                | 11490012           |
 | 1x_     |1x_ *B anthracis* control | 6969     | 54694                | 11571054           |
