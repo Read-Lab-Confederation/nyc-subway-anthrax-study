@@ -225,13 +225,10 @@ the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves 
 ###### *B. anthracis* control
 | Study            | Min. | 1st Qu. | Median  | Mean    | 3rd Qu. | Max | Coverage Plots |
 |------------------|------|---------|---------|---------|---------|-----|----------------|
-| SRR1749070-0x    | 0    | 0.0000  | 0.0000  | 0.0103  | 0.0000  | 2   |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
-|SRR1749070-0.01x  | 0	   | 0.0000	 | 0.0000	 | 0.0467  |	0.0000	 | 3   
-|[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.01x/pXO1/coverage/SRR1749070-0.01x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.01x/pXO1/coverage/SRR1749070-0.01x-anthrax-toxin.pdf)|
-| SRR1749070-0.05x	| 0	   | 0.0000	 | 0.0000	 | 0.2169	 | 0.0000	 | 4   
-|[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.05x/pXO1/coverage/SRR1749070-0.05x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.05x/pXO1/coverage/SRR1749070-0.05x-anthrax-toxin.pdf)|
-| SRR1749070-0.10x	| 0	   | 0.0000	 | 0.0000	 | 0.4877	 | 1.0000	 | 8   
-|[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.10x/pXO1/coverage/SRR1749070-0.10x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.10x/pXO1/coverage/SRR1749070-0.10x-anthrax-toxin.pdf)|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000  | 0.0103  | 0.0000  | 2  |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
+|SRR1749070-0.01x  | 0	   | 0.0000	 | 0.0000	 | 0.0467  |	0.0000	 | 3   |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.01x/pXO1/coverage/SRR1749070-0.01x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.01x/pXO1/coverage/SRR1749070-0.01x-anthrax-toxin.pdf)|
+| SRR1749070-0.05x	| 0	   | 0.0000	 | 0.0000	 | 0.2169	 | 0.0000	 | 4   |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.05x/pXO1/coverage/SRR1749070-0.05x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.05x/pXO1/coverage/SRR1749070-0.05x-anthrax-toxin.pdf)|
+| SRR1749070-0.10x	| 0	   | 0.0000	 | 0.0000	 | 0.4877	 | 1.0000	 | 8   |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.10x/pXO1/coverage/SRR1749070-0.10x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.10x/pXO1/coverage/SRR1749070-0.10x-anthrax-toxin.pdf)|
 | SRR1749070-0.25x | 0    | 0.0000  | 1.0000  | 1.2305  | 2.0000  | 13  |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-anthrax-toxin.pdf)|
 | SRR1749070-0.5x  | 0    | 1.0000  | 2.0000  | 2.4250  | 3.0000  | 20  |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.pdf)|
 | SRR1749070-1x    | 0    | 3.0000  | 4.0000  | 4.8863  | 6.0000  | 36  |[pXO1](/data/results/02-mapping/anthracis-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxin](/data/results/02-mapping/anthracis-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
@@ -239,7 +236,7 @@ the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves 
 ###### *B. cereus* control
 | Study            | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
 |------------------|------|---------|--------|--------|---------|-----|----------------|
-| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.0103 | 0.0000  | 2   |[pXO1](/data/results/02-mapping/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxin](/data/results/02-mapping/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.0103 | 0.0000  | 2    |[pXO1](/data/results/02-mapping/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-coverage.pdf), [Toxin](/data/results/02-mapping/cereus-control/SRR1749070-0x/pXO1/coverage/SRR1749070-0x-anthrax-toxin.pdf)|
 | SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.0368 | 0.0000  | 7   |[pXO1](/data/results/02-mapping/cereus-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-coverage.pdf), [Toxin](/data/results/02-mapping/cereus-control/SRR1749070-0.25x/pXO1/coverage/SRR1749070-0.25x-anthrax-toxin.pdf)|
 | SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.0522 | 0.0000  | 9   |[pXO1](/data/results/02-mapping/cereus-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-coverage.pdf), [Toxin](/data/results/02-mapping/cereus-control/SRR1749070-0.5x/pXO1/coverage/SRR1749070-0.5x-anthrax-toxin.pdf)|
 | SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 0.0912 | 0.0000  | 16  |[pXO1](/data/results/02-mapping/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-coverage.pdf), [Toxin](/data/results/02-mapping/cereus-control/SRR1749070-1x/pXO1/coverage/SRR1749070-1x-anthrax-toxin.pdf)|
@@ -370,14 +367,10 @@ contained low levels of pXO2 coverage.
 ###### *B. anthracis* control
 | Study            | Min. | 1st Qu. | Median  | Mean    | 3rd Qu. | Max | Coverage Plots |
 |------------------|------|---------|---------|---------|---------|-----|----------------|
-| SRR1749070-0x    | 0    | 0.0000  | 0.0000  | 0.2483  | 0.0000  | 662
-|[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0x/pXO2/coverage/SRR1749070-0x-coverage.pdf)|
-| SRR1749070-0.01x	| 0    |	0.0000  |	0.0000	 | 0.2772  |	0.0000	667
-|[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.01x/pXO2/coverage/SRR1749070-0.01x-coverage.pdf)|
-| SRR1749070-0.05x	| 0    |	0.0000  |	0.0000	 | 0.3784  |	0.0000	667
-|[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.05x/pXO2/coverage/SRR1749070-0.05x-coverage.pdf)|
-| SRR1749070-0.10x	| 0    |	0.0000  |	0.0000  |	0.4731  |	0.0000	667
-|[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.10x/pXO2/coverage/SRR1749070-0.10x-coverage.pdf)|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000  | 0.2483  | 0.0000  | 662 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0x/pXO2/coverage/SRR1749070-0x-coverage.pdf)|
+| SRR1749070-0.01x	| 0    |	0.0000  |	0.0000	 | 0.2772  |	0.0000	 | 667 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.01x/pXO2/coverage/SRR1749070-0.01x-coverage.pdf)|
+| SRR1749070-0.05x	| 0    |	0.0000  |	0.0000	 | 0.3784  |	0.0000	 | 667 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.05x/pXO2/coverage/SRR1749070-0.05x-coverage.pdf)|
+| SRR1749070-0.10x	| 0    |	0.0000  |	0.0000  |	0.4731  |	0.0000	 | 667 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.10x/pXO2/coverage/SRR1749070-0.10x-coverage.pdf)|
 | SRR1749070-0.25x | 0    | 0.0000  | 0.0000  | 0.7916  | 1.0000  | 667 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.25x/pXO2/coverage/SRR1749070-0.25x-coverage.pdf)|
 | SRR1749070-0.5x  | 0    | 0.0000  | 1.0000  | 1.3448  | 2.0000  | 667 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-0.5x/pXO2/coverage/SRR1749070-0.5x-coverage.pdf)|
 | SRR1749070-1x    | 0    | 1.0000  | 2.0000  | 2.4348  | 3.0000  | 667 |[pXO2](/data/results/02-mapping/anthracis-control/SRR1749070-1x/pXO2/coverage/SRR1749070-1x-coverage.pdf)|
@@ -425,7 +418,7 @@ The results from our *B. anthracis*, *B cereus* and *B. thurigiensis* sequencing
  ![B. anthracis](/data/results/03-kraken/anthracis-control/anthracis.png "B. anthracis")
  
 ######  SRR1749070-0.01x *B. anthracis* control
- ![0x coverage](/results/kracken/anthracis-control/0x_.png "anthracis 0.01x coverage")
+ ![0x coverage](/data/results/03-kraken/anthracis-control/0x_.png "anthracis 0x coverage")
 
 ######  SRR1749070-0.01x *B. anthracis* control
  ![0.01x coverage](/data/results/03-kraken/anthracis-control/0.01x_.png "anthracis 0.01x coverage")
@@ -433,14 +426,14 @@ The results from our *B. anthracis*, *B cereus* and *B. thurigiensis* sequencing
 ######  SRR1749070-0.05x *B. anthracis* control
  ![0.05x coverage](/data/results/03-kraken/anthracis-control/0.05x_.png "anthracis 0.05x coverage")
  
- ######  SRR1749070-0.10x *B. anthracis* control
+######  SRR1749070-0.10x *B. anthracis* control
  ![0.10x coverage](/data/results/03-kraken/anthracis-control/0.10x_.png "anthracis 0.10x coverage")
  
 ######  SRR1749070-0.25x *B. anthracis* control
  ![0.25x coverage](/data/results/03-kraken/anthracis-control/0.25x_.png "anthracis 0.25x coverage")
  
 ###### SRR1749070-5.0x *B. cereus* control
- ![5.0x coverage](/data/results/03-kraken/anthracis-control/B.cereus5.0x.png "cereus 5.0x coverage") 
+ ![5.0x coverage](/data/results/03-kraken/anthracis-control/B.cereus5x.png "cereus 5.0x coverage") 
 
 ###### SRR1748707 species distribution*
  ![SRR1749083](/data/results/03-kraken/anthracis-control/P00134_1.png )
