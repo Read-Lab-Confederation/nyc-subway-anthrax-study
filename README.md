@@ -185,13 +185,16 @@ using the following scripts [get-anthracis-control.sh](/data/methods/01-accessin
 ## 2. Mapping metagenome data to plasmids (and chromosomes)
 
 ### Mapping against pXO1 and pXO2 using BWA
-We used *BWA (v 0.7.5a-r405)* to map reads from each of the NYC and control samples against the reference 
-pXO1 and pXO2 plasmids. For pXO1 we used reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), 
-and for pXO2 we used reference [NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691). The SAM output was then
+We used *BWA (v 0.7.5a-r405)* to map reads from each of the NYC and control samples against reference 
+pXO1 and pXO2 plasmids as well as reference *B. anthracis* and *B. cereus* completed genomes. We used the following 
+references: pXO1 reference [CP009540](http://www.ncbi.nlm.nih.gov/nuccore/CP009540.1), pXO2 reference
+[NC_007323](http://www.ncbi.nlm.nih.gov/nuccore/50163691), *B. anthracis* reference 
+[CP009541](http://www.ncbi.nlm.nih.gov/nuccore/CP009541), and *B. cereus* reference
+[NC_003909](http://www.ncbi.nlm.nih.gov/nuccore/NC_003909). The aligned reads in SAM format were then
 converted to sorted BAM and indexed using *samtools (v 1.1)*. The per base coverage was extracted using 
-*genomeCoverageBed* from *bedtools (v2.16.2)*. Coverage across the complete plasmid was plotted for mulitple
-sliding windows by the Rscript *[plot-coverage.R](/data/methods/02-mapping/plot-coverage.R)*. Reads that mapped to 
-the plasmids were extracted and saved in both FASTQ and FASTA format using *bam2fastq (v1.1.0)* and *fastq_to_fasta* 
+*genomeCoverageBed* from *bedtools (v2.16.2)*. Coverage across the plasmids and chromosomes were plotted for mulitple
+sliding windows by the Rscript *[plot-coverage.R](/data/methods/02-mapping/plot-coverage.R)*. Mapped reads
+were extracted and saved in both FASTQ and FASTA format using *bam2fastq (v1.1.0)* and *fastq_to_fasta* 
 from *FASTX Toolkit v 0.0.13.2*.
 
 For pXO1, we focused on coverage of the virulence genes (*cya*, *lef*, *pagA* and *pagR*). To
@@ -200,16 +203,19 @@ visualize this, an alternate plot was created which included subplots of coverag
 to each gene were also extracted and blasted (*blastn v2.2.30+)* against the NT database (built on Feb 9, 2015). For 
 each gene, a count of the organism names of which the top five hits of each read belonged to was recorded. 
 
-This analysis was automated using the following scripts 
+The analysis of the plasmids was automated using the following scripts 
 *[map-anthracis-plasmids.sh](/data/methods/02-mapping/map-anthracis-plasmids.sh)*
-(NYC samples) and *[map-anthracis-controls.sh](/data/methods/02-mapping/map-anthracis-controls.sh)* (control samples). 
-Summaries of the results of mapping samples against pXO1 and pXO2 were created using the following scripts:
+(NYC samples) and *[map-anthracis-controls.sh](/data/methods/02-mapping/map-anthracis-controls.sh)* (control samples).
+Analysis of the completed chromosomes was automated using the scripts 
+*[map-bacilli-nyc.sh](/data/methods/02-mapping/map-bacilli-nyc.sh)* (NYC samples) and 
+*[map-bacilli-controls.sh](/data/methods/02-mapping/map-bacilli-controls.sh)* (control samples).
+Summaries of the results of mapping samples against pXO1, pXO2 and chromosomes were generated using the following scripts:
 *[mapping-coverage-summary.py](/data/methods/02-mapping/mapping-coverage-summary.py)*, 
 *[mapping-gene-summary.py](/data/methods/02-mapping/mapping-gene-summary.py)* and 
 *[mapping-top-blast-hits-summary.py](/data/methods/02-mapping/mapping-top-blast-hits-summary.py)*
 
 ### pXO1 Results
-For each sample we calculated the summary statistics of coverage across the complete pXO1 plasmid (Table 2).
+For each sample we calculated the summary statistics of coverage across the complete pXO1 plasmid.
 NYC sample SRR174708 has the best average coverage (2x), but each of the NYC samples have a median coverage of 
 0x. These results are nearly the opposite of the *B. anthracis* control. Even at an estimated coverage of 0.25x, 
 the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves as the estimated coverage of 
@@ -245,7 +251,6 @@ the mean coverage of pXO1 is 1.23x (median 1x). The mean coverage only improves 
 To give an idea of the difference in coverages, below was coverage across the pXO1 plasmid at 1000bp
 sliding windows with a 500bp overlap for three samples. SRR1748708 was selected because it has the greatest
 mean coverage of the NYC samples. 
- **ROBERT CAN YOU RERUN THESE ANALYSES ON THE LOWER cobtrol samples -- especially 0.01x -- and the chromosmal data and present the results**
  
 ###### *NYC sample SRR1748708*
 ![SRR1748708](/data/results/02-mapping/anthracis/SRR1748708/pXO1/coverage/SRR1748708-coverage-1000bp.png "SRR1748708")
@@ -275,7 +280,7 @@ of 500bp. Each subplot against the genes *pagA*, *pagR*, *lef* and *cya* was the
 ![B. anthracis control 5x coverage](/data/results/02-mapping/anthracis-control/SRR1749070-5x/pXO1/coverage/SRR1749070-5x-anthrax-toxin.png "B. anthracis control 5x coverage")
 
 The *B. anthracis* controls clearly showed a number of reads mapping to each of the genes. The total number of 
-reads mapped to each gene for each sample was extracted (Table 3). At 0.5x a total of 197 reads mapped to these 
+reads mapped to each gene for each sample was extracted (below). At 0.5x a total of 197 reads mapped to these 
 genes. At 5x the coverage the total number of reads mapped jumped to 1,817. clearly evident. Looking at 
 SRR1748708, the genes are essentially devoid of mapped reads but reads are mapped to these genes. Although only 72 
 reads mapped to these genes it is necessary to investigate these reads further. 
@@ -400,6 +405,93 @@ There was clearly a peak in each of the plots above, which is likely a repeat re
 *Bacillus* species. SRR1748708 mostly maps to this region. As with pXO1, the *B. anthracis* control 
 maintains similar coverage accross the complete pXO2 plasmid. Unlike pXO1, there seems to be a number of 
 regions in pXO2 that are very similar to *B. cereus* as depicted by the plot of the *B. cereus* control.
+
+### Completed *B. anthracis* and *B. cereus* Chromosome Results
+In order to demonstrate how similar the chromosomes of *B. anthracis* and *B. cereus* are to one another, we
+also mapped reads to completed chromosomes. Summary statistics of mapped reads can be found below. Unlike the pXO1
+and pXO2 plasmids each of the NYC samples have a mean coverage greater than 1x for both *B. anthracis* and *B. cereus*. 
+The difference in the mean coverage between *B. anthracis* and *B. cereus* for each NYC sample is negligble
+(SRR1748707:0.0555, SRR1749083:0.1124, and SRR1748708:0.5252). Again focusing on SRR1748708, because it has the 
+greatest mean coverage against both *B. anthracis* and *B. cereus*, we can visualize the coverage accross each chromosome.
+
+###### Coverage across *B. anthracis* for sample SRR1748708 
+![SRR1748708](/data/results/02-mapping/bacilli-nyc/SRR1748708/anthracis/coverage/SRR1748708-coverage-10000bp.png "SRR1748708 against B. anthracis")
+
+###### Coverage across *B. cereus* for sample SRR1748708 
+![SRR1748708](/data/results/02-mapping/bacilli-nyc/SRR1748708/cereus/coverage/SRR1748708-coverage-10000bp.png "SRR1748708 against B. cereus")
+
+Using 10kb sliding windows (5kb overlap), the two plots above show consistent coverage across both the *B. anthracis* 
+and *B. cereus* chromosomes. The discrepency in peaks of coverage can be explained by the location of the origin 
+of replication in each of the references. The other two samples, SRR1748707 and SRR1749083, show similar patterns 
+of consistent coverage.  At first glance, these plots could be mistakenly taken as evidence for the presence of 
+both *B. anthracis* and *B. cereus* in the NYC samples. Recall, the genomes of organisms within the *B. cereus group* 
+are very similar to one another. Just how similar? Below are cross mappings of reads from *B. anthracis* and *B. cereus*
+to one another.
+
+###### Coverage across *B. anthracis* for *B. cereus* control at 5x coverage
+![B. cereus control](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-5x/anthracis/coverage/SRR1749070-5x-coverage-10000bp.png "B. cereus control against B. anthracis")
+
+###### Coverage across *B. cereus*  for *B. anthracis* control at 5x coverage
+![B. anthracis control](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-5x/cereus/coverage/SRR1749070-5x-coverage-10000bp.png "B. anthracis control against B. cereus")
+
+These two plots show *B. cereus* reads consistenly mapping to the *B. anthracis* chromosome and likewise *B. anthracis* 
+reads consistenly mapping to the *B. cereus* chromosome. The similarity between the two chromosomes would likely cause 
+difficulties distiguishing between the two organisms based on sequence homology alone.
+
+#### Summary statistics of per base coverage against *B. anthracis* for NYC samples and controls.
+###### *NYC Subway System*
+| Study      | Min. | 1st Qu. | Median  | Mean    | 3rd Qu. | Max  | Coverage Plots |
+|------------|------|---------|---------|---------|---------|------|----------------|
+| SRR1748707 | 0    | 0.0000  | 1.0000  | 1.8449  | 3.0000  | 584  | *[B. anthracis](/data/results/02-mapping/bacilli-nyc/SRR1748707/anthracis/coverage/SRR1748707-coverage.pdf)* |
+| SRR1748708 | 0    | 8.0000  | 16.0000 | 16.1112 | 23.0000 | 1346 | *[B. anthracis](/data/results/02-mapping/bacilli-nyc/SRR1748708/anthracis/coverage/SRR1748708-coverage.pdf)* |
+| SRR1749083 | 0    | 2.0000  | 5.0000  | 5.6239  | 8.0000  | 186  | *[B. anthracis](/data/results/02-mapping/bacilli-nyc/SRR1749083/anthracis/coverage/SRR1749083-coverage.pdf)* |
+###### *B. anthracis* control
+| Study            | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
+|------------------|------|---------|--------|--------|---------|-----|----------------|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.3307 | 0.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0x/anthracis/coverage/SRR1749070-0x-coverage.pdf)* |
+| SRR1749070-0.01x | 0    | 0.0000  | 0.0000 | 0.3382 | 0.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.01x/anthracis/coverage/SRR1749070-0.01x-coverage.pdf)* |
+| SRR1749070-0.05x | 0    | 0.0000  | 0.0000 | 0.3685 | 0.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.05x/anthracis/coverage/SRR1749070-0.05x-coverage.pdf)* |
+| SRR1749070-0.10x | 0    | 0.0000  | 0.0000 | 0.4054 | 0.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.10x/anthracis/coverage/SRR1749070-0.10x-coverage.pdf)* |
+| SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.5182 | 0.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.25x/anthracis/coverage/SRR1749070-0.25x-coverage.pdf)* |
+| SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.7062 | 1.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.5x/anthracis/coverage/SRR1749070-0.5x-coverage.pdf)* |
+| SRR1749070-1x    | 0    | 0.0000  | 1.0000 | 1.0793 | 1.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-1x/anthracis/coverage/SRR1749070-1x-coverage.pdf)* |
+| SRR1749070-5x    | 0    | 2.0000  | 3.0000 | 4.0712 | 5.0000  | 529 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-5x/anthracis/coverage/SRR1749070-5x-coverage.pdf)* |
+###### *B. cereus* control
+| Study            | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
+|------------------|------|---------|--------|--------|---------|-----|----------------|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.3307 | 0.0000  | 524 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-0x/anthracis/coverage/SRR1749070-0x-coverage.pdf)* |
+| SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.4954 | 0.0000  | 525 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-0.25x/anthracis/coverage/SRR1749070-0.25x-coverage.pdf)* |
+| SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.6688 | 1.0000  | 525 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-0.5x/anthracis/coverage/SRR1749070-0.5x-coverage.pdf)* |
+| SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 1.0151 | 1.0000  | 525 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-1x/anthracis/coverage/SRR1749070-1x-coverage.pdf)* |
+| SRR1749070-5x    | 0    | 0.0000  | 3.0000 | 3.7523 | 6.0000  | 528 | *[B. anthracis](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-5x/anthracis/coverage/SRR1749070-5x-coverage.pdf)* |
+
+#### Summary statistics of per base coverage against *B. cereus* for NYC samples and controls.
+###### *NYC Subway System*
+| Study      | Min. | 1st Qu. | Median  | Mean    | 3rd Qu. | Max | Coverage Plots |
+|------------|------|---------|---------|---------|---------|-----|----------------|
+| SRR1748707 | 0    | 0.0000  | 1.0000  | 1.7894  | 3.0000  | 350 | *[B. cereus](/data/results/02-mapping/bacilli-nyc/SRR1748707/cereus/coverage/SRR1748707-coverage.pdf)* |
+| SRR1748708 | 0    | 7.0000  | 16.0000 | 15.5860 | 23.0000 | 455 | *[B. cereus](/data/results/02-mapping/bacilli-nyc/SRR1748708/cereus/coverage/SRR1748708-coverage.pdf)* |
+| SRR1749083 | 0    | 2.0000  | 5.0000  | 5.5115  | 8.0000  | 146 | *[B. cereus](/data/results/02-mapping/bacilli-nyc/SRR1749083/cereus/coverage/SRR1749083-coverage.pdf)* |
+###### *B. anthracis* control
+| Study            | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
+|------------------|------|---------|--------|--------|---------|-----|----------------|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.3284 | 0.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0x/cereus/coverage/SRR1749070-0x-coverage.pdf)* |
+| SRR1749070-0.01x | 0    | 0.0000  | 0.0000 | 0.3344 | 0.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.01x/cereus/coverage/SRR1749070-0.01x-coverage.pdf)* |
+| SRR1749070-0.05x | 0    | 0.0000  | 0.0000 | 0.3587 | 0.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.05x/cereus/coverage/SRR1749070-0.05x-coverage.pdf)* |
+| SRR1749070-0.10x | 0    | 0.0000  | 0.0000 | 0.3881 | 0.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.10x/cereus/coverage/SRR1749070-0.10x-coverage.pdf)* |
+| SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.4781 | 0.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.25x/cereus/coverage/SRR1749070-0.25x-coverage.pdf)* |
+| SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.6293 | 1.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-0.5x/cereus/coverage/SRR1749070-0.5x-coverage.pdf)* |
+| SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 0.9291 | 1.0000  | 523 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-1x/cereus/coverage/SRR1749070-1x-coverage.pdf)* |
+| SRR1749070-5x    | 0    | 1.0000  | 3.0000 | 3.3184 | 5.0000  | 528 | *[B. cereus](/data/results/02-mapping/bacilli-controls/anthracis-control/SRR1749070-5x/cereus/coverage/SRR1749070-5x-coverage.pdf)* |
+###### *B. cereus* control
+| Study            | Min. | 1st Qu. | Median | Mean   | 3rd Qu. | Max | Coverage Plots |
+|------------------|------|---------|--------|--------|---------|-----|----------------|
+| SRR1749070-0x    | 0    | 0.0000  | 0.0000 | 0.3284 | 0.0000  | 521 | *[B. cereus](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-0x/cereus/coverage/SRR1749070-0x-coverage.pdf)* |
+| SRR1749070-0.25x | 0    | 0.0000  | 0.0000 | 0.4956 | 0.0000  | 522 | *[B. cereus](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-0.25x/cereus/coverage/SRR1749070-0.25x-coverage.pdf)* |
+| SRR1749070-0.5x  | 0    | 0.0000  | 0.0000 | 0.6714 | 1.0000  | 522 | *[B. cereus](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-0.5x/cereus/coverage/SRR1749070-0.5x-coverage.pdf)* |
+| SRR1749070-1x    | 0    | 0.0000  | 0.0000 | 1.0226 | 1.0000  | 522 | *[B. cereus](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-1x/cereus/coverage/SRR1749070-1x-coverage.pdf)* |
+| SRR1749070-5x    | 0    | 0.0000  | 3.0000 | 3.8064 | 6.0000  | 522 | *[B. cereus](/data/results/02-mapping/bacilli-controls/cereus-control/SRR1749070-5x/cereus/coverage/SRR1749070-5x-coverage.pdf)* |
+
 
 ****
 
