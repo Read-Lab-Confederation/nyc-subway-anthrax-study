@@ -6,12 +6,12 @@ import os
 import re
 
 hits = []
-for root, dirnames, filenames in os.walk('results'):
+for root, dirnames, filenames in os.walk('data/results'):
     for filename in fnmatch.filter(filenames, 'all.summary'):
         hits.append(os.path.join(root, filename))
 
-pattern = re.compile(r"results/(?P<study>.*)/(?P<sample>.*)/(?P<plasmid>.*)/"
-                     "aligned-genes/all.summary")
+pattern = re.compile(r"data/results/02-mapping/(?P<study>.*)/(?P<sample>.*)/"
+                     "(?P<plasmid>.*)/aligned-genes/all.summary")
 results = {}
 for hit in hits:
     m = pattern.search(hit)
@@ -33,7 +33,9 @@ for hit in hits:
 
 
 for study in results:
-    output = "results/{0}/top_blast_hit_counts.txt".format(study)
+    output = "data/results/02-mapping/{0}/top_blast_hit_counts.txt".format(
+        study
+    )
     out = open(output, "w")
 
     sorted_vals = sorted(results[study].items(), key=operator.itemgetter(1),

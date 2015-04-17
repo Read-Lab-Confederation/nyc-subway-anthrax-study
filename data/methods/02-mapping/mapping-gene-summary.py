@@ -5,15 +5,16 @@ import os
 import re
 
 genes = []
-for root, dirnames, filenames in os.walk('results'):
+for root, dirnames, filenames in os.walk('data/results'):
     for filename in fnmatch.filter(filenames, '*.fasta'):
         genes.append(os.path.join(root, filename))
 
-pattern = re.compile(r"results/(?P<study>.*)/(?P<sample>.*)/(?P<plasmid>.*)/"
-                     "aligned-genes/(?P<gene>.*).fasta")
+pattern = re.compile(r"data/results/02-mapping/(?P<study>.*)/(?P<sample>.*)/"
+                     "(?P<plasmid>.*)/aligned-genes/(?P<gene>.*).fasta")
 
 results = {}
 for gene in genes:
+    print gene
     m = pattern.search(gene)
     study = m.group('study')
     plasmid = m.group('plasmid')
@@ -40,7 +41,7 @@ for gene in genes:
     results[study][plasmid][sample][m.group('gene')] = str(read_count)
 
 for study in results:
-    output = "results/{0}/toxin_read_counts.txt".format(study)
+    output = "data/results/02-mapping/{0}/toxin_read_counts.txt".format(study)
     out = open(output, "w")
     for plasmid in results[study]:
         out.write("{0}\n".format(plasmid))

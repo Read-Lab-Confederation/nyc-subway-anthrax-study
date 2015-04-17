@@ -8,12 +8,12 @@ import re
 import numpy as np
 
 coverages = []
-for root, dirnames, filenames in os.walk('results'):
+for root, dirnames, filenames in os.walk('data/results'):
     for filename in fnmatch.filter(filenames, '*.coverage.gz'):
         coverages.append(os.path.join(root, filename))
 
-pattern = re.compile(r"results/(?P<study>.*)/(?P<sample>.*)/(?P<plasmid>.*)/"
-                     "coverage/(?P<coverage>.*).coverage.gz")
+pattern = re.compile(r"data/results/02-mapping/(?P<study>.*)/(?P<sample>.*)/"
+                     "(?P<plasmid>.*)/coverage/(?P<coverage>.*).coverage.gz")
 
 results = {}
 for coverage in coverages:
@@ -43,7 +43,7 @@ for coverage in coverages:
         results[study][plasmid].append([m.group('sample'), 0, 0, 0, 0, 0, 0])
 
 for study in results:
-    output = "results/{0}/coverage_summary.txt".format(study)
+    output = "data/results/02-mapping/{0}/coverage_summary.txt".format(study)
     out = open(output, "w")
     for plasmid in results[study]:
         out.write("{0}\n".format(plasmid))
