@@ -2,7 +2,7 @@
 
 By Robert Petit III, Matthew Ezewudo, Sandeep J. Joseph and *Timothy D. Read,
 Emory University School of Medicine, Atlanta, Georgia
-\cite{Boyle-Vavra2015-ba}
+
 ##Introduction
 In January 2015 Chris Mason and his team [published](http://www.sciencedirect.com/science/article/pii/S2405471215000022) 
 an in-depth analysis of metagenomic data [(environmental shotgun DNA sequence)](http://en.wikipedia.org/wiki/Metagenomics) from samples isolated from public surfaces 
