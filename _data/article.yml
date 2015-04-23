@@ -1,83 +1,35 @@
 # Note: to avoid repeating the same data multiple times,
 # identifiers (starting with "&") are referenced later (starting with "*")
 
-title: "My First Article"
-date: 2015-03-15T12:00:00Z
+title: "Searching for anthrax in the New York City subway metagenome."
+date: 2015-04-23T12:00:00Z
 doi: # e.g. 10.1234/example.1
 
 authors:
-  - &alice-exemplar
-    id: "alice-exemplar"
-    name: "Alice Exemplar"
-    email: "alice.exemplar@example.com"
-    url: http://example.com/authors/1
-    orcid: "0000-0002-9298-3168"
+  - &rp3
+    id: "rp3"
+    name: "Robert A Petit III"
 
-  - &bob-exemplar
-    id: "bob-exemplar"
-    name: "Bob Exemplar"
-    orcid: "0000-0002-9341-7985"
+  - &me
+    id: "me"
+    name: "Matthew Ezewudo"
+
+  - &sjj
+    id: "sjj"
+    name: "Sandeep J. Joseph"
+
+  - &tread
+    id: "robert-petit-iii"
+    name: "Timothy D. Read"
+    email: "tread@emory.edu"
 
 affiliations:
-  - name: "Stanford University"
-    department: "Department of Mathematics"
-    location: "Stanford, California, USA"
+  - name: "Emory University"
+    department: "School of Medicine"
+    location: "Atlanta, Georgia, USA"
     url: http://mathematics.stanford.edu/
     members:
-      - *alice-exemplar
-      - *bob-exemplar
-
-  - name: "Harvard University"
-    department: "Department of Molecular and Cellular Biology"
-    location: "Cambridge, MA, USA"
-    members:
-      - *alice-exemplar
-
-funders:
-  - name: "Medical Research Council"
-    sameAs: "http://dx.doi.org/10.13039/501100000265"
-    awards:
-      - name: MRC123
-        recipients:
-          - *alice-exemplar
-          - *bob-exemplar
-      - name: MRC456
-        recipients:
-          - *alice-exemplar
-          - *bob-exemplar
-
-  - name: "National Institutes of Health"
-    url: http://www.nih.gov/
-    sameAs: "http://dx.doi.org/10.13039/100000002"
-    awards:
-      - name: NIH123
-        recipients:
-          - *alice-exemplar
-
-contributions:
-  - name: "Methodology"
-    url: http://dictionary.casrai.org/Contributor_Roles/Methodology
-    contributors:
-      - *alice-exemplar
-      - *bob-exemplar
-
-  - name: "Investigation"
-    url: http://dictionary.casrai.org/Contributor_Roles/Investigation
-    contributors:
-      - *alice-exemplar
-      - *bob-exemplar
-
-  - name: "Software"
-    url: http://dictionary.casrai.org/Contributor_Roles/Software
-    contributors:
-      - *bob-exemplar
-
-  - name: "Writing - original draft"
-    url: http://dictionary.casrai.org/Contributor_Roles/Writing_%E2%80%93_original_draft
-    contributors:
-      - *alice-exemplar
-
-  - name: "Writing - review & editing"
-    url: http://dictionary.casrai.org/Contributor_Roles/Writing_%E2%80%93_review_%26_editing
-    contributors:
-      - *bob-exemplar
+      - *rp3
+      - *me
+      - *sjj
+      - *tread

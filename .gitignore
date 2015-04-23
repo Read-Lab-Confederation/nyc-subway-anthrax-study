@@ -1,3 +1,17 @@
 _site
 .sass-cache
 Gemfile.lock
+
+*~
+*.pyc
+sra-*/
+bin/
+logs/
+data/methods/02-mapping/bwa-references/*.fai
+data/methods/02-mapping/bwa-references/index/
+*.bam
+*.sam
+*.bai
+src/
+
+.DS_Store

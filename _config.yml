@@ -13,3 +13,7 @@ collections:
         title: 'Tables'
     sections:
         output: true
+
+markdown: kramdown
+kramdown:
+  input: GFM

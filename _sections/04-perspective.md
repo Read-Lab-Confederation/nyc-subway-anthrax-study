@@ -1,0 +1,12 @@
+---
+title: "Perspective"
+order: 4
+---
+
+We believe that one of the biggest messages to take from this investigation is that there is no one-size-fits-all approach to bacterial species indentification in metagenome samples.  There are several reasons for this.  Perhaps most importantly, there is no consistently applied definition for the boundary that divides bacterial species based on DNA sequence identity.  The main chromsomes of some bacteria from different species (like *B. cereus* and *B. anthracis*) can be >99% similar to each other in terms of DNA sequence identity.  Secondly, some species distinctions rely on the presence or absence of mobile elements like plasmids and phages(again *B. cereus* and *B. anthracis* are a great example), which are hard to model using a uniform approach like Kraken or Metaphlan. These genetic elements are often modular in structure with very similar 'backbones' but with key genes replaced.  Finally, the generalist species indentification programs rely on databases of sequenced genomes, which are not uniform in their coverage of different species, or different lineages within species.
+
+Individual species will have their own unique features that can be used to extract information from metagenomic sequence. In this case, if you were to have an organism-specific detection algorthim for *B. cereus* you would need to account for the presence of the plasmids with at least 2 times the coverage of the chromsome.  You would also expect even coverage across all the sites in the plasmid.
+
+Even if you have developed a sophisticated algorithm you will still need to use judgement in interpreting results.  In the case of the *B. cereus* group, we dont know what proportion of the cells were spores and what proportion were the in the more fragile vegative state. There is also still much that we dont know about bacteria in the environment, especialy the conditions under which they exchange DNA.  Can we say that its not natural to find evidence of a small number of "anthracis specific" SNPs on a *B. cereus* chromsome?  This could be becasue thsi strain has not been sequenced, or because of recombination, or convergent evolution. Judgement is especially important where the amount of data supporting a putative pathogen is small.  Obviously orthologous validation (culture, PCR etc) is really useful.
+
+Finally, the negative result is subject to a lot of nuances.  The limit of detection will be affected by the amount of sequence generated and the complexity of the microbial community.
