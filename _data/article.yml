@@ -27,7 +27,7 @@ affiliations:
   - name: "Emory University"
     department: "School of Medicine"
     location: "Atlanta, Georgia, USA"
-    url: http://mathematics.stanford.edu/
+    url: https://www.med.emory.edu/
     members:
       - *rp3
       - *me
