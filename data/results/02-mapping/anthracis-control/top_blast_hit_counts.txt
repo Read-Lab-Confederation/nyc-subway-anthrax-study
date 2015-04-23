@@ -1,0 +1,5 @@
+Bacillus anthracis	10736
+Bacillus cereus	1856
+Synthetic construct	35
+Cyprinus carpio	2
+

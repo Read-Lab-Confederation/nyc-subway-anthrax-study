@@ -1,0 +1,14 @@
+*~
+*.pyc
+sra-*/
+bin/
+logs/
+references/*.fai
+references/index/
+*.bam
+*.sam
+*.bai
+src/
+
+.DS_Store
+
