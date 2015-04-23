@@ -17,3 +17,5 @@ collections:
 markdown: kramdown
 kramdown:
   input: GFM
+
+gitrepo: "https://github.com/Read-Lab-Confederation/paper-now/blob/gh-pages/"
