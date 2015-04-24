@@ -1,8 +1,8 @@
 ---
-title: "Methods Overview"
+title: "Overview"
 order: 2
 ---
-The results are organized in 4 sections:
+
 
 1.  **Accessing metagenome data and controls:**  Where we obtained the data and how we constructed artificial controls by mixing recent whole genome shotgun data from pathogens and near-neighbors with NYC subway metagenome data.
 2.  **Mapping metagenome data to plasmids (and chromosomes):**    Looking at the patterns of sequence coverage over the key virulence associated plasmids, pXO1 , pXO2 (and pMT of *Y. pestis*) in metagenome samples and controls.
