@@ -24,10 +24,10 @@ authors:
     email: "tread@emory.edu"
 
 affiliations:
-  - name: "Emory University"
-    department: "School of Medicine"
+  - name: "Emory University School of Medicine"
+    department: "Division of Infectious Diseasess"
     location: "Atlanta, Georgia, USA"
-    url: https://www.med.emory.edu/
+    url: http://medicine.emory.edu/infectious-diseases/s
     members:
       - *rp3
       - *me
