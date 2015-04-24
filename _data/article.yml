@@ -9,10 +9,12 @@ authors:
   - &rp3
     id: "rp3"
     name: "Robert A Petit III"
+    url: https://twitter.com/rpetit3
 
   - &me
     id: "me"
     name: "Matthew Ezewudo"
+    url: https://twitter.com/mezewudos
 
   - &sjj
     id: "sjj"
@@ -22,6 +24,7 @@ authors:
     id: "robert-petit-iii"
     name: "Timothy D. Read"
     email: "tread@emory.edu"
+    url: https://twitter.com/tdread_emory
 
 affiliations:
   - name: "Emory University School of Medicine"
