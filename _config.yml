@@ -1,6 +1,6 @@
 safe: true
 exclude: ['README.md', 'Gemfile', 'Gemfile.lock', 'serve.sh', 'article.png', 'LICENSE']
-baseurl: /paper-now
+baseurl: /nyc-subway-anthrax-study
 imports:
     - https://peerj.github.io/research-article/research-article.html
 theme: https://peerj.github.io/research-article/components/
@@ -18,4 +18,4 @@ markdown: kramdown
 kramdown:
   input: GFM
 
-gitrepo: "https://github.com/Read-Lab-Confederation/paper-now/blob/gh-pages/"
+gitrepo: "https://github.com/Read-Lab-Confederation/nyc-subway-anthrax-study/blob/gh-pages/"
