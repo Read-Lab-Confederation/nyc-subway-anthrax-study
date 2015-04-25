@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/12362/Read-Lab-Confederation/nyc-subway-anthrax-study.svg)](http://dx.doi.org/10.5281/zenodo.17151)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.17158.svg)](http://dx.doi.org/10.5281/zenodo.17158)
 
 ## Searching for anthrax in the New York City subway metagenome.
 Please see our write up on our search for anthrax in the New York City subway metagenome at our [GitHub Page](http://read-lab-confederation.github.io/nyc-subway-anthrax-study/)
