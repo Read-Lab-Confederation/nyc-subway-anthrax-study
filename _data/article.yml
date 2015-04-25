@@ -4,6 +4,7 @@
 title: "Searching for anthrax in the New York City subway metagenome."
 date: 2015-04-23T12:00:00Z
 doi: # e.g. 10.1234/example.1
+github: # e.g. user-name/paper-now
 
 authors:
   - &rp3
