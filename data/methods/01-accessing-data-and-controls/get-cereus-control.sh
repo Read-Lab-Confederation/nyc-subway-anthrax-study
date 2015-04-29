@@ -43,6 +43,18 @@ ${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_2.fastq.gz 29620 | gzip - > SRR6
 ${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_1.fastq.gz 148100 | gzip - > SRR642775_1.5x.fastq.gz
 ${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_2.fastq.gz 148100 | gzip - > SRR642775_2.5x.fastq.gz
 
+# 10x
+${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_1.fastq.gz 296200 | gzip - > SRR642775_1.10x.fastq.gz
+${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_2.fastq.gz 296200 | gzip - > SRR642775_2.10x.fastq.gz
+
+# 50x
+${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_1.fastq.gz 1481000 | gzip - > SRR642775_1.50x.fastq.gz
+${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_2.fastq.gz 1481000 | gzip - > SRR642775_2.50x.fastq.gz
+
+# 100x
+${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_1.fastq.gz 2962000 | gzip - > SRR642775_1.100x.fastq.gz
+${PROJECT_DIR}/bin/seqtk sample -s100 SRR642775_2.fastq.gz 2962000 | gzip - > SRR642775_2.100x.fastq.gz
+
 # Use SRA run SRR1749070 (100bp read lengths, does not contain B. anthracis)
 # to add B. cereus VD142 reads to.
 mkdir ${CONTROL_DIR}/metagenomic
@@ -61,5 +73,14 @@ cat SRR1749070-0x_2.fastq.gz ../SRR642775_2.1x.fastq.gz > SRR1749070-1x_2.fastq.
 
 cat SRR1749070-0x_1.fastq.gz ../SRR642775_1.5x.fastq.gz > SRR1749070-5x_1.fastq.gz
 cat SRR1749070-0x_2.fastq.gz ../SRR642775_2.5x.fastq.gz > SRR1749070-5x_2.fastq.gz
+
+cat SRR1749070-0x_1.fastq.gz ../SRR642775_1.10x.fastq.gz > SRR1749070-10x_1.fastq.gz
+cat SRR1749070-0x_2.fastq.gz ../SRR642775_2.10x.fastq.gz > SRR1749070-10x_2.fastq.gz
+
+cat SRR1749070-0x_1.fastq.gz ../SRR642775_1.50x.fastq.gz > SRR1749070-50x_1.fastq.gz
+cat SRR1749070-0x_2.fastq.gz ../SRR642775_2.50x.fastq.gz > SRR1749070-50x_2.fastq.gz
+
+cat SRR1749070-0x_1.fastq.gz ../SRR642775_1.100x.fastq.gz > SRR1749070-100x_1.fastq.gz
+cat SRR1749070-0x_2.fastq.gz ../SRR642775_2.100x.fastq.gz > SRR1749070-100x_2.fastq.gz
 
 cd ${PROJECT_DIR}
