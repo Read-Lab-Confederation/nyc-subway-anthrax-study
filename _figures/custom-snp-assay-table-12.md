@@ -7,8 +7,8 @@ description: "Summary of the number of matched 31-mers from each of the 3 NY Sub
 ---
 
 {:.table .table-bordered}
-|    Study   |Number of matched 31-mers with Anthrax-specific 31-mers |
-|:----------:|:--------------------------------:|
-| SRR1749083 |                 0                |
-| SRR1748708 |                 2                |
-| SRR1748707 |                 0                |
+| Study      | Number of SNPs (of the 1793 Anthrax-specific SNPs) that matched | Number of matched 31-mers with Anthrax-specific 31-mers |
+|------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| SRR1749083 | 0                                                               | 0                                                       |
+| SRR1748708 | 2                                                               | 4                                                       |
+| SRR1748707 | 0                                                               | 0​                                                       |
