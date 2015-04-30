@@ -7,13 +7,16 @@ description: "Summary of the number of matched 31-mers from each of *B. cereus* 
 ---
 
 {:.table .table-bordered}
-|        Study       | Number of matched 31-mers with Anthrax-specific 31-mers  |
-|:------------------:|:--------------------------------:|
-|   SRR1749070-0x    |                 0                |
-| SRR1749070-0.01x   |                 0                |
-| SRR1749070-0.05x   |                 0                |
-|  SRR1749070-0.1x   |                 0                |
-| SRR1749070-0.25x   |                 0                |
-|  SRR1749070-0.5x   |                 0                |
-|  SRR1749070-1.0x   |                 0                |
-|  SRR1749070-5.0x   |                 0                |
+|                   | Number of SNPs (of the 1793 Anthrax-specific SNPs) that matched | Number of matched 31-mers with Anthrax-specific 31-mers |
+|-------------------|-----------------------------------------------------------------|---------------------------------------------------------|
+| SRR1749070-0x     | 0                                                               | 0                                                       |
+| SRR1749070-0.01x  | 0                                                               | 0                                                       |
+| SRR1749070-0.05x  | 0                                                               | 0                                                       |
+| SRR1749070-0.1x   | 0                                                               | 0                                                       |
+| SRR1749070-0.25x  | 0                                                               | 0                                                       |
+| SRR1749070-0.5x   | 0                                                               | 0                                                       |
+| SRR1749070-1.0x   | 0                                                               | 0                                                       |
+| SRR1749070-5.0x   | 0                                                               | 0                                                       |
+| SRR1749070-10.0x  | 0                                                               | 0                                                       |
+| SRR1749070-50.0x  | 4                                                               | 4                                                       |
+| SRR1749070-100.0x | 8                                                               | 10                                                      |
