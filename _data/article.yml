@@ -30,9 +30,9 @@ authors:
 
 affiliations:
   - name: "Emory University School of Medicine"
-    department: "Division of Infectious Diseasess"
+    department: "Division of Infectious Diseases"
     location: "Atlanta, Georgia, USA"
-    url: http://medicine.emory.edu/infectious-diseases/s
+    url: http://medicine.emory.edu/infectious-diseases/
     members:
       - *rp3
       - *me
