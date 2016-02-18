@@ -4,14 +4,14 @@ Gemfile.lock
 
 *~
 *.pyc
-sra-*/
-bin/
-logs/
+./sra-*/
+./bin/
+./logs/
 data/methods/02-mapping/bwa-references/*.fai
 data/methods/02-mapping/bwa-references/index/
 *.bam
 *.sam
 *.bai
-src/
+./src/
 
 .DS_Store
