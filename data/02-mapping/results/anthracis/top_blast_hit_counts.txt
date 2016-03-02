@@ -1,0 +1,22 @@
+Bacillus thuringiensis	189
+Homo sapiens	58
+Triticum aestivum	45
+Bacillus cereus	41
+Bacillus bombysepticus	22
+Pan troglodytes	17
+Cyprinus carpio	13
+Human DNA	10
+Bacillus weihenstephanensis	7
+Bacillus toyonensis	7
+Staphylococcus xylosus	6
+Homo sapiens,	4
+Chlorocebus aethiops	4
+Nippostrongylus brasiliensis	3
+Pongo abelii	2
+TPA_exp: Homo	2
+Haemonchus placei	2
+Diphyllobothrium latum	1
+Echinostoma caproni	1
+Strongyloides papillosus	1
+Strongyloides stercoralis	1
+

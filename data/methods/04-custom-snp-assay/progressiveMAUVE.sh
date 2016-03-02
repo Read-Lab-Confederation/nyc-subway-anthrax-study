@@ -1,1 +1,0 @@
-/data1/home/sandeep/mauve_2.4.0/linux-x64/progressiveMauve --output=NYC_BAcillus_10.xmfa BCE.fasta bce1_.fasta GBAA_.fasta bce22_.fasta  bce26_.fasta  bce2_.fasta  bce6_.fasta BC.fasta  BCZK.fasta  bth11_.fasta
