@@ -1,12 +1,14 @@
 #! /usr/bin/env python
 
 """
-Author: Robert A Petit III
+Author: Robert A Petit III.
+
 Date: 01/06/2016
 
 Read a set of kmer counts created via Jellyfish and output on those kmers
 which are found in each member.
 """
+
 import argparse as ap
 
 if __name__ == '__main__':
@@ -23,34 +25,44 @@ if __name__ == '__main__':
                         help=('File to write common kmers to.'))
     parser.add_argument('--limit', default=0, type=int, metavar="INT",
                         help='Maximum number of files to read (Default: all)')
+    parser.add_argument('--single_input', action="store_true",
+                        help='The input is not a list on jellyfish counts.')
 
     args = parser.parse_args()
 
-    with open(args.input, 'r') as fh:
-        common_kmers = None
-        first_file = True
-        total = 0
+    common_kmers = None
+    first_file = True
+    total = 0
 
-        # Read file
-        for jf_dump in fh:
-            kmers = []
-            with open(jf_dump.rstrip(), 'r') as f:
-                for line in f:
-                    kmer, count = line.split(' ')
-                    kmers.append(kmer)
+    if not args.single_input:
+        with open(args.input, 'r') as fh:
+            # Read file
+            for jf_dump in fh:
+                kmers = []
+                with open(jf_dump.rstrip(), 'r') as f:
+                    for line in f:
+                        kmer, count = line.split(' ')
+                        kmers.append(kmer)
 
-            total += 1
-            if first_file:
-                first_file = False
-                common_kmers = set(kmers)
-            else:
-                common_kmers = common_kmers.intersection(set(kmers))
+                total += 1
+                if first_file:
+                    first_file = False
+                    common_kmers = set(kmers)
+                else:
+                    common_kmers = common_kmers.intersection(set(kmers))
 
-            print total, len(common_kmers)
-            if args.limit > 0 and args.limit == total:
-                break
+                print("{0}\t{1}".format(total, len(common_kmers)))
 
-    print 'Filter rRNA kmers...'
+                if args.limit > 0 and args.limit == total:
+                    break
+    else:
+        common_kmers = []
+        with open(args.input, 'r') as fh:
+            for line in fh:
+                kmer, count = line.split(' ')
+                common_kmers.append(kmer)
+
+    print('Filter rRNA kmers...')
     rrna_kmers = {}
     with open(args.rrna, 'r') as fh:
         for line in fh:
@@ -65,4 +77,4 @@ if __name__ == '__main__':
                 # Write as FASTA, it plays well with jellyfish query
                 fh_out.write('>{0}\n{0}\n'.format(kmer))
 
-    print '{0} kmers written'.format(total)
+    print('{0} kmers written'.format(total))

@@ -15,7 +15,7 @@ Entrez.email = 'robert.petit@emory.edu'
 if __name__ == '__main__':
     parser = ap.ArgumentParser(
         prog='entrez-batch-download.py', conflict_handler='resolve',
-        description="Download none B. cereus Group nucleotide in batch."
+        description="Download non B. cereus Group nucleotide in batch."
     )
 
     parser.add_argument('query', type=str, metavar="QUERY",
