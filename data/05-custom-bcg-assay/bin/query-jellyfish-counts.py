@@ -9,9 +9,9 @@ import subprocess
 import numpy as np
 
 
-def jellyfish_query(sample, kmers):
+def jellyfish_query(sample, kmers, jellyfish):
     """Run Jellyfish query against a given sample."""
-    cmd = ['jellyfish', 'query', '-s', kmers, sample]
+    cmd = [jellyfish, 'query', '-s', kmers, sample]
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     stdout, stderr = p.communicate()
     return stdout.split('\n')
@@ -31,6 +31,8 @@ if __name__ == '__main__':
                         help=('Kmers (FASTA format) to search for.'))
     parser.add_argument('jellyfish_dir', type=str, metavar="JELLYFISH_DIR",
                         help=('Directory of Jellyfish counts.'))
+    parser.add_argument('jellyfish', type=str, metavar="JELLYFISH_PATH",
+                        help=('Path to Jellyfish executable.'))
     parser.add_argument('output_stats', type=str, metavar="OUTPUT_STATS",
                         help=('File to output per sample stats.'))
     parser.add_argument('output_kmer', type=str, metavar="OUTPUT_KMER",
@@ -60,7 +62,7 @@ if __name__ == '__main__':
         hit = 0
         singletons = 0
 
-        for line in jellyfish_query(input_file, args.kmers):
+        for line in jellyfish_query(input_file, args.kmers, args.jellyfish):
             if not line:
                 continue
 

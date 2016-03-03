@@ -9,9 +9,10 @@ TAG=${TAG##*/}
 TAG=${TAG%-*}
 
 
+JELLYFISH=$6
 JELLYFISH_DIR=$2/${TAG}
 STATS=${OUTPUT_DIR}/$5-${TAG}-kmer-stats.txt
 BY_SAMPLE=${OUTPUT_DIR}/$5-${TAG}-kmer-by-sample.txt
 COUNTS=${OUTPUT_DIR}/$5-${TAG}-kmer-counts.txt
 
-${TOP_DIR}/bin/query-jellyfish-counts.py ${FASTA} ${JELLYFISH_DIR} ${STATS} ${BY_SAMPLE} ${COUNTS} 1> ${OUTPUT_DIR}/${TAG}.log 2>&1
+${TOP_DIR}/bin/query-jellyfish-counts.py ${FASTA} ${JELLYFISH_DIR} ${JELLYFISH} ${STATS} ${BY_SAMPLE} ${COUNTS} 1> ${OUTPUT_DIR}/${TAG}.log 2>&1
