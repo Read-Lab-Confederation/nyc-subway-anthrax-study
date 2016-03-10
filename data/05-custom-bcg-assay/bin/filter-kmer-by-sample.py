@@ -48,34 +48,42 @@ if __name__ == '__main__':
 
     kmers = {}
     for line in gziplines(args.kmers):
-        sample, kmer = line.split('\t')[0:2]
+        sample, kmer, count = line.split('\t')
         sample = sample.split('-')[0]
         if kmer not in kmers:
             kmers[kmer] = {
                 'TP': [],
-                'FP': []
+                'FP': [],
+                'FN': [],
+                'TN': []
             }
 
         if args.filter.lower() in organism_name[sample]:
-            kmers[kmer]['TP'].append(sample)
+            if int(count):
+                kmers[kmer]['TP'].append(sample)
+            else:
+                kmers[kmer]['FN'].append(sample)
         else:
-            kmers[kmer]['FP'].append(sample)
+            if int(count):
+                kmers[kmer]['FP'].append(sample)
+            else:
+                kmers[kmer]['TN'].append(sample)
 
     for kmer in sorted(kmers):
         tp = len(set(kmers[kmer]['TP']))
-        fn = total_tp - tp
+        fn = len(set(kmers[kmer]['FN']))
         fp = len(set(kmers[kmer]['FP']))
-        tn = total_tn - fp
+        tn = len(set(kmers[kmer]['TN']))
 
         # See Olson et al. 2015 frontiers in Genetics for calculations
         accuracy = float(tp + tn) / (tp + fp + fn + tn)
         specificity = float(tn) / (fp + tn)
         sensitivity = float(tp) / (tp + fn)
-        precision = float(tp) / (tp + fp)
+        precision = float(tp) / (tp + fp) if tp else 0.00
         fpr = float(fp) / (tn + fp)
 
-        print(('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8:.2f}\t{9:.2f}\t'
-               '{10:.2f}\t{11:.2f}\t{12:.2f}').format(
+        print(('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t{7}\t{8:.4f}\t{9:.4f}\t'
+               '{10:.4f}\t{11:.4f}\t{12:.4f}').format(
             kmer,
             total_tp + total_tn,
             total_tp,
@@ -85,8 +93,8 @@ if __name__ == '__main__':
             fp,
             tn,
             accuracy,
+            precision,
             specificity,
             sensitivity,
-            precision,
             fpr
         ))

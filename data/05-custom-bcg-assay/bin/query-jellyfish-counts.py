@@ -53,6 +53,12 @@ if __name__ == '__main__':
     stats.append(cols)
     print_row(cols, sys.stderr)
 
+    input_kmers = []
+    with open(args.kmers, 'r') as fh:
+        for line in fh:
+            if not line.startswith('>'):
+                input_kmers.append(line.rstrip())
+
     directory = '{0}/*.jf'.format(args.jellyfish_dir)
     for input_file in glob.glob(directory):
 
@@ -119,6 +125,14 @@ if __name__ == '__main__':
                     kmer,
                     kmer_by_sample[sample][kmer]
                 ))
+            # Make sure the kmers of interest are in there.
+            for kmer in input_kmers:
+                if kmer not in kmer_by_sample[sample]:
+                    fh.write('{0}\t{1}\t{2}\n'.format(
+                        sample,
+                        kmer,
+                        0
+                    ))
 
     with open(args.output_kmers, 'w') as fh:
         for kmer, count in kmer_counts.items():

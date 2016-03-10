@@ -2,17 +2,23 @@
 # Act as a wrapper for query-jellyfish-counts.py
 #
 TOP_DIR=$(pwd)
-FASTA=$1
+KMERS=$1
+SIMULATIONS=$2
 OUTPUT_DIR=$3
-TAG=$4
-TAG=${TAG##*/}
-TAG=${TAG%-*}
+JELLYFISH=$4
 
+# Assume SIMULATION_DIR is as follows SIMULATION_DIR/${coverage|/${iteration}/jellyfish-counts.jf
+for c in `ls ${SIMULATIONS}`; do
+    if [ $c != "logs" ]; then
+        for i in `find ${SIMULATIONS}/$c -mindepth 1 -maxdepth 1 ! -path "*.txt"`; do
+            mkdir -p ${OUTPUT_DIR}/${c}
+            ITERATION=`basename ${i}`
+            STATS=${OUTPUT_DIR}/${c}/${ITERATION}-kmer-stats.txt
+            BY_SAMPLE=${OUTPUT_DIR}/${c}/${ITERATION}-kmer-by-sample.txt
+            COUNTS=${OUTPUT_DIR}/${c}/${ITERATION}-kmer-counts.txt
 
-JELLYFISH=$6
-JELLYFISH_DIR=$2/${TAG}
-STATS=${OUTPUT_DIR}/$5-${TAG}-kmer-stats.txt
-BY_SAMPLE=${OUTPUT_DIR}/$5-${TAG}-kmer-by-sample.txt
-COUNTS=${OUTPUT_DIR}/$5-${TAG}-kmer-counts.txt
-
-${TOP_DIR}/bin/query-jellyfish-counts.py ${FASTA} ${JELLYFISH_DIR} ${JELLYFISH} ${STATS} ${BY_SAMPLE} ${COUNTS} 1> ${OUTPUT_DIR}/${TAG}.log 2>&1
+            ${TOP_DIR}/bin/query-jellyfish-counts.py ${KMERS} ${i} ${JELLYFISH} ${STATS} ${BY_SAMPLE} ${COUNTS} 1>> ${OUTPUT_DIR}/${c}.log 2>&1
+            gzip --best ${BY_SAMPLE}
+        done
+    fi
+done

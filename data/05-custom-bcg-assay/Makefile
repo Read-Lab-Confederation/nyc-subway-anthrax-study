@@ -23,7 +23,7 @@ NUM_CPU ?= 1
 MAX_GENOMES ?= 1000
 TOTAL_SIMS ?= 30
 
-all: programs dl-genomes mash dl-sequences count-31mers specific-kmers simulate-reads query
+all: programs dl-genomes mash dl-sequences count-31mers specific-kmers simulate-reads
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
