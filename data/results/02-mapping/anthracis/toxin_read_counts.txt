@@ -1,6 +1,0 @@
-pXO1
-Sample	cya	lef	pagA	pagR
-SRR1748707	8	2	2	0
-SRR1748708	30	22	18	2
-SRR1749083	4	10	2	0
-

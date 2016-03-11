@@ -1,0 +1,93 @@
+NZ_AP014864	Bacillus thuringiensis serovar tolworthi DNA
+NZ_CP014179	Bacillus anthracis strain Stendal
+NZ_CP013274	Bacillus thuringiensis strain CTC
+NZ_CP013055	Bacillus thuringiensis strain YWC2-8
+NC_011725	Bacillus cereus B4264
+NZ_CP012519	Bacillus anthracis strain Larissa
+NZ_CP012483	Bacillus cereus strain NJ-W
+NZ_CP009596	Bacillus cereus strain 3a
+NZ_CP011349	Bacillus thuringiensis strain YC-10
+NZ_CP009686	Bacillus cereus strain FORC_005
+NZ_CP010577	Bacillus thuringiensis serovar morrisoni strain BGSC 4AA1
+NZ_CP010005	Bacillus thuringiensis serovar kurstaki strain HD 1
+NZ_CP009351	Bacillus thuringiensis HD1002
+NZ_CP009335	Bacillus thuringiensis strain HD1011
+NZ_CP010852	Bacillus anthracis strain A1144
+NZ_CP009605	Bacillus cereus strain S2-8
+NZ_CP009315	Bacillus anthracis str. Turkey32
+NZ_CP009464	Bacillus anthracis strain SK-102
+NZ_CP009641	Bacillus cereus 03BB108
+NZ_CP009369	Bacillus cereus strain FM1
+NZ_CP010088	Bacillus thuringiensis strain 97-27
+NZ_CP009590	Bacillus cereus G9241
+NZ_CP009697	Bacillus anthracis strain RA3
+NZ_CP009341	Bacillus anthracis strain Ohio ACB
+NZ_CP009700	Bacillus anthracis strain BA1035
+NZ_CP009902	Bacillus anthracis strain 2002013094
+NZ_CP009598	Bacillus anthracis str. V770-NP-1R
+NZ_CP009476	Bacillus anthracis strain Pasteur
+NZ_CP009328	Bacillus anthracis strain Vollum 1B
+NZ_CP009325	Bacillus anthracis strain PAK-1
+NZ_CP009600	Bacillus thuringiensis strain HD571
+NZ_CP009331	Bacillus anthracis strain K3
+NZ_CP009981	Bacillus anthracis strain Ames_BA1004
+NZ_CP009541	Bacillus anthracis str. Sterne
+NZ_CP009300	Bacillus cereus D17
+NZ_CP009968	Bacillus cereus E33L
+NZ_CP010322	Bacillus anthracis strain Canadian_bison
+NZ_CP009628	Bacillus cereus ATCC 4342
+NZ_CP009544	Bacillus anthracis strain BA1015
+NZ_CP009318	Bacillus cereus 03BB102
+NZ_CP009720	Bacillus thuringiensis strain HD682
+NZ_CP009651	Bacillus thuringiensis strain Al Hakam
+NZ_CP009692	Bacillus mycoides strain ATCC 6462
+NZ_CP010792	Bacillus anthracis strain Ames A0462
+NC_022873	Bacillus thuringiensis YBT-1518
+NC_014171	Bacillus thuringiensis BMB171
+NZ_CP010089	Bacillus thuringiensis serovar galleriae strain HD-29
+NZ_CP009941	Bacillus cereus strain 03BB87
+NC_008600	Bacillus thuringiensis str. Al Hakam
+NC_007530	Bacillus anthracis str. 'Ames Ancestor'
+NZ_CP009746	Bacillus weihenstephanensis strain WSBC 10204
+NZ_CP007626	Bacillus mycoides strain 219298
+NZ_CP012099	Bacillus thuringiensis strain HS18-1
+NZ_CP010106	Bacillus thuringiensis serovar indiana strain HD521
+NZ_CP004870	Bacillus thuringiensis serovar kurstaki str. HD-1
+NZ_CP001974	Bacillus anthracis str. A16R
+NZ_CP004858	Bacillus thuringiensis serovar kurstaki str. YBT-1520
+NZ_CP007607	Bacillus thuringiensis serovar kurstaki str. YBT-1520
+NZ_CP006742	Bacillus anthracis str. SVA11
+NZ_CP001970	Bacillus anthracis str. A16
+NZ_CP008846	Bacillus anthracis strain HYU01
+NZ_CP007618	Bacillus anthracis strain 2000031021
+NC_022781	Bacillus toyonensis BCT-7112
+NC_020376	Bacillus thuringiensis serovar thuringiensis str. IS5056
+NC_020238	Bacillus thuringiensis serovar kurstaki str. HD73
+NC_018508	Bacillus thuringiensis HD-789
+NC_018877	Bacillus thuringiensis Bt407
+NC_018693	Bacillus thuringiensis MC28
+NC_018500	Bacillus thuringiensis HD-771
+NC_018491	Bacillus cereus FRI-35
+NC_017729	Bacillus anthracis str. H9401
+NC_017208	Bacillus thuringiensis serovar chinensis CT-43
+NC_017200	Bacillus thuringiensis serovar finitimus YBT-020
+NC_016779	Bacillus cereus F837/76
+NC_016771	Bacillus cereus NC7401 genomic DNA
+NC_011658	Bacillus cereus AH187
+NC_009674	Bacillus cytotoxicus NVH 391-98
+NC_006274	Bacillus cereus E33L
+NC_003909	Bacillus cereus ATCC 10987
+NZ_CP007666	Bacillus anthracis str. Vollum
+NC_014335	Bacillus cereus biovar anthracis str. CI
+NC_012659	Bacillus anthracis str. A0248
+NC_012581	Bacillus anthracis str. CDC 684
+NC_012472	Bacillus cereus 03BB102
+NC_011969	Bacillus cereus Q1
+NC_011773	Bacillus cereus AH820
+NC_011772	Bacillus cereus G9842
+NC_010184	Bacillus weihenstephanensis KBAB4
+NC_005945	Bacillus anthracis str. Sterne chromosome
+NC_003997	Bacillus anthracis str. Ames chromosome
+NC_004722	Bacillus cereus ATCC 14579 chromosome
+NC_005957	Bacillus thuringiensis serovar konkukian str. 97-27 chromosome
+NZ_CP007512	Bacillus bombysepticus str. Wang
