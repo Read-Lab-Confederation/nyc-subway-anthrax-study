@@ -279,7 +279,26 @@ $(BACILLUS_DIR)/completed-genomes.sims: $(BACILLUS_DIR)/completed-genomes.list
 # Step 8: Down-select BCG and B. anthracis k-mers based on simulations
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+query-bcg: $(BCG_DIR)/ba-kmer-stats/bcg-sims.txt $(BCG_DIR)/bcg-kmer-stats/bcg-sims.txt
+$(BCG_DIR)/ba-kmer-stats/bcg-sims.txt: $(DATA_DIR)/ba-specific-kmers.fasta $(BCG_DIR)/completed-genomes.sims
+	mkdir -p $(BCG_DIR)/ba-kmer-stats
+	grep "x$$" $(BCG_DIR)/completed-genomes.sims | xargs -I {} -P $(NUM_CPU) -n 1 $(BIN_DIR)/query-jellyfish-counts.sh $(DATA_DIR)/ba-specific-kmers.fasta $(BCG_DIR)/simulation/{} $(BCG_DIR)/ba-kmer-stats/{} $(BIN_DIR)/jellyfish
+	touch $@
 
+$(BCG_DIR)/bcg-kmer-stats/bcg-sims.txt: $(DATA_DIR)/bcg-specific-kmers.fasta $(BCG_DIR)/completed-genomes.sims
+	mkdir -p $(BCG_DIR)/bcg-kmer-stats
+	grep "x$$" $(BCG_DIR)/completed-genomes.sims | xargs -I {} -P $(NUM_CPU) -n 1 $(BIN_DIR)/query-jellyfish-counts.sh $(DATA_DIR)/bcg-specific-kmers.fasta $(BCG_DIR)/simulation/{} $(BCG_DIR)/bcg-kmer-stats/{} $(BIN_DIR)/jellyfish
+	touch $@
+
+ba-kmer-stats: $(BCG_DIR)/ba-kmer-stats/filter-kmer-by-sample.txt
+$(BCG_DIR)/ba-kmer-stats/filter-kmer-by-sample.txt: $(BCG_DIR)/ba-kmer-stats/bcg-sims.txt
+	find $(BCG_DIR)/ba-kmer-stats -type d -name "*x" | xargs -I {} -P $(NUM_CPU) -n 1 $(BIN_DIR)/filter-kmer-by-sample.sh {} $(DATA_DIR)/bcg-accession.txt "bacillus anthracis" ba
+	touch $@
+
+aggregate-ba-kmer-stats: $(BCG_DIR)/ba-kmer-stats/aggregate-ba-kmer-stats.txt
+$(BCG_DIR)/ba-kmer-stats/aggregate-ba-kmer-stats.txt: $(BCG_DIR)/ba-kmer-stats/filter-kmer-by-sample.txt
+	find $(BCG_DIR)/ba-kmer-stats/ -name "*all-ba-kmer-stats.txt" | xargs -I {} -P $(NUM_CPU) -n 1 $(BIN_DIR)/aggregate-kmer-stats.py {}
+	touch $@
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

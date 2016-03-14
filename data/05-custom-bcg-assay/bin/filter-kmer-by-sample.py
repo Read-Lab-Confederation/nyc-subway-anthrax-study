@@ -20,8 +20,8 @@ def gziplines(fname):
 
 if __name__ == '__main__':
     parser = ap.ArgumentParser(
-        prog='download-genomes.py', conflict_handler='resolve',
-        description="Download sequences individually."
+        prog='filter-kmer-by-sample.py', conflict_handler='resolve',
+        description="Read a kmer-by-sample file and filter based on organism.."
     )
 
     parser.add_argument('kmers', type=str, metavar="KMER_BY_SAMPLE_GZIP",
