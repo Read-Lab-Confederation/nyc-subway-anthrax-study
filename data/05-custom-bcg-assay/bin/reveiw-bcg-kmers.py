@@ -16,13 +16,48 @@ import multiprocessing as mp
 import numpy as np
 
 
+def subset_stats(stats, i):
+    """Pull out a specific elements of the stats."""
+    try:
+        return {
+            'means': [stats['means'][i]],
+            'medians': [stats['medians'][i]],
+            'zero_means': [stats['zero_means'][i]],
+            'zero_medians': [stats['zero_medians'][i]]
+        }
+    except:
+        return {
+            'means': [stats['means'][i]],
+            'medians': [stats['medians'][i]],
+            'zero_means': [0],
+            'zero_medians': [0]
+        }
+
+
+def write_line(fh, cov, sample, bcg_stats, ba_stats):
+    """Write the stats to a given file handle."""
+    # Coverage, Sample, BCG Count Mean, BA Count Mean,
+    # BCG Count Medians, BA Count Medians,
+    # BCG Count Mean (no zeros), BA Count Mean (no zeros),
+    # BCG Count Median (no zeros), BA Count Median (no zeros)
+    fh.write(("{0}\t{1}\t{2:.6f}\t{3:.6f}\t{4:.6f}\t{5:.6f}\t"
+              "{6:.6f}\t{7:.6f}\t{8:.6f}\t{9:.6f}\n").format(
+        cov,
+        sample,
+        np.mean(np.array(bcg_stats['means'])),
+        np.mean(np.array(ba_stats['means'])),
+        np.median(np.array(bcg_stats['medians'])),
+        np.median(np.array(ba_stats['medians'])),
+        np.mean(np.array(bcg_stats['zero_means'])),
+        np.mean(np.array(ba_stats['zero_means'])),
+        np.median(np.array(bcg_stats['zero_medians'])),
+        np.median(np.array(ba_stats['zero_medians'])),
+    ))
+
+
 def trim_zeros(a):
     """Remove zeros from NumPy array, if all zeros set it to 0."""
-    a_nonzero = a[a != 0]
-    if not len(a_nonzero):
-        a_nonzero = np.array([0])
-
-    return a_nonzero
+    return a[a != 0]
 
 
 def get_stats(counts):
@@ -38,8 +73,13 @@ def get_stats(counts):
         no_zero = trim_zeros(a)
         stats['means'].append(np.mean(a))
         stats['medians'].append(np.median(a))
-        stats['zero_means'].append(np.mean(no_zero))
-        stats['zero_medians'].append(np.median(no_zero))
+        if len(no_zero):
+            stats['zero_means'].append(np.mean(no_zero))
+            stats['zero_medians'].append(np.median(no_zero))
+
+    if not len(stats['zero_means']):
+        stats['zero_means'] = np.array([0])
+        stats['zero_medians'] = np.array([0])
 
     return stats
 
@@ -124,23 +164,17 @@ if __name__ == '__main__':
             results[cov][sample]['ba'] = query(files, args.ba,
                                                args.jellyfish, args.num_cpu)
 
-    for cov, samples in sorted(results.items()):
-        for sample, counts in sorted(samples.items()):
-            bcg_stats = get_stats(counts['bcg'])
-            ba_stats = get_stats(counts['ba'])
+    grouped = "bcg-stats-grouped.txt"
+    ungrouped = "bcg-stats-ungrouped.txt"
+    with open(grouped, 'w') as g, open(ungrouped, 'w') as u:
+        for cov, samples in sorted(results.items()):
+            for sample, counts in sorted(samples.items()):
+                bcg_stats = get_stats(counts['bcg'])
+                ba_stats = get_stats(counts['ba'])
+                write_line(g, cov, sample, bcg_stats, ba_stats)
 
-            # Coverage, Sample, BCG Count Median, BA Count Median,
-            # BCG Count Median (no zeros), BA Count Median (no zeros)
-            print(("{0}\t{1}\t{2:.6f}\t{3:.6f}\t{4:.6f}\t{5:.6f}\t{6:.6f}\t"
-                   "{7:.6f}\t{8:.6f}\t{9:.6f}").format(
-                cov,
-                sample,
-                np.mean(np.array(bcg_stats['means'])),
-                np.mean(np.array(ba_stats['means'])),
-                np.median(np.array(bcg_stats['medians'])),
-                np.median(np.array(ba_stats['medians'])),
-                np.mean(np.array(bcg_stats['zero_means'])),
-                np.mean(np.array(ba_stats['zero_means'])),
-                np.median(np.array(bcg_stats['zero_medians'])),
-                np.median(np.array(ba_stats['zero_medians'])),
-            ))
+                for i in range(len(counts['bcg'])):
+                    new_sample = '{0}_{1}'.format(sample, i)
+                    write_line(u, cov, new_sample,
+                               get_stats([counts['bcg'][i]]),
+                               get_stats([counts['ba'][i]]))
