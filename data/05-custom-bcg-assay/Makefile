@@ -54,8 +54,15 @@ $(BIN_DIR)/art_illumina: $(SRC_DIR)/art.tar.gz
 	touch $(SRC_DIR)/art_bin_ChocolateCherryCake/art_illumina
 	ln -s $(SRC_DIR)/art_bin_ChocolateCherryCake/art_illumina $@
 
+blast: $(BIN_DIR)/blastn
+$(SRC_DIR)/ncbi-blast-2.2.31+-x64-linux.tar.gz:
+	mkdir -p $(SRC_DIR)
+	wget -O $@ ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.31/ncbi-blast-2.2.31+-x64-linux.tar.gz
 
-
+$(BIN_DIR)/blastn: $(SRC_DIR)/ncbi-blast-2.2.31+-x64-linux.tar.gz
+	tar -C $(SRC_DIR) -xzvf $^
+	ln $(SRC_DIR)/ncbi-blast-2.2.31+/bin/makeblastdb $(BIN_DIR)/makeblastdb
+	ln $(SRC_DIR)/ncbi-blast-2.2.31+/bin/blastn $@
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Step 1: Download completed genomes BCG and non BCG Bacilli
@@ -278,6 +285,24 @@ $(BACILLUS_DIR)/completed-genomes.sims: $(BACILLUS_DIR)/completed-genomes.list
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Step 8: Down-select BCG and B. anthracis k-mers based on simulations
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+# BLAST kmers against non ba BCG members to get hamming distance
+makeblastdb: $(DATA_DIR)/blastdb/bcg.nin $(DATA_DIR)/blastdb/bacillus.nin
+$(DATA_DIR)/blastdb/bcg.nin: $(DATA_DIR)/bcg-accession.txt
+	mkdir -p $(DATA_DIR)/blastdb/
+	rm -rf $(DATA_DIR)/blastdb/bcg.fasta
+	grep -v "anthracis" $^ | awk '{print $$1}' | xargs -I {} cat $(BCG_DIR)/fasta/{}.fasta >> $(DATA_DIR)/blastdb/bcg.fasta
+	bin/makeblastdb -in $(DATA_DIR)/blastdb/bcg.fasta -dbtype nucl -out $(DATA_DIR)/blastdb/bcg -title 'completed bcg (non ba) genomes'
+
+$(DATA_DIR)/blastdb/bacillus.nin:
+	mkdir -p $(DATA_DIR)/blastdb/
+	rm -rf $(DATA_DIR)/blastdb/bacillus.fasta
+	ls $(BACILLUS_DIR)/fasta/*.fasta | grep -v "NZ_CP007512" | xargs -I {} cat {} >> $(DATA_DIR)/blastdb/bacillus.fasta
+	bin/makeblastdb -in $(DATA_DIR)/blastdb/bacillus.fasta -dbtype nucl -out $(DATA_DIR)/blastdb/bacillus -title 'completed bacillus (non bcg) genomes'
+
+blastn-bcg: $(DATA_DIR)/ba-blastn-bcg.json
+$(DATA_DIR)/ba-blastn-bcg.json: $(DATA_DIR)/ba-specific-kmers.fasta
+	$(BIN_DIR)/blastn -max_hsps 1 -max_target_seqs 1 -dust no -word_size 7 -db $(DATA_DIR)/blastdb/bcg -query $^ -outfmt 13 -num_threads $(NUM_CPU) -evalue 1000 > $@ 2> /dev/null
 
 query-bcg: $(BCG_DIR)/ba-kmer-stats/bcg-sims.txt $(BCG_DIR)/bcg-kmer-stats/bcg-sims.txt
 $(BCG_DIR)/ba-kmer-stats/bcg-sims.txt: $(DATA_DIR)/ba-specific-kmers.fasta $(BCG_DIR)/completed-genomes.sims

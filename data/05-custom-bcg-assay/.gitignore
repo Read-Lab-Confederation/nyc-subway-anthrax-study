@@ -1,4 +1,6 @@
 bin/jellyfish
 bin/art_illumina
+bin/blastn
+bin/makeblastdb
 data/
 src/
